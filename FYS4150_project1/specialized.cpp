@@ -1,25 +1,12 @@
 #include <iostream>
 #include <math.h>
 #include <fstream>
+#include "gaussian.h"
+#include <cmath>
 
 using namespace std;
 
-//Function for f-values
-double F (double x)
-{
-    double y = -10*x;
-    double F_value = 100* exp (y);
-    return F_value;
-}
-
-//Function for exact v-values
-double v_exact (double x)
-{
-    double v = 1 - (1 - exp (-10))*x - exp(-10*x);
-    return v;
-}
-
-void specialized ()
+int specialized ()
 {
     //Number of step lengths and h
     int N = 10;
@@ -32,6 +19,9 @@ void specialized ()
     double *f = new double[N+2];
     double *f_tilde = new double[N+2];
     double *v_ex = new double[N+2];
+
+    clock_t start, finish;
+    start = clock();
 
     //Fill inn values of beta and calculate x
     for(int i = 1; i < (N+2); i++)
@@ -49,7 +39,7 @@ void specialized ()
     for(int i = 2; i < (N+2); i++)
     {
         beta[i] = double(i+1)/i;
-        f_tilde[i] = f[i] + (i*f_tilde[i-1])/(i+1);
+        f_tilde[i] = f[i] + ((i-1)*f_tilde[i-1])/i;
     }
 
     //New boundary condition
@@ -58,13 +48,16 @@ void specialized ()
     //Step 2
     for(int i = N; i > 1; i--)
     {
-        v[i-1] = double(i)/(i+1)*(f_tilde[i-1]-v[i]);
+        v[i-1] = double(i-1)/(i)*(f_tilde[i-1]+v[i]);
     }
 
+    finish = clock();
+    ((finish-start)/CLOCKS_PER_SEC);
+    cout << "CPU time for specialized is " << (float(finish-start)/CLOCKS_PER_SEC) << endl;
 
     //Write results to a file p1_result_N (n-value).txt
     //ofstream myfile;
-    //myfile.open ("p1_result_N1000.txt", ofstream::out);
+    //myfile.open ("p1_result_s_N1000.txt", ofstream::out);
     //if(!myfile.good()){
     //    cout << "Dette gikk galt" << endl;
     //    return 1;
@@ -76,5 +69,25 @@ void specialized ()
     //    myfile << v[i] << " " << v_ex[i] << "\n";
     //}
     //myfile.close();
-}
 
+    //Compute relative error
+    double *eps = new double[N+2];
+    for (int i=1; i < (N+1); i++)
+    {
+        double diff = (v[i] - v_ex[i])/v_ex[i];
+        eps[i] = log10 (abs (diff));
+    }
+
+    //Find maximum error
+    double eps_max = 0;
+    for (int j=0; j<N+2;j++)
+    {
+        if (abs(eps[j]) > abs(eps_max))
+        {
+            eps_max = eps[j];
+        }
+    }
+    cout << "log10(h) is " << log10(h) << " and the error is log10(eps) " << eps_max << endl;
+
+    return 0;
+}

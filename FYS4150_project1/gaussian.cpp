@@ -1,3 +1,12 @@
+#include <iostream>
+#include <math.h>
+#include <fstream>
+#include "time.h"
+
+
+
+
+using namespace std;
 
 //Function for f-values
 double F (double x)
@@ -13,6 +22,8 @@ double v_exact (double x)
     double v = 1 - (1 - exp (-10))*x - exp(-10*x);
     return v;
 }
+
+using namespace std;
 
 
 //Step 1: decomposition function
@@ -38,10 +49,10 @@ double backward(double f_tilde_old, double c_old, double u_new, double beta_old)
 
 
 
-void gaussian()
+int gaussian()
 {
     //Number of step lengths and h
-    int N = 1000;
+    int N = 1000000;
     double h = 1./(N+1);
     double x_0 = 0;
 
@@ -55,6 +66,8 @@ void gaussian()
     double *f_tilde = new double[N+2];
     double *v_ex = new double[N+2];
 
+    clock_t start, finish;
+    start = clock();
     //Fill inn values of A
     for(int i = 0; i < (N+2); i++)
     {
@@ -87,21 +100,24 @@ void gaussian()
         v[i-1] = backward(f_tilde[i-1], c[i-1], v[i], beta[i-1]);
     }
 
+    finish = clock();
+    ((finish-start)/CLOCKS_PER_SEC);
+    cout << "CPU time for gaussian is " << (float(finish-start)/CLOCKS_PER_SEC) << endl;
 
     //Write results to a file p1_result_N (n-value).txt
-    ofstream myfile;
-    myfile.open ("p1_result_N1000.txt", ofstream::out);
-    if(!myfile.good()){
-        cout << "Dette gikk galt" << endl;
-        return 1;
-    }
+    //ofstream myfile;
+    //myfile.open ("p1_result_N1000.txt", ofstream::out);
+    //if(!myfile.good()){
+    //    cout << "Dette gikk galt" << endl;
+    //    return 1;
+    //}
 
     //For loop that writes results to file
-    for (int i = 0; i < (N+2); i++)
-    {
-        myfile << v[i] << " " << v_ex[i] << "\n";
-    }
-    myfile.close();
+    //for (int i = 0; i < (N+2); i++)
+    //{
+    //    myfile << v[i] << " " << v_ex[i] << "\n";
+    //}
+    //myfile.close();
     return 0;
 }
 
