@@ -1,0 +1,22 @@
+About the report:
+
+- remember to include abstract
+- clear figures
+
+1b: Algorithm for gaussian elimination for tridiagonal matrices comes from lecture slides:
+
+http://compphysics.github.io/ComputationalPhysics/doc/pub/linalg/html/linalg.html
+
+Note: b tilde (the new b-values) are set to beta in the report AND program.
+
+Note: f goes to f*h**2. f-tilde are the new values in the logarithm, beta are the new bvalues in the program.
+
+
+Note: Files where results are saved are named 'p1_result_N (n-value).txt'
+
+
+
+
+Reference: Linalg 
+
+

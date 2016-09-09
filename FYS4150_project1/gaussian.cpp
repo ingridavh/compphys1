@@ -1,8 +1,3 @@
-#include <iostream>
-#include <math.h>
-#include <fstream>
-
-using namespace std;
 
 //Function for f-values
 double F (double x)
@@ -43,7 +38,7 @@ double backward(double f_tilde_old, double c_old, double u_new, double beta_old)
 
 
 
-int main()
+void gaussian()
 {
     //Number of step lengths and h
     int N = 1000;
@@ -109,4 +104,5 @@ int main()
     myfile.close();
     return 0;
 }
+
 
