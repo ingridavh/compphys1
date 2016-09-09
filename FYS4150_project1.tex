@@ -1,0 +1,199 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} 
+\usepackage{epstopdf}
+\usepackage[makeroom]{cancel}
+\usepackage{amsmath}
+
+\begin{document}
+\title{FYS4150: Project 1}
+\author{Ingrid A V Holm}
+\maketitle
+
+\section*{a)}
+\begin{flushleft}
+
+We want to solve the one-dimensional Poisson equation with Dirichlet boundary conditions:
+
+\begin{equation}
+-u''(x) = f(x), \textbf{ } x \in (0,1), \textbf{ } u(0) = u(1) = 0
+\end{equation}
+
+We approximate the second derivative using the 3 point formula:
+
+\begin{equation}
+- \frac{v_{i+1} + v_{i-1} - 2 v_i}{h^2} = f_i 
+\end{equation}
+
+For $i = 1,2,...,n$, where $f_i = f(x_i)$. We rewrite this equation:
+
+$$
+- v_{i-1} + 2 v_i - v_{i+1}= h^2 f_i 
+$$
+
+Setting in $i = 1,2,3$ we start to see a pattern:
+
+$$
+- v_0 + 2 v_1 - v_2= h^2 f_1 
+$$
+
+Since $v_0 = 0$:
+
+$$
+2 v_1 - v_2= h^2 f_1 
+$$
+
+$$
+- v_1 + 2 v_2 - v_3= h^2 f_2 
+$$
+
+$$
+- v_2 + 2 v_3 - v_4= h^2 f_3 
+$$
+
+We can write this as a matrix working on a vector:
+
+$$
+\begin{pmatrix}
+2 & -1 & 0 &...& ... & 0\\
+-1 & 2 & -1 & 0 & ... & ...\\
+0 & -1 & 2 & -1 & 2 & ...\\
+& ... & ... & ... & ... & ...\\
+0 & ... & & -1 & 2 & -1\\
+0 & ... & & 0 & -1 & 2\\
+\end{pmatrix}
+\begin{pmatrix}
+v_1\\
+v_2\\
+...\\
+...\\
+...\\
+v_n\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\tilde{b}_1\\
+...\\
+...\\
+...\\
+\tilde{b}_n\\
+\end{pmatrix}
+$$
+
+$$
+\textbf{A} \textbf{v} = \textbf{b}
+$$
+
+
+\end{flushleft}
+
+\begin{flushleft}
+We assume a source term and closed-form solution:
+
+\begin{equation}
+f(x) = 100e^{-10x}
+\end{equation}
+
+\begin{equation}
+u(x) = 1 - (1-e^{-10})x - e^{-10x}
+\end{equation}
+
+Check that this satisfies the Poisson equation:
+
+$$
+u'(x) = - 1 + e^{-10} + 10 e^{-10x}
+$$
+
+$$
+u''(x) = -100 e^{-10x} = - f(x)
+$$
+
+
+\end{flushleft}
+
+
+\subsection*{b)}
+
+\begin{flushleft}
+We rewrite the set of equations in terms of a tridiagonal matrix:
+
+$$
+\begin{pmatrix}
+b_1 & c_1 & 0 & ... & ... & ...\\
+a_2 & b_2 & c_2 & ... & ...\\
+0 & a_3 & b_3 & c_3 & ... & ...\\
+& ... & ... & ... & ...& ...\\
+& & & a_{n-2} & b_{n-1} & c_{n-1}\\
+& & & & a_n & b_n\\ 
+\end{pmatrix}
+\begin{pmatrix}
+v_1\\
+v_2\\
+...\\
+...\\
+...\\
+v_n\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\tilde{b}_1\\
+\tilde{b}_2\\
+...\\
+...\\
+...\\
+\tilde{b}_n\\
+\end{pmatrix}
+$$
+
+In index notation this becomes:
+
+\begin{equation}
+a_i v_{i-1} + b_i v_i + c_1 v_{i+1} = \tilde{b}_i
+\end{equation}
+
+With $a_1= c_n = 0$. The algorithm for solving this set of equations consists of two steps; a decomposition and forward substitution followed by a backward substitution:
+\end{flushleft}
+
+\begin{flushleft}
+
+Step 1:
+
+\begin{flalign*}
+&\beta = b_1 &\\
+&\gamma = vector[n]&\\
+&v_1 = \frac{\tilde{b}_1}{b_1}&\\
+&\text{for }(j=2; j \leq n; j = j+1):&\\
+& \text{ } \text{ }  \text{ }\text{ } \gamma_j = \frac{c_{j-1}}{\beta} &\\
+&\text{ }\text{ }  \text{ }\text{ }\beta = b_j-a_j*\gamma_j&\\
+& \text{ } \text{ } \text{ }\text{ } v_j = \frac{(\tilde{b}_j-a_j \cdot v_{j-1})}{\beta}&\\
+\end{flalign*}
+
+
+Step 2:
+
+\begin{flalign*}
+&\text{for } (j=n-1; j \geq 1; j = j-1):&\\
+& \text{ } \text{ } \text{ }\text{ } v_j = \gamma_{j+1} \cdot v_{j+1}&\\
+\end{flalign*}
+
+\end{flushleft}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
