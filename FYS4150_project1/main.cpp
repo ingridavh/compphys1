@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    specialized();
+    //specialized();
     //gaussian();
     my_lu();
     return 0;

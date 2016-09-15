@@ -14,7 +14,13 @@ Note: f goes to f*h**2. f-tilde are the new values in the logarithm, beta are th
 
 Note: Files where results are saved are named 'p1_result_N (n-value).txt'
 
+Note: In LU decomp i used double inverse, known as ??. This uses inverse twice, which requires more flops.
 
+Left: 
+
+- What is the error?
+- How long does it take? 
+- How many flops for each method? 
 
 
 Reference: Linalg 
