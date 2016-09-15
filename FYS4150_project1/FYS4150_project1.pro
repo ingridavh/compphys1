@@ -6,7 +6,8 @@ CONFIG -= qt
 SOURCES += main.cpp \
     specialized.cpp \
     gaussian.cpp \
-    time.cpp
+    time.cpp \
+    my_lu.cpp
 
 DISTFILES += \
     ../build-FYS4150_project1-Desktop-Debug/p1_result_N10.txt \
@@ -17,5 +18,8 @@ DISTFILES += \
 
 HEADERS += \
     gaussian.h \
-    specialized.h
+    specialized.h \
+    my_lu.h
 
+
+unix:!macx: LIBS += -larmadillo

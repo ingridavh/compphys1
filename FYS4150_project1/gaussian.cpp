@@ -23,8 +23,6 @@ double v_exact (double x)
     return v;
 }
 
-using namespace std;
-
 
 //Step 1: decomposition function
 double decomp (double a, double b, double c_old, double beta_old)
