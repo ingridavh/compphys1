@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -63,22 +65,23 @@ for j in range(N3+2):
     v_ex3[j] = row[1]
 
 
+
 plt.subplot(3, 1, 1)
+plt.title("Gauss elimination approximation and exact solution")
 plt.plot(x1, v1, '-r', x1, v_ex1, '-b')
-plt.title('N=10')
-plt.xlabel('x')
-plt.ylabel('v(x)')
+plt.legend(['Approximation', 'Exact solution'])
+plt.ylabel('N=10')
 
 plt.subplot(3, 1, 2)
 plt.plot(x2, v2, '-r', x2, v_ex2, '-b')
-plt.title('N=100')
-plt.xlabel('x')
-plt.ylabel('v(x)')
+plt.legend(['Approximation', 'Exact solution'])
+plt.ylabel('v(x) \n N=100')
 
 plt.subplot(3, 1, 3)
 plt.plot(x3, v3, '-r', x3, v_ex3, '-b')
-plt.title('N=1000')
+plt.legend(['Approximation', 'Exact solution'])
 plt.xlabel('x')
-plt.ylabel('v(x)')
+plt.ylabel('N=1000')
 
+plt.savefig('Gaussian_comparison.png')
 plt.show()

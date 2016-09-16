@@ -6,7 +6,6 @@ CONFIG -= qt
 SOURCES += main.cpp \
     specialized.cpp \
     gaussian.cpp \
-    time.cpp \
     my_lu.cpp
 
 DISTFILES += \

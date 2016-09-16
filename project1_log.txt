@@ -22,6 +22,41 @@ Left:
 - How long does it take? 
 - How many flops for each method? 
 
+Layout: 
+
+- Gaussian (a)
+- Specialized (b)
+- LU (c)
+
+- Errors (for a or b)
+- CPU time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Reference: Linalg 
 

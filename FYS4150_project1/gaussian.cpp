@@ -1,10 +1,10 @@
 #include <iostream>
 #include <math.h>
+#include <cmath>
 #include <fstream>
 #include "time.h"
-
-
-
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -46,11 +46,15 @@ double backward(double f_tilde_old, double c_old, double u_new, double beta_old)
 }
 
 
+//MAIN FUNCTION
 
-int gaussian()
+//Give N as function argument
+//Default is error=false, CPU=false, fileprint=false
+//If set to true, the function prints error and CPU and writes result to file
+
+double gaussian(int N, bool finderr, bool CPU, bool fileprint, bool CPU_avg)
 {
     //Number of step lengths and h
-    int N = 1000000;
     double h = 1./(N+1);
     double x_0 = 0;
 
@@ -100,23 +104,62 @@ int gaussian()
 
     finish = clock();
     ((finish-start)/CLOCKS_PER_SEC);
-    cout << "CPU time for gaussian is " << (float(finish-start)/CLOCKS_PER_SEC) << endl;
 
-    //Write results to a file p1_result_N (n-value).txt
-    //ofstream myfile;
-    //myfile.open ("p1_result_N1000.txt", ofstream::out);
-    //if(!myfile.good()){
-    //    cout << "Dette gikk galt" << endl;
-    //    return 1;
-    //}
+    //Print CPU time if requested
 
-    //For loop that writes results to file
-    //for (int i = 0; i < (N+2); i++)
-    //{
-    //    myfile << v[i] << " " << v_ex[i] << "\n";
-    //}
-    //myfile.close();
+    if (CPU == true)
+    {
+        cout << "Gaussian: CPU time is " << (float(finish-start)/CLOCKS_PER_SEC) << endl;
+    }
+
+    //Return CPU time
+    if (CPU_avg == true)
+    {
+        return (float(finish-start)/CLOCKS_PER_SEC);
+    }
+
+
+    //Calculate and print relative error if requested
+
+    if (finderr == true)
+    {
+        double *eps = new double[N+2];
+        double eps_max = 0;
+        for (int i = 0; i < N+2; i++)
+        {
+            double diff = (v[i]-v_ex[i])/v_ex[i];
+            eps[i] = log10 ( abs (diff));
+            if (abs(eps[i]) > abs(eps_max))
+            {
+                eps_max = eps[i];
+            }
+        }
+        cout << "Gaussian: log10(h) is " << log10(h) << " and the error is log10(eps) " << eps_max << endl;
+
+    }
+
+    //Write results to a file Gauss_result_N (n-value).txt if requested
+
+
+    if (fileprint == true)
+    {
+        ofstream myfile;
+        ostringstream oss;
+        oss << "Gauss_result_N=" << N << ".txt";
+        string var = oss.str();
+        myfile.open (var, ofstream::out);
+        if(!myfile.good()){
+            cout << "Dette gikk galt" << endl;
+            return 1;
+        }
+
+        //For loop that writes results to file
+        for (int i = 0; i < (N+2); i++)
+        {
+            myfile << v[i] << " " << v_ex[i] << "\n";
+        }
+        myfile.close();
+    }
+
     return 0;
 }
-
-

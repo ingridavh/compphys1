@@ -1,15 +1,16 @@
 #include <iostream>
 #include <math.h>
 #include <fstream>
+#include <string>
+#include <sstream>
 #include "gaussian.h"
 #include <cmath>
 
 using namespace std;
 
-int specialized ()
+double specialized (int N, bool finderr, bool CPU, bool fileprint, bool CPU_avg)
 {
     //Number of step lengths and h
-    int N = 10;
     double h = 1./(N+1);
     double x_0 = 0;
 
@@ -53,41 +54,58 @@ int specialized ()
 
     finish = clock();
     ((finish-start)/CLOCKS_PER_SEC);
-    cout << "CPU time for specialized is " << (float(finish-start)/CLOCKS_PER_SEC) << endl;
-
-    //Write results to a file p1_result_N (n-value).txt
-    //ofstream myfile;
-    //myfile.open ("p1_result_s_N1000.txt", ofstream::out);
-    //if(!myfile.good()){
-    //    cout << "Dette gikk galt" << endl;
-    //    return 1;
-    //}
-
-    //For loop that writes results to file
-    //for (int i = 0; i < (N+2); i++)
-    //{
-    //    myfile << v[i] << " " << v_ex[i] << "\n";
-    //}
-    //myfile.close();
-
-    //Compute relative error
-    double *eps = new double[N+2];
-    for (int i=1; i < (N+1); i++)
+    if (CPU == true)
     {
-        double diff = (v[i] - v_ex[i])/v_ex[i];
-        eps[i] = log10 (abs (diff));
+        cout << "Specialized: CPU time is " << (float(finish-start)/CLOCKS_PER_SEC) << endl;
+    }
+    //returns CPU time value
+    if (CPU_avg == true)
+    {
+        return (float(finish-start)/CLOCKS_PER_SEC);
     }
 
-    //Find maximum error
-    double eps_max = 0;
-    for (int j=0; j<N+2;j++)
+
+
+
+    //Write results to a file spec_result_N= (n-value).txt
+    if (fileprint == true)
     {
-        if (abs(eps[j]) > abs(eps_max))
-        {
-            eps_max = eps[j];
+        ofstream myfile;
+        ostringstream oss;
+        oss << "spec_result_N=" << N << ".txt";
+        string var = oss.str();
+        myfile.open (var, ofstream::out);
+        if(!myfile.good()){
+            cout << "Dette gikk galt" << endl;
+            return 1;
         }
+
+        //For loop that writes results to file
+        for (int i = 0; i < (N+2); i++)
+        {
+            myfile << v[i] << " " << v_ex[i] << "\n";
+        }
+        myfile.close();
     }
-    cout << "log10(h) is " << log10(h) << " and the error is log10(eps) " << eps_max << endl;
+
+    //Compute and print relative error if requested
+    if (finderr == true)
+    {
+        double *eps = new double[N+2];
+        double eps_max = 0;
+        for (int i=1; i < (N+1); i++)
+        {
+            double diff = (v[i] - v_ex[i])/v_ex[i];
+            eps[i] = log10 (abs (diff));
+            //Find maximum error
+            if (abs(eps[i]) > abs(eps_max))
+            {
+                eps_max = eps[i];
+            }
+        }
+        cout << "Specialized: log10(h) is " << log10(h) << " and the error is log10(eps) " << eps_max << endl;
+    }
+
 
     return 0;
 }
