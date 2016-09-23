@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} 
+\usepackage{epstopdf}
+\usepackage[makeroom]{cancel}
+\usepackage{framed}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+\title{FYS4150: Project 2}
+\author{Ingrid A V Holm}
+\maketitle
+
+\subsection*{Unitary and orthogonal transformations (a)}
+
+\begin{flushleft}
+A unitary matrix $U$ has the properties: 
+
+\begin{equation}
+U^{-1} = U^{\dagger}
+\end{equation}
+
+An orthogonal matrix (the corresponding real matrix) has the properties:
+
+\begin{equation}
+U^T = U^{-1}
+\end{equation}
+
+Where $U^{\dagger}$ is for matrices in Hilbert space (complex matrices). It represents the transpose of the complex conjugate, i.e. $U^{\dagger} = (U^*)^T$.
+\end{flushleft}
+
+\begin{flushleft}
+Assume we have an orthogonal basis for the $n$-dimensional space $v_i$, where $v_j^T v_i = \delta_{ij}$:
+
+\begin{equation*}
+\textbf{v}_i = \begin{bmatrix}
+v_{i1}\\
+...\\
+...\\
+v_{in}\\
+\end{bmatrix}
+\text{ , }
+U \textbf{v}_i = \textbf{w}_i
+\end{equation*} 
+
+Under orthogonal transformations, both the dot product and orthogonality of vectors is conserved:
+
+$$
+\textbf{w}_i^T \textbf{w}_j = (U \textbf{v}_i)^T (U \textbf{v}_j) = \textbf{v}_i^T U^T U \textbf{v}_j = \textbf{v}_i^T U^{-1} U \textbf{v}_j = \textbf{v}_i^T \textbf{v}_j = \delta_{ij}
+$$
+\end{flushleft}
+
+\subsection*{Jacobi's rotation method (b)}
+
+\begin{flushleft}
+We want to solve the eigenvalue problem for a tridiagonal matrix:
+
+\begin{equation}
+\begin{pmatrix}
+d_0 & e_0 & 0 & ... & 0 & 0 \\
+e_1 & d_1 & e_1 & ... & 0 & 0\\
+0 & e_2 & d_2 & e_2 & ... & 0\\
+\vdots & & & \ddots &  & 0\\
+0 & ... & ... & 0 & e_N & d_N\\
+\end{pmatrix}
+\begin{pmatrix}
+u_0\\
+u_1\\
+\vdots\\
+u_{N-1}\\
+u_N\\
+\end{pmatrix}
+= 
+\lambda
+\begin{pmatrix}
+u_0\\
+u_1\\
+\vdots\\
+u_{N-1}\\
+u_N\\
+\end{pmatrix}
+\end{equation}
+
+We want to use Jacobi's rotation method. We define an orthogonal matrix $S$ to operate on our matrix $A$:
+
+\begin{equation}
+B = S^T A S
+\end{equation}
+
+With all elements in $S$ equal to zero, except:
+
+\begin{equation*}
+s_{kk} = s_{ll} = \cos \theta \text{ , } s_{kl} = - s_{lk} = s \sin \theta \text{ , } s_{ii} = 1 \text{ ; } i \neq k \text{ } i \neq l
+\end{equation*}
+
+\end{flushleft}
+
+\begin{figure}[ht]\label{Jacobi rotation algorithm}
+\begin{framed}
+\begin{minipage}[b]{0.45\linewidth}
+
+\begin{flushleft}
+$\boldsymbol{1.}$ Find $\max (a_{kl})$.
+\end{flushleft}
+
+\begin{flushleft}
+$\boldsymbol{2.}$ Compute the rotation parameters $t = \tan \theta$, $c = \cos \theta$, $s = \sin \theta$:
+\begin{equation}
+\tau = \cot \theta = \frac{a_{ll} - a_{kk}}{2 a_{kl}}
+\end{equation}
+\begin{equation}
+t = - \tau \pm \sqrt{1 + \tau^2}
+\end{equation}
+\begin{equation}
+c = \frac{1}{1 + t^2} \text{ , } s = tc
+\end{equation}
+\end{flushleft}
+
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.45\linewidth}
+
+\centering
+
+\begin{flushleft}
+$\boldsymbol{3.}$ Calculate the elements of $B$:
+
+\begin{equation*}
+b_{ii} = a_{ii} \text{ , } i \neq k \text{ } i \neq l
+\end{equation*}
+\begin{equation*}
+b_{ik} = a_{ik} c - a_{il} s \text{ , } i \neq k \text{ } i \neq l
+\end{equation*}
+\begin{equation*}
+b_{il} = a_{il} c + a_{ik} s \text{ , } i \neq k \text{ } i \neq l
+\end{equation*}
+\begin{equation*}
+b_{kk} = a_{kk} c^2 - 2 a_{kl} c*s + a_{ll} s^2
+\end{equation*}
+\begin{equation*}
+b_{ll} = a_{ll} c^2 + 2 a_{kl} c*s + a_{kk} s^2
+\end{equation*}
+\begin{equation*}
+b_{kl} = (a_{kk} - a_{ll}) c*s + a_{kl}(c^2 - s^2)
+\end{equation*}
+\end{flushleft}
+
+\begin{flushleft}
+$\boldsymbol{4.}$ If $\max (b_{kl}) \geq \epsilon$ run the algorithm again.
+\end{flushleft}
+
+\end{minipage}
+\end{framed}
+\caption{Jacobi rotation algorithm for tridiagonal matrix}
+\end{figure}
+
+
+\end{document}
