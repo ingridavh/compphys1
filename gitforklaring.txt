@@ -1,7 +1,0 @@
-git commit
-git clone https//... #laster opp alt fra directory
-git push #pusher de endringene vi har gjort til nettsiden
-git add #legger til en ny fil
-
-git commit -am 'ny forandring' #a står for all, husk å legge til kommentar ''
-git pull #få forandringene til pcn
