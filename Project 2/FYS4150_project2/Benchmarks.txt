@@ -1,0 +1,32 @@
+//Benchmark for Jacobi rotation
+
+int N = 3;
+mat A = {
+    {1,2,0},
+    {0,1,0},
+    {0,0,1,}};
+
+int main()
+{
+    cout << "A = " << A << endl;
+    mat B = Jacobi(N, A);
+    cout << B << endl;
+    return 0;
+}
+
+//Terminal output
+
+A =    1.0000   2.0000        0
+        0   1.0000        0
+        0        0   1.0000
+
+B is   -0.5000        0        0
+        0   1.5000        0
+        0        0   1.0000
+
+1 S matrices were needed
+  -0.5000        0        0
+        0   1.5000        0
+        0        0   1.0000
+
+

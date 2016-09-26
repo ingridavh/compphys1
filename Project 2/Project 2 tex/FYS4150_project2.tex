@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{bbold}
 
 \begin{document}
 \title{FYS4150: Project 2}
@@ -157,5 +158,41 @@ $\boldsymbol{4.}$ If $\max (b_{kl}) \geq \epsilon$ run the algorithm again.
 \caption{Jacobi rotation algorithm for tridiagonal matrix}
 \end{figure}
 
+\section*{Benchmarks}
+
+\subsection*{Jacobi rotation}
+
+\begin{flushleft}
+Check the Jacobi function, which finds eigenvalues of a matrix, on the matrix $A$:
+
+\begin{equation*}
+A = 
+\begin{pmatrix}
+1 & 2 & 0\\
+2 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix} \text{ , }
+\det (A - \lambda \mathbb{1} ) = 
+\begin{vmatrix}
+1 - \lambda & 2 & 0\\
+2 & 1 - \lambda & 0\\
+0 & 0 & 1- \lambda\\
+\end{vmatrix}
+\end{equation*}
+
+$$
+\det (A - \lambda \mathbb{1} ) =
+(1-\lambda)^3 - 2 \cdot 2(1 - \lambda) = (1 - \lambda)[(1 - \lambda)^2 - 4]
+$$
+
+$$
+= (1 - \lambda)[\lambda^2 - 2\lambda - 3] \rightarrow \lambda = 1 \cap \lambda = 2
+$$
+
+$$
+\rightarrow (\lambda - 1)(\lambda - 1)(\lambda - 2)
+$$
+
+\end{flushleft}
 
 \end{document}
