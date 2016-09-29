@@ -1,4 +1,5 @@
 #include "jacobi_rotation.h"
+#include "exe.h"
 #include <iostream>
 #include <math.h>
 #include <armadillo>
@@ -94,9 +95,9 @@ vec find_trig(mat A, int k, int l)
 void rotate(mat &A, int k, int l)
 {
     int N = A.n_cols;
-    double tau, t;
 
     vec trig = find_trig(A, k, l);
+
     double s = trig(0);
     double c = trig(1);
 
@@ -106,7 +107,7 @@ void rotate(mat &A, int k, int l)
 
     //Compute new elements
 
-    A(k,k) = a_kk*c*c - 2.0*A*c*s + a_ll*s*s;
+    A(k,k) = a_kk*c*c - 2.0*A(k,l)*c*s + a_ll*s*s;
     A(l,l) = a_kk*s*s + 2.0*A(k,l)*c*s + a_ll*c*c;
 
     //Hard-code new non-diagonal l and k
