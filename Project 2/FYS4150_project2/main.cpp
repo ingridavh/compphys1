@@ -1,38 +1,38 @@
 #include <iostream>
 #include "jacobi_rotation.h"
 #include "schrodinger.h"
-#include "exe.h"
 #include <armadillo>
 #include <math.h>
 using namespace std;
 using namespace arma;
 
-//int N = 30;
 
 int main()
 {
-    //mat S = generator(N, 10);
+    int N = 100;
+    double rho_max = 10;
 
-    exe();
+    mat R = eye<mat>(N, N);
+    mat A = generator(N, rho_max);
 
-//    int counter = 0;
-//    //cout << S << endl;
+    int counter = 0;
 
-//    mat B;
-//    while (eps_test(N, S) == 0)
-//    {
-//        counter++;
-//        B = Jacobi(S);
-//        S = B;
-//    }
-//    cout << "After " << counter
-//         << " rotations "
-//         << "the eigenvalues are " << endl;
-//    for (int i = 0; i<N; i++)
-//    {
-//         cout << B(i,i) << endl;
-//    }
+    while (eps_test(A) == 0)
+    {
+        counter++;
+        vec max = find_max(A);
+        rotate(A, R, max(1), max(2));
+    }
 
+    cout << counter << " rotations were required" << endl;
+    //cout << A << endl;
+
+    vec energies = A.diag();
+    energies = sort(energies);
+
+    cout << "The three lowest energy values are " <<
+            energies(0) << " , " << energies(1) <<
+            " and " << energies(2) << endl;
     return 0;
 }
 

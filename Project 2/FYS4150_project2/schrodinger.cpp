@@ -7,24 +7,35 @@
 using namespace std;
 using namespace arma;
 
-mat generator(int N, double rho_max, double rho_min)
+mat generator(int N, double rho_max)
 {
     //Set step length
-    double h = rho_max/(double)N;
+    double h = rho_max/(double)(N+1);
+    double nondiag_const = -1.0/(h*h);
+    double diag_const = 2.0/(h*h);
+
+    vec v(N);
+    vec rho(N);
+    rho(0) = 0;
+    v(0) = rho(0)*rho(0);
+
+    for (int i=0; i<N; i++)
+    {
+        rho(i) = (i+1)*h;
+        v(i) = rho(i)*rho(i);
+    }
 
     mat A = zeros<mat>(N,N);
 
     //Fill A with values
-    for (int i=0; i < N-1; i++)
-    {
-        double rho = rho_min + i*h;
-        A(i,i) = 2.0/(h*h) + rho*rho;
-        A(i, i+1) = -1.0/(h*h);
-        A(i+1, i) = -1.0/(h*h);
-    }
 
-    //Set final diagonal matrix element
-    double rho_N = (N-1)*(double)h;
-    A(N-1,N-1) = 2./(h*h)+rho_N*rho_N;
-    return A;
+    A.diag(1).fill(nondiag_const);
+    A.diag(-1).fill(nondiag_const);
+    A.diag().fill(diag_const);
+
+    for (int i=0; i < N; i++)
+    {
+        A(i,i) = A(i,i) + v(i);
+    }
+        return A;
 }

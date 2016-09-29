@@ -2,38 +2,41 @@
 //Test of ability to find eigenvalue
 //Set the following into main
 
-int N = 2;
-mat A = {
-    {2,1},
-    {1,2}};
-
 int main()
 {
+
+    mat A = {{1,2,0},{2,1,0},{0,0,1}};
+
     int counter = 0;
-    cout << "A = " << A << endl;
-    mat B;
-    while (eps_test(N, A) == 0)
+
+    while (eps_test(A) == 0)
     {
         counter++;
-        B = Jacobi(N,A);
-        A = B;
+        vec max = find_max(A);
+        rotate(A, max(1), max(2));
     }
-    cout << "after " << counter << " S transformations, B is " << endl;
-    cout << B << endl;
+
+    cout << counter << " rotations were required" << endl;
+    cout << A << endl;
+    vec energies = A.diag();
+    energies = sort(energies);
+
+    cout << "The three lowest energy values are " <<
+            energies(0) << " , " << energies(1) <<
+            " and " << energies(2) << endl;
     return 0;
 }
 
 
+
 //Terminal output
 
-A =    2.0000   1.0000
-   1.0000   2.0000
+1 rotations were required
+   3.0000        0        0
+        0  -1.0000        0
+        0        0   1.0000
 
-after 1 S transformations, B is
-   1.0000        0
-        0   3.0000
-
-
+The three lowest energy values are -1 , 1 and 3
 
 
 //Benchmark for matrix generator

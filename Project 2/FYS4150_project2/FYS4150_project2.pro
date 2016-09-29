@@ -7,13 +7,11 @@ LIBS += -larmadillo
 
 SOURCES += main.cpp \
     jacobi_rotation.cpp \
-    schrodinger.cpp \
-    exe.cpp
+    schrodinger.cpp
 
 HEADERS += \
     jacobi_rotation.h \
-    schrodinger.h \
-    exe.h
+    schrodinger.h
 
 DISTFILES += \
     Benchmarks.txt

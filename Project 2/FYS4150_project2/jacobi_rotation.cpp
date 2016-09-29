@@ -1,17 +1,16 @@
 #include "jacobi_rotation.h"
-#include "exe.h"
 #include <iostream>
-#include <math.h>
 #include <armadillo>
+
 using namespace std;
 using namespace arma;
 
-int eps_test(mat B, double eps) //default eps-value is set to 1e-8 in header file
+int eps_test(mat A, double eps) //default eps-value is set to 1e-8 in header file
 {
     //If the off-diagonal elements are small enough,
-    //eps_test returns 1, otherwise it returns 0int N,
+    //eps_test returns 1, otherwise it returns 0
 
-    vec max = find_max(B);
+    vec max = find_max(A);
     int no;
 
     if (abs(max(0)) >= eps)
@@ -44,7 +43,7 @@ vec find_max(mat A)
         {
             if(i != j)
             {
-                if (abs(A(i,j)) >= abs(max(0)))
+                if (abs(A(i,j)) > abs(max(0)))
                 {
                     max(0) = A(i,j), max(1) = i, max(2) = j;
                 }
@@ -92,7 +91,7 @@ vec find_trig(mat A, int k, int l)
 
 //Rotate the matrix A
 
-void rotate(mat &A, int k, int l)
+void rotate(mat &A, mat &R, int k, int l)
 {
     int N = A.n_cols;
 
@@ -128,6 +127,12 @@ void rotate(mat &A, int k, int l)
             A(i,l) = a_il*c + a_ik*s;
             A(l,i) = A(i,l);
         }
+
+        double r_ik = R(i,k);
+        double r_il = R(i,l);
+
+        R(i,k) = c*r_ik - s*r_il;
+        R(i,l) = c*r_il + s*r_il;
     }
 }
 

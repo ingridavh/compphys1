@@ -2,7 +2,7 @@
 #define SCHRODINGER
 #include <armadillo>
 
-arma::mat generator(int N, double rho_max=1e4, double rho_min=0.0);
+arma::mat generator(int N, double rho_max=1e4);
 
 
 #endif // SCHRODINGER
