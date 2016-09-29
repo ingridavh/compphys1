@@ -6,12 +6,14 @@ CONFIG -= qt
 LIBS += -larmadillo
 
 SOURCES += main.cpp \
-    jacobi.cpp \
-    jacobi_rotation.cpp
+    jacobi_rotation.cpp \
+    schrodinger.cpp \
+    exe.cpp
 
 HEADERS += \
-    jacobi.h \
-    jacobi_rotation.h
+    jacobi_rotation.h \
+    schrodinger.h \
+    exe.h
 
 DISTFILES += \
     Benchmarks.txt

@@ -15,6 +15,114 @@
 \author{Ingrid A V Holm}
 \maketitle
 
+\begin{abstract}
+This is the abstract.
+\end{abstract}
+
+\subsection*{Introduction}
+
+\begin{flushleft}
+The aim of this project was to solve the one-dimensional Schrödinger equation. We start out with the three-dimensional equation for two interacting electrons. Since we assume spherical symmetry, we begin with the radial part of the Schrodinger equation: 
+
+\begin{equation}
+- \frac{\hbar^2}{2 m} \Big(
+\frac{1}{r^2} \frac{d}{dr} r^2 \frac{d}{dr} - \frac{l(l+1)}{r^2} \Big) R(r) + V(r)R(r) = ER(r)
+\end{equation}
+
+Where $V(r) = \frac{1}{2} kr^2$ is the harmonic oscillator potential. 
+
+\end{flushleft}
+
+\begin{flushleft}
+The oscillator has energy eigenvalues:
+
+\begin{equation}
+E_{nl} = \hbar \omega (2n + l  + \frac{3}{2})
+\end{equation}
+
+Where the principal quantum number $n = 0,1,2...$ and orbital angular momentum quantum number $l=0,1,2...$. So the energy levels are degenerate. In this project, however, we only look at $l=0$. By several simplifications and subsitutions we aquire the relevant equation for our project:
+
+\begin{equation}
+-\frac{d^2}{d \rho^2} u(\rho) + \rho^2 u(\rho) = \lambda u(\rho)
+\end{equation}
+
+Where the eigenvalues in our case ($l=0$) are $\lambda_0=3$, $\lambda_1=7$, $\lambda_2 = 11$...
+\end{flushleft}
+
+
+\subsection*{Numerical approximation}
+
+\begin{flushleft}
+We use the standard expression for the second derivative of a function: 
+
+\begin{equation}
+u''= \frac{u(\rho + h) - 2u(\rho) + u(\rho - h)}{h^2} + \mathcal{O}(h^2)
+\end{equation}
+
+So the mathematical error in this case is of the order of $\mathcal{O}(h^2)$. We set the boundary conditions:
+
+$$
+h = \frac{\rho_N - \rho_0}{N}
+$$
+
+$$
+\rho_{min} = \rho_0 = 0
+$$
+
+$$
+\rho_{max} = \rho_N = \infty 
+$$
+
+The latter can't be implemented, so we use several large values for $\rho_{max}$. 
+\end{flushleft}
+
+\subsection*{Numerical implementation}
+
+\begin{flushleft}
+The mesh points of the calculation are
+
+\begin{equation*}
+\rho_i = \rho_0 + ih \text{ , } i=1,2,...,N
+\end{equation*}
+
+So our expression becomes:
+
+\begin{equation}
+- \frac{u_{i+1} - 2u_i + u_{i-1}}{h^2} + \rho_i^2 u_i = \lambda u_i
+\end{equation}
+
+Where we have use that $V_i = \rho_i^2$ is the harmonic oscillator potential. We see that this can be written as a $(N-1) \times (N-1)$-matrix equation:
+
+\begin{equation*}
+\begin{bmatrix}
+\frac{2}{h^2} + V_1 & -\frac{1}{h^2} & 0 & ... & 0 \\
+-\frac{1}{h^2} & \frac{2}{h^2} + V_2 & -\frac{1}{h^2} & ... & 0\\
+\vdots & & \ddots & & \vdots\\
+0 & ...  &  -\frac{1}{h^2} & \frac{2}{h^2} + V_{N-2} & -\frac{1}{h^2}\\
+0 & 0 & ... & -\frac{1}{h^2} & \frac{2}{h^2} + V_{N-1}\\
+\end{bmatrix}
+\begin{bmatrix}
+u_1\\
+u_2\\
+\vdots\\
+u_{N-2}\\
+u_{N-1}\\
+\end{bmatrix}
+= \lambda
+\begin{bmatrix}
+u_1\\
+u_2\\
+\vdots\\
+u_{N-2}\\
+u_{N-1}\\
+\end{bmatrix}
+\end{equation*}
+
+
+\end{flushleft}
+
+
+
 \subsection*{Unitary and orthogonal transformations (a)}
 
 \begin{flushleft}
@@ -116,7 +224,7 @@ $\boldsymbol{2.}$ Compute the rotation parameters $t = \tan \theta$, $c = \cos \
 t = - \tau \pm \sqrt{1 + \tau^2}
 \end{equation}
 \begin{equation}
-c = \frac{1}{1 + t^2} \text{ , } s = tc
+c = \frac{1}{\sqrt{1 + t^2}} \text{ , } s = tc
 \end{equation}
 \end{flushleft}
 
@@ -193,6 +301,11 @@ $$
 \rightarrow (\lambda - 1)(\lambda - 1)(\lambda - 2)
 $$
 
+\end{flushleft}
+
+\subsection*{Results}
+
+\begin{flushleft}
 \end{flushleft}
 
 \end{document}

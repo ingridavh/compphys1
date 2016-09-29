@@ -1,28 +1,34 @@
 #include <iostream>
 #include "jacobi_rotation.h"
+#include "schrodinger.h"
 #include <armadillo>
 #include <math.h>
 using namespace std;
 using namespace arma;
 
-int N = 2;
-mat A = {
-    {2,1},
-    {1,2}};
+int N = 30;
 
 int main()
 {
+    mat S = generator(N, 10);
     int counter = 0;
-    cout << "A = " << A << endl;
+    //cout << S << endl;
+
     mat B;
-    while (eps_test(N, A) == 0)
+    while (eps_test(N, S) == 0)
     {
         counter++;
-        B = Jacobi(N,A);
-        cout << "B = " << B << endl;
-        A = B;
+        B = Jacobi(S);
+        S = B;
     }
-    cout << "after " << counter << " S transformations, B is " << B << endl;
+    cout << "After " << counter
+         << " rotations "
+         << "the eigenvalues are " << endl;
+    for (int i = 0; i<N; i++)
+    {
+         cout << B(i,i) << endl;
+    }
+
     return 0;
 }
 
