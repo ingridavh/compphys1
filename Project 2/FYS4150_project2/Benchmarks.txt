@@ -61,4 +61,90 @@ int main()
 
 
 
+//Benchmark for Jacobi rotation
+//in main
+
+int main()
+{
+    int N = 100;
+    double rho_max = 4;
+
+    mat R = eye<mat>(N, N);
+    mat A = generator(N, rho_max,omega);
+    int counter = 0;
+
+    while (eps_test(A) == 0)
+    {
+        counter++;
+        vec max = find_max(A);
+        rotate(A, R, max(1), max(2));
+    }
+
+    cout << counter << " rotations were required" << endl;
+
+    vec energies = A.diag();
+    energies = sort(energies);
+
+    cout << "The three lowest energy values are " <<
+            energies(0) << " , " << energies(1) <<
+            " and " << energies(2) << endl;
+    return 0;
+}
+
+//From terminal
+
+16685 rotations were required
+The three lowest energy values are 2.99952 , 7.00016 and 11.0594
+
+
+
+
+
+//Output from omega calculation
+
+int main()
+{
+    int N = 100;
+    double rho_max = 4;
+    vec omegas = {0.01 , 0.5 , 1 , 5};
+
+    mat R = eye<mat>(N, N);
+
+
+    //Calculate energies for several omegas
+
+    for (int i = 0; i < 4;i++)
+    {
+        double omega =  omegas(i);
+        int counter = 0;
+
+        mat A = generator(N, rho_max, omega);
+
+        while (eps_test(A) == 0)
+        {
+            counter++;
+            vec max = find_max(A);
+            rotate(A, R, max(1), max(2));
+        }
+
+        vec energies = A.diag();
+        energies = sort(energies);
+
+        cout << "For omega = " << omega << " the ground state energy is "
+             << energies(0) << endl;
+    }
+
+
+
+    return 0;
+}
+
+
+
+//From terminal
+
+For omega = 0.01 the ground state energy is 1.1642
+For omega = 0.5 the ground state energy is 2.25546
+For omega = 1 the ground state energy is 4.05741
+For omega = 5 the ground state energy is 17.4356
 

@@ -16,39 +16,62 @@
 \maketitle
 
 \begin{abstract}
-This is the abstract.
+The three-dimensional Schrödinger equation is solved for two electrons in a harmonic oscillator potential, with and without Coulomb interaction. The equations are solved as eigenvalue problems, using the Jacobi rotation algorithm.
 \end{abstract}
 
 \subsection*{Introduction}
 
 \begin{flushleft}
-The aim of this project was to solve the one-dimensional Schrödinger equation. We start out with the three-dimensional equation for two interacting electrons. Since we assume spherical symmetry, we begin with the radial part of the Schrodinger equation: 
+The aim of this project was to solve the three-dimensional Schrödinger equation for two electrons, both in the interacting and non-interacting case. Since spherical symmetry is assumed, we start by considering the radial part of the Schrodinger equation for a single particle: 
 
 \begin{equation}
 - \frac{\hbar^2}{2 m} \Big(
 \frac{1}{r^2} \frac{d}{dr} r^2 \frac{d}{dr} - \frac{l(l+1)}{r^2} \Big) R(r) + V(r)R(r) = ER(r)
 \end{equation}
 
-Where $V(r) = \frac{1}{2} kr^2$ is the harmonic oscillator potential. 
+Where $V(r) = \frac{1}{2} kr^2$ is the harmonic oscillator potential. The solutions of the Schrödinger equations are the so-called wave functions, which describe the probability for a particle (or a system of particles) to be found at a specific position or with a specific momentum. A particle in a harmonic oscillator can only be at specific, quantized energy levels: 
 
-\end{flushleft}
-
-\begin{flushleft}
-The oscillator has energy eigenvalues:
 
 \begin{equation}
 E_{nl} = \hbar \omega (2n + l  + \frac{3}{2})
 \end{equation}
 
-Where the principal quantum number $n = 0,1,2...$ and orbital angular momentum quantum number $l=0,1,2...$. So the energy levels are degenerate. In this project, however, we only look at $l=0$. By several simplifications and subsitutions we aquire the relevant equation for our project:
+Where the principal quantum number $n = 0,1,2...$ and orbital angular momentum quantum number $l=0,1,2...$. In this project we set $l=0$, so the energy levels are dependent only of $n$. Energy levels are therefore non-degenerate. By performing several simplifications and subsitutions we aquire the relevant equation for our project:
 
 \begin{equation}
 -\frac{d^2}{d \rho^2} u(\rho) + \rho^2 u(\rho) = \lambda u(\rho)
 \end{equation}
 
-Where the eigenvalues in our case ($l=0$) are $\lambda_0=3$, $\lambda_1=7$, $\lambda_2 = 11$...
+Where the eigenvalues in our case ($l=0$) are $\lambda=\frac{2m \alpha^2}{\hbar^2}E$, $\lambda_0=3$, $\lambda_1=7$, $\lambda_2 = 11$..., where $\alpha$ is a normalization constant. The lowest energy, $\lambda_0$ is called the \textit{ground state energy}.
 \end{flushleft}
 
+\begin{flushleft}
+For two electrons, we need to add an interaction term. The Coulomb interaction accounts for the repulsive electric force between the electrons (which both have negative charge). The Schrödinger equation is now: 
+
+\begin{equation}
+\big( -\frac{\hbar^2}{m} \frac{d^2}{dr^2} - \frac{\hbar^2}{4m} \frac{d^2}{dR^2} + \frac{1}{4} kr^2 + kR^2 \big) u(r,R) = E^{(2)}u(r,R)
+\end{equation}
+
+Where $r=r_1-r_2$ is the relative coordinate between the electrons, and $R=\frac{1}{2} (r_1 +r_2)$ is the center-of-mass coordinate. The equation can be separated into one $r$- and one $R$-dependent part. Adding the repulsive Coulomb interaction $V(r) = \frac{\beta e^2}{r}$ and considering the $r$-dependent equation, we get:
+
+\begin{equation}
+\Big( - \frac{\hbar^2}{m}\frac{d^2}{dr^2} + \frac{1}{4} kr^2 + \frac{\beta e^2}{r}\Big) \psi (r) = E_r \psi(r)
+\end{equation}
+
+This can be rewritten as:
+
+\begin{equation}
+-\frac{d^2}{d \rho^2} \psi(\rho) + \omega_r^2 \rho^2 \phi (\rho) + \frac{m \alpha \beta e^2}{\rho \hbar^2} \psi (\rho) = \frac{m \alpha^2}{\hbar^2} E_r \psi (\rho)
+\end{equation}
+
+
+Where $\omega_r = \frac{1}{4} \frac{mk}{\hbar^2} \alpha^4 $. Fix the normalization constant $\alpha = \frac{\hbar^2}{m \beta e^2}$, and define the new eigenvalue $\lambda = \frac{m\alpha^2}{\hbar^2} E$, and we get the equation: 
+
+\begin{equation}
+-\frac{d^2}{d \rho^2} \psi (\rho) + \omega_r^2 \rho^2 \psi(\rho) + \frac{1}{\rho} = \lambda \psi (\rho)
+\end{equation}
+
+\end{flushleft}
 
 \subsection*{Numerical approximation}
 

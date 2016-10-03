@@ -97,8 +97,8 @@ void rotate(mat &A, mat &R, int k, int l)
 
     vec trig = find_trig(A, k, l);
 
-    double s = trig(0);
-    double c = trig(1);
+    double c = trig(0);
+    double s = trig(1);
 
     //old elements
 
@@ -132,7 +132,7 @@ void rotate(mat &A, mat &R, int k, int l)
         double r_il = R(i,l);
 
         R(i,k) = c*r_ik - s*r_il;
-        R(i,l) = c*r_il + s*r_il;
+        R(i,l) = c*r_il + s*r_ik;
     }
 }
 

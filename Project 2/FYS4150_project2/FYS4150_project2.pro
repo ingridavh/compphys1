@@ -14,5 +14,10 @@ HEADERS += \
     schrodinger.h
 
 DISTFILES += \
-    Benchmarks.txt
+    Benchmarks.txt \
+    ../build-FYS4150_project2-Desktop-Debug/eigenvec_omega=0.01.txt \
+    ../build-FYS4150_project2-Desktop-Debug/eigenvec_omega=0.5.txt \
+    ../build-FYS4150_project2-Desktop-Debug/eigenvec_omega=1.txt \
+    ../build-FYS4150_project2-Desktop-Debug/eigenvec_omega=5.txt \
+    ../FYS4150_project2.py
 
