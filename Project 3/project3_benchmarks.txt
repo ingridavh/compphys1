@@ -1,0 +1,6 @@
+FYS4150
+Benchmarks for Project 3
+
+//Test conservation of energy for sun and earth
+
+

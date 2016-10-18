@@ -152,7 +152,13 @@ v_{i+1} = v_i + \frac{1}{2} a_{i+1} h
 \section{Energy conservation}
 
 \begin{flushleft}
-Create a small snippet of program that saves $dE$ (the difference between the foregoing total energy and the current) for all time steps, and finds the absolute value of the largest error. Result: $0.000176951$.
+Create a small snippet of program that saves the energies for all time steps in a matrix, and finds the absolute value of the largest error
+
+\begin{equation}
+\epsilon_i = \frac{|E_{i, max} - E_{i, min}|}{|E_{i, max}|}
+\end{equation}
+
+where $i=0,1,2$ are the total, kinetic and potential energies.
 \end{flushleft}
 
 \section{Results}
