@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  13 OCT 2016 20:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  18 OCT 2016 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -664,42 +664,87 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 17.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+<fig1_verlet_cool.png, id=24, 448.67625pt x 468.75125pt>
+File: fig1_verlet_cool.png Graphic file (type png)
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 109.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
+<use fig1_verlet_cool.png>
+Package pdftex.def Info: fig1_verlet_cool.png used on input line 24.
+(pdftex.def)             Requested size: 269.20782pt x 281.25291pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig1_verlet_cool.png>] <
+figure1.png, id=36, 414.54875pt x 151.56625pt>
+File: figure1.png Graphic file (type png)
+
+<use figure1.png>
+Package pdftex.def Info: figure1.png used on input line 70.
+(pdftex.def)             Requested size: 248.73116pt x 90.94044pt.
+ [2 <./figure1.png (PNG copy)>] [3]
+<fig1_euler.png, id=67, 578.16pt x 397.485pt>
+File: fig1_euler.png Graphic file (type png)
+ <use fig1_euler.png>
+Package pdftex.def Info: fig1_euler.png used on input line 163.
+(pdftex.def)             Requested size: 346.89867pt x 238.49283pt.
+ [4]
+<fig1_verlet.png, id=77, 578.16pt x 397.485pt>
+File: fig1_verlet.png Graphic file (type png)
+ <use fig1_verlet.png>
+Package pdftex.def Info: fig1_verlet.png used on input line 167.
+(pdftex.def)             Requested size: 346.89867pt x 238.49283pt.
+ [5 <./fig1_euler.png> <./fig1_verlet.png>]
+<Euler_stability_dt.png, id=84, 578.16pt x 397.485pt>
+File: Euler_stability_dt.png Graphic file (type png)
+
+<use Euler_stability_dt.png>
+Package pdftex.def Info: Euler_stability_dt.png used on input line 175.
+(pdftex.def)             Requested size: 289.07928pt x 198.742pt.
+
+<Verlet_stability_dt.png, id=85, 578.16pt x 397.485pt>
+File: Verlet_stability_dt.png Graphic file (type png)
+
+<use Verlet_stability_dt.png>
+Package pdftex.def Info: Verlet_stability_dt.png used on input line 179.
+(pdftex.def)             Requested size: 289.07928pt x 198.742pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
+ [6 <./Euler_stability_dt.png> <./Verlet_stability_dt.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
  (./FYS4150_Project3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 109.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 109.
-Package rerunfilecheck Info: File `FYS4150_Project3.out' has not changed.
-(rerunfilecheck)             Checksum: A7B0FF88F3AC6FDFDEA2CFDB39EC11EF;148.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
+
+
+Package rerunfilecheck Warning: File `FYS4150_Project3.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `FYS4150_Project3.out':
+(rerunfilecheck)             Before: DAF8FC7AB6F93FE50BBC0EA26E4EF507;252
+(rerunfilecheck)             After:  A3BCEE0FA2BA89081F7448BDBEC22B00;306.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 197.
  ) 
 Here is how much of TeX's memory you used:
- 6234 strings out of 494910
- 89192 string characters out of 6179836
+ 6279 strings out of 494910
+ 89973 string characters out of 6179836
  174321 words of memory out of 5000000
- 9410 multiletter control sequences out of 15000+600000
+ 9436 multiletter control sequences out of 15000+600000
  11045 words of font info for 42 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 42i,6n,28p,339b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,6n,28p,339b,491s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb>
-Output written on FYS4150_Project3.pdf (2 pages, 114511 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb>
+Output written on FYS4150_Project3.pdf (6 pages, 593377 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 134 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

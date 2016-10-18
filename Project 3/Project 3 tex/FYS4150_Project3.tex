@@ -19,6 +19,14 @@
 This is an abstract
 \end{abstract}
 
+
+\begin{center}
+\includegraphics[scale=0.6]{fig1_verlet_cool.png}
+\end{center}
+
+\pagebreak
+
+
 \section{Introduction}
 
 \begin{flushleft}
@@ -55,6 +63,12 @@ which gives the differential equations
 \begin{equation}
 \frac{dy}{dt} = v_y
 \end{equation}
+
+How we define our forces:
+
+\begin{center}
+\includegraphics[scale=0.6]{figure1.png}
+\end{center}
 \end{flushleft}
 
 
@@ -91,18 +105,92 @@ y_{i+1} = y_i + hv_{y,i}
 \end{equation}
 \end{flushleft}
 
+\section{Changing the center of mass}
+
+\begin{flushleft}
+We now have a system consisting of the earth, jupiter and the sun. We want to change the origin to the center of mass, in stead of the position of the sun. We then need to fulfill the conditions
+
+\begin{equation}
+\frac{1}{m_1 + m_2 + m_3} (m_1 \vec{r_1} + m_2 \vec{r_2} + m_3 \vec{r_3}) = 0
+\end{equation}
+
+\begin{equation}
+\vec{p}_1 + \vec{p}_2 + \vec{p}_3 = 0
+\end{equation}
+\end{flushleft}
+
+
 \section{Velocity Verlet}
 
 \begin{flushleft}
-The equations are
+In the velocity Verlet method the velocity and position are calculated at the same value of the time variable. The basic algorithm is
 
 \begin{equation}
-x_{i+1} = x_i + hv_i + \frac{h^2}{2} v_i^{(1)} + \mathcal{O}(h^3)
+x_{i+1} = x_i + v_i h + \frac{1}{2} a_i h^2
 \end{equation}
 
 \begin{equation}
-v_{i+1} = v_i + \frac{h}{2} \Big(v_{i+1}^{(1)} +v_i^{(1)} \Big) + \mathcal{O}(h^3)
+v_{i+1} = v_i + \frac{a_i + a_{i+1}}{2}h
 \end{equation}
+
+Apparently, we need some intermediate steps. We therefore divide into 
+
+\begin{equation}
+v_{i+1/2} = v_i + \frac{1}{2} a_i h
+\end{equation}
+
+\begin{equation}
+x_{i+1} = x_i + v_{i+1/2} h
+\end{equation}
+
+Calcuate the new acceleration, from $a = F/m$:
+
+\begin{equation}
+v_{i+1} = v_i + \frac{1}{2} a_{i+1} h
+\end{equation}
+
+\section{Energy conservation}
+
+\begin{flushleft}
+Create a small snippet of program that saves $dE$ (the difference between the foregoing total energy and the current) for all time steps, and finds the absolute value of the largest error. Result: $0.000176951$.
+\end{flushleft}
+
+\section{Results}
+
+\begin{flushleft}
+From including only the earth and the sun for the Euler and Verlet methods:
+\begin{center}
+\includegraphics[scale=0.6]{fig1_euler.png}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.6]{fig1_verlet.png}
+\end{center}
+\end{flushleft}
+
+\begin{flushleft}
+From checking stability of Verlet and Euler by varying the timestep $dt$. For Verlet we see that the movement is circular at $dt= 0.01$, so this overlaps with $dt=0.001$. For Euler, we see that $dt=0.001$ starts to diverge heavily, and $dt=1$ goes almost like a tangent:
+
+\begin{center}
+\includegraphics[scale=0.5]{Euler_stability_dt.png}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.5]{Verlet_stability_dt.png}
+\end{center}
+\end{flushleft}
+
+
+
+
+
+
+
+
+
+
+
+
 \end{flushleft}
 
 
