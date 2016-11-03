@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} 
+\usepackage{epstopdf}
+\usepackage[makeroom]{cancel}
+\usepackage{framed}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage{braket}
+
+\begin{document}
+\title{FYS4150: Project 4}
+\author{Ingrid A V Holm}
+\maketitle
+
+
+\section{Introduction}
+
+\begin{flushleft}
+The aim of this project is to study the Ising model in two dimensions.
+\end{flushleft}
+
+\section{The Ising model (ch. 13)}
+
+\begin{flushleft}
+The Ising model describes pahse transitions in two dimensions. At a given critical temperature the model exhibits a phase transition from one magnetic moment (spin) to a phase with zero magnetization. Without an externally applied field, this is described as
+
+\begin{equation}
+E = -J \sum^N_{<kl>} s_k s_l
+\end{equation}
+
+where $s_k = \pm 1$, $N$ is the total number of spins and $J$ is a coupling constant.
+\end{flushleft}
+
+\section{The Metropolis algorithm (ch. 12)}
+
+\begin{flushleft}
+
+\end{flushleft}
+
+
+\section{2x2 lattice}
+
+\begin{flushleft}
+We consider a $2 \times 2$-lattice, meaning $L = 2$. The spins have 16 conifgurations. The domain here is $\{-4,-2,0,2,4\}$ with the probability distribution function $\{\frac{1}{16}, \frac{4}{16},\frac{8}{16} ,\frac{4}{16}, \frac{1}{16}\}$. Probability distribution
+
+\begin{equation}
+P_i(\beta) = \frac{e^{- \beta E_i}}{Z}
+\end{equation}
+
+where $\beta = \frac{1}{kT}$ is the inverse temperature, $k$ is te Boltzmann constant, $E_i$ is the energy of a state $i$. The partition function is 
+
+\begin{equation}\label{Partition function}
+Z = \sum_{i=1}^M e^{- \beta E_i}
+\end{equation}
+
+
+For four spins we have $16$ different configurations. If we choose periodic boundary conditions the energies are given by the expression
+
+\begin{equation}
+E = -J \sum_{j=1}^N s_j s_{j+1}
+\end{equation}
+
+\begin{equation*}
+E = -J (s_1 s_2 + s_2 s_3 + s_3 s_4 + s_4 s_1)
+\end{equation*}
+
+The energies are then
+
+\begin{tabular}{r|l|l}
+Number of spins pointing up & Degeneracy & Energy\\
+0 & 1 &  -8J\\
+1 & 4 & 0\\
+2 & 6 & 8J\\
+3 & 4 & 0\\
+4 & 1 & -8J\\
+\end{tabular}
+
+\end{flushleft}
+
+\begin{flushleft}
+The probability of finding the system in a state $s$ is given by
+
+\begin{equation}
+P_s = \frac{e^{-(\beta E_s)}}{Z}
+\end{equation}
+
+Where $Z$ is the partition function, given by (why is this??)
+
+\begin{equation}
+Z(\beta) = \sum_s e^{-(\beta E_s)}
+\end{equation}
+
+This fuction is difficult to compute since we need all states. The metropolis algorithm only considers \textit{ratios} between probabilities, so we don't need to calculate this (luckily!)
+
+\begin{align*}
+\text{Metropolis } \rightarrow  &\frac{P_s}{P_t} = \frac{e^{-(\beta E_s)}}{e^{-(\beta E_k)}}
+= e^{-\beta(E_s - E_k)}
+= e^{-\beta \Delta E} 
+\end{align*}
+
+
+\end{flushleft}
+
+\begin{flushleft}
+
+The energies are then
+
+\begin{tabular}{r|l|l}
+Number of spins pointing up & Degeneracy & Energy\\
+\hline
+0 & 1 &  -8J\\
+1 & 4 & 0\\
+2 & 6 & 8J\\
+3 & 4 & 0\\
+4 & 1 & -8J\\
+\end{tabular}
+
+The partition function in our case is
+
+\begin{align*}
+Z(\beta) &= \sum_s e^{-(\beta E_s)}\\
+&= 2 e^{-\beta \cdot (-8J)} + 8 e^{-\beta \cdot 0} + 6 e^{- \beta \cdot 8J}\\
+&= 8 + 2e^{8 \beta J} + 6 e^{-8 \beta J}\\
+&= 2(e^{8 \beta J} + e^{-8 \beta J}) + 4( 2+ e^{-8 \beta J})\\
+&= 2 \cosh (8 \beta J) + 4( 2+ e^{-8 \beta J}) 
+\end{align*}
+
+
+The energy expectation value
+
+\begin{align*}
+\braket{E} & = - \frac{\partial \ln Z}{\partial \beta}\\
+&= - \frac{\partial \ln Z}{\partial Z} \frac{\partial Z}{\partial \beta}\\
+& = - \frac{1}{Z} \frac{\partial Z}{\partial \beta}\\
+& = - \frac{1}{8 + 2e^{8 \beta J} + 6 e^{-8 \beta J}} ( 8J \cdot 2e^{8 \beta J} - 8 J \cdot 6 e^{-8 \beta J})\\
+&= 8J \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
+\end{align*}
+
+with the corresponding variance
+
+\begin{align*}
+\sigma^2 = \braket{E^2} - \braket{E}^2 = \frac{1}{Z} \sum_{i=1}^M E_i^2 e^{- \beta E_i} - \Big(
+\frac{1}{Z} \sum_{i=1}^M E_i e^{- \beta E_i} 
+\Big)^2
+\end{align*}
+
+\begin{align*}
+\sigma^2 &= 64J^2 \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
+- \big( 8J \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
+\big)^2\\
+&= 64J^2 \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
+- 64J^2\big(
+\frac{e^{16 \beta J} - 6 \cdot e^{8 \beta J}e^{-8 \beta J} + 9 e^{-16 \beta J}}{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}
+\big)\\
+&= 
+\frac{64J^2}{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}
+\Big[
+(e^{8 \beta J} - 3 e^{-8 \beta J})(4 + e^{8 \beta J} + 3 e^{-8 \beta J})
+-e^{16 \beta J} - 6  + 9 e^{-16 \beta J}
+\Big]\\
+&= \frac{64J^2}{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}
+\Big[
+4 e^{8 \beta J} 
+- 12 e^{-8 \beta J}  - 6 
+\Big] \\
+\end{align*}
+
+The specific heat capacity 
+
+\begin{equation}
+C_V = \frac{1}{k_B T^2} (\braket{E^2} - \braket{E}^2)
+\end{equation}
+
+\begin{align*}
+C_V &= \frac{64J^2}{k_B T^2}
+\frac{4 e^{8 \beta J} 
+- 12 e^{-8 \beta J}  - 6 }{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}\\
+\end{align*}
+
+
+The mean absolute value of the magnetic moment (mean magnetization)
+
+\begin{equation}
+\braket{\mathcal{M}} = \frac{1}{Z} \sum_i^M \mathcal{M}_i e^{- \beta E_i}
+\end{equation}
+
+\begin{align*}
+\braket{\mathcal{M}} = \frac{1}{Z} (-4 e^{8 \beta J} - 2 \cdot 4 e^0 + 0 \cdot e^{-8 \beta J} + 2 \cdot 4 e^0 + 4 e^{8 \beta J}) = 0
+\end{align*}
+
+
+
+The susceptibility
+
+\begin{equation}
+\chi = \frac{1}{k_B T} (\braket{\mathcal{M}^2} - \braket{\mathcal{M}}^2)
+\end{equation}
+
+\begin{align*}
+\chi &= \frac{1}{k_B T} \frac{1}{Z} \sum_i^M \mathcal{M}_i^2 e^{- \beta E_i}\\
+&= \frac{1}{k_B T} 
+\frac{1}{Z} (16e^{8 \beta J} + 4 \cdot 4 e^0 + 0 \cdot e^{-8 \beta J} + 4 \cdot 4 e^0 + 16 e^{8 \beta J})\\
+&= \frac{16}{k_B T} 
+\frac{e^{8 \beta J} + 1}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}} \\
+\end{align*}
+
+\end{flushleft}
+
+
+\section{Sources}
+
+\end{document}

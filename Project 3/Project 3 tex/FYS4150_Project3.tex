@@ -15,16 +15,20 @@
 \author{Ingrid A V Holm}
 \maketitle
 
+\begin{center}
+\includegraphics[scale=0.5]{3body_front_cool.png}
+\end{center}
+
+
+\pagebreak
+
 \begin{abstract}
 This is an abstract
 \end{abstract}
 
 
-\begin{center}
-\includegraphics[scale=0.6]{fig1_verlet_cool.png}
-\end{center}
 
-\pagebreak
+
 
 
 \section{Introduction}
@@ -105,6 +109,27 @@ y_{i+1} = y_i + hv_{y,i}
 \end{equation}
 \end{flushleft}
 
+\pagebreak
+
+\section{Perihelion precession of Mercury}
+
+\begin{flushleft}
+At this point we should ask ourselves - \textit{how well does our model represent the actual planet orbits?} The planets move around the sun in ellipses. Some perturbations of this motion occur due to the gravitational pull of other planets. These cause the orientation of the ellipses to rotate very slowly in space, as illustrated in figure (\ref{Perihelion}). For most planets the observed planet orbits, including these small perturbations, can be explained using Newtonian physics alone. In fact, the only planet for which a significant difference between prediction and observation occurs is Mercury, the smallest, innermost planet of the solar system. The predicted angular velocity of the orientation is off by $43$ arc seconds (angle $\times \frac{1}{3600}$) per century. Albeit a subtle difference, this caused quite a head scratching. We now know the explanation lies in \textit{the theory of general relativity}. Because Mercury lies so close to the Sun, it orbits a region in which spacetime is disturbed by the Sun's mass. We will not go into details (as we do not know them), but introduce an expression for the force between the Sun and Mercury with a relativistic correction
+
+\begin{equation}
+F_G  = \frac{G M_{\odot} M_{Mercury}}{r^2} [1 + \frac{3l^2}{r^2c^2}]
+\end{equation}
+
+\begin{figure}[ht]
+\label{Perihelion}
+\begin{center}
+\includegraphics[scale=0.4]{fig2.png}
+\end{center}
+\caption{Mercury's orbit around the sun}
+\end{figure}
+
+\end{flushleft}
+
 \section{Changing the center of mass}
 
 \begin{flushleft}
@@ -149,16 +174,34 @@ Calcuate the new acceleration, from $a = F/m$:
 v_{i+1} = v_i + \frac{1}{2} a_{i+1} h
 \end{equation}
 
-\section{Energy conservation}
+\section{Energy and angular momentum conservation}
 
 \begin{flushleft}
-Create a small snippet of program that saves the energies for all time steps in a matrix, and finds the absolute value of the largest error
+A small snippet of program that saves the energies for all time steps in a matrix, and finds the absolute value of the largest error
 
 \begin{equation}
 \epsilon_i = \frac{|E_{i, max} - E_{i, min}|}{|E_{i, max}|}
 \end{equation}
 
 where $i=0,1,2$ are the total, kinetic and potential energies.
+\end{flushleft}
+
+\begin{flushleft}
+\textbf{Why should energies and angular momentum be conserved?} For circular motion an $d\vec{r}_{sun}=0$, the speed of the earth $|v_{earth}|$ and the distance between the earth and the sun are constant. Since the potential and kinetic energies are functions of these, they should be constant
+
+\begin{equation}
+E_k = \frac{1}{2} m |\vec{v_{earth}}|^2
+\end{equation}
+
+\begin{equation}
+E_p = \frac{G m_{earth} m_{sun}}{r}
+\end{equation}
+
+Angular momentum is also a function of these
+
+\begin{equation}
+L = m \vec{r} \times \vec{v}
+\end{equation}
 \end{flushleft}
 
 \section{Results}
@@ -184,6 +227,47 @@ From checking stability of Verlet and Euler by varying the timestep $dt$. For Ve
 \begin{center}
 \includegraphics[scale=0.5]{Verlet_stability_dt.png}
 \end{center}
+\end{flushleft}
+
+\section{3 body (Sun, Earth and Jupiter)}
+
+\begin{flushleft}
+The coordinates from NASA already use the center of mass as origin. 
+
+\begin{center}
+\includegraphics[scale=0.6]{3body_N14000.png}
+\end{center}
+
+Changing the mass of Jupiter:
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{3body_N14000_m10.png}
+\includegraphics[scale=0.5]{3body_N14000_m1000.png}
+\end{center}
+\end{figure}
+
+We now want to give the sun a velocity so that the total momentum is zero: 
+
+$$
+\textbf{v}_{Sun} =- \frac{1}{m_{Sun} } ( m_{Earth} \textbf{v}_{Earth} + m_{Jupiter} \textbf{v}_{Jupiter})
+$$
+
+Comparing this to the initial velocity given from NASA we get almost no difference, as we can see
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{3body_N14000_p0.png}
+\end{center}
+\end{figure}
+
+\textbf{Full solar system}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{fullsolar.png}
+\end{center}
+\end{figure}
 \end{flushleft}
 
 

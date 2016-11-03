@@ -1,0 +1,9 @@
+How the program works:
+
+1. "main" takes input arguments from the command line:
+    - argc
+    - argv
+
+2. "spinsystem" takes
+    - the number of spins (LxL) n_spins
+    - the initial temperature temp

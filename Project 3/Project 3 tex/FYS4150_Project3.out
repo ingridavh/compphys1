@@ -1,6 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{The Euler method}{}% 2
-\BOOKMARK [1][-]{section.3}{Changing the center of mass}{}% 3
-\BOOKMARK [1][-]{section.4}{Velocity Verlet}{}% 4
-\BOOKMARK [1][-]{section.5}{Energy conservation}{}% 5
-\BOOKMARK [1][-]{section.6}{Results}{}% 6
+\BOOKMARK [1][-]{section.3}{Perihelion precession of Mercury}{}% 3
+\BOOKMARK [1][-]{section.4}{Changing the center of mass}{}% 4
+\BOOKMARK [1][-]{section.5}{Velocity Verlet}{}% 5
+\BOOKMARK [1][-]{section.6}{Energy and angular momentum conservation}{}% 6
+\BOOKMARK [1][-]{section.7}{Results}{}% 7
+\BOOKMARK [1][-]{section.8}{3 body \(Sun, Earth and Jupiter\)}{}% 8

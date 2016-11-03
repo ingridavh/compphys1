@@ -7,13 +7,19 @@ import seaborn as sns
 from scipy.misc import imread
 import matplotlib.cbook as cbook
 
+"""
+pos1 = earth
+pos2 = jupiter
+pos3 = sun
+"""
 
-N = 1500
+
+N = 14000
 pos1 = np.zeros((N-1,3))
 pos2 = np.zeros((N-1,3))
 pos3 = np.zeros((N-1,3))
 
-myfile = open('build-SolarSystem-Desktop-Debug/positions_jup_1000.txt')
+myfile = open('build-SolarSystem-Desktop-Debug/positions_3body.txt')
 
 numbers = []
 for line in myfile:
@@ -47,22 +53,30 @@ for k in range(N-1):
 fig = plt.figure()
 ax = fig.add_subplot(111,projection='3d')
 
-plt.plot(pos2[:,0], pos2[:,1], pos2[:,2],'w')
-plt.plot(pos1[:,0], pos1[:,1], pos1[:,2], 'yo', linewidth=50.0)
-plt.plot(pos3[:,0], pos3[:,1], pos3[:,2], '-b')
-plt.xlim([-10,10])
-plt.ylim([-10,10])
-plt.title("Earth, Jupiter and sun's position (Verlet)", size='x-large', color='white')
-plt.legend(['Earth','Sun', 'Jupiter'],loc='lower left')
+plt.plot(pos1[:,0], pos1[:,1], pos1[:,2], '-w')
+plt.plot(pos2[:,0], pos2[:,1], pos2[:,2], '--w')
+plt.plot(pos3[:,0], pos3[:,1], pos3[:,2], 'yo', linewidth=50.0)
+plt.plot([pos1[-1,0]], [pos1[-1,1]], [pos1[-1,2]], markerfacecolor='w', markeredgecolor='w', marker='o', markersize='7')
+plt.plot([pos2[-1,0]], [pos2[-1,1]], [pos2[-1,2]], markerfacecolor='w', markeredgecolor='w', marker='o', markersize='10')
+plt.xlim([-7,7])
+plt.ylim([-7,7])
+plt.title("Earth, Jupiter and sun's position (Verlet)", size='x-large', color="white")
+plt.legend(['Earth','Jupiter', 'Sun'],loc='lower left')
 
-img = imread('uni2.jpg')
-plt.imshow(img, extent=[-0.1,0.1,-0.1,0.1], alpha=0.7)
+img = imread('uni.jpg')
+plt.imshow(img, extent=[-0.1,0.1,-0.1,0.1], alpha=0.8)
 
-ax.set_xlabel('x-position', color='white')
-ax.set_ylabel('y-position',color='white')
-ax.set_zlabel('z-position',color='white')
+ax.set_xlabel('x-position')
+ax.set_ylabel('y-position')
+ax.set_zlabel('z-position')
 
-plt.savefig('jup_N1500_1000.png')
+"""
+l = plt.legend()
+for text in l.get_texts():
+        text.set_color("white")
+"""
+
+#plt.savefig('3body_cool.png')
 
 plt.show()
 
