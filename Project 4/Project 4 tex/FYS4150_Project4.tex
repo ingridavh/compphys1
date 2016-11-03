@@ -45,7 +45,7 @@ where $s_k = \pm 1$, $N$ is the total number of spins and $J$ is a coupling cons
 \section{2x2 lattice}
 
 \begin{flushleft}
-We consider a $2 \times 2$-lattice, meaning $L = 2$. The spins have 16 conifgurations. The domain here is $\{-4,-2,0,2,4\}$ with the probability distribution function $\{\frac{1}{16}, \frac{4}{16},\frac{8}{16} ,\frac{4}{16}, \frac{1}{16}\}$. Probability distribution
+We consider a $2 \times 2$-lattice, meaning $L = 2$. The spins have 16 conifgurations. The probability distribution is given by
 
 \begin{equation}
 P_i(\beta) = \frac{e^{- \beta E_i}}{Z}
@@ -57,44 +57,27 @@ where $\beta = \frac{1}{kT}$ is the inverse temperature, $k$ is te Boltzmann con
 Z = \sum_{i=1}^M e^{- \beta E_i}
 \end{equation}
 
-
-For four spins we have $16$ different configurations. If we choose periodic boundary conditions the energies are given by the expression
-
-\begin{equation}
-E = -J \sum_{j=1}^N s_j s_{j+1}
-\end{equation}
-
-\begin{equation*}
-E = -J (s_1 s_2 + s_2 s_3 + s_3 s_4 + s_4 s_1)
-\end{equation*}
-
-The energies are then
-
-\begin{tabular}{r|l|l}
+\begin{figure}
+\centering
+\begin{tabular}{|c|l|l|}
+\hline
 Number of spins pointing up & Degeneracy & Energy\\
+\hline
 0 & 1 &  -8J\\
 1 & 4 & 0\\
 2 & 6 & 8J\\
 3 & 4 & 0\\
 4 & 1 & -8J\\
+\hline
 \end{tabular}
+\caption{Possible energies for a $2 \times 2$-lattice of spin particles.}
+\end{figure}
 
 \end{flushleft}
 
 \begin{flushleft}
-The probability of finding the system in a state $s$ is given by
 
-\begin{equation}
-P_s = \frac{e^{-(\beta E_s)}}{Z}
-\end{equation}
-
-Where $Z$ is the partition function, given by (why is this??)
-
-\begin{equation}
-Z(\beta) = \sum_s e^{-(\beta E_s)}
-\end{equation}
-
-This fuction is difficult to compute since we need all states. The metropolis algorithm only considers \textit{ratios} between probabilities, so we don't need to calculate this (luckily!)
+This fuction is difficult to compute since we need all states. The Metropolis algorithm only considers \textit{ratios} between probabilities, so we don't need to calculate this (luckily!)
 
 \begin{align*}
 \text{Metropolis } \rightarrow  &\frac{P_s}{P_t} = \frac{e^{-(\beta E_s)}}{e^{-(\beta E_k)}}
@@ -107,35 +90,19 @@ This fuction is difficult to compute since we need all states. The metropolis al
 
 \begin{flushleft}
 
-The energies are then
-
-\begin{tabular}{r|l|l}
-Number of spins pointing up & Degeneracy & Energy\\
-\hline
-0 & 1 &  -8J\\
-1 & 4 & 0\\
-2 & 6 & 8J\\
-3 & 4 & 0\\
-4 & 1 & -8J\\
-\end{tabular}
-
 The partition function in our case is
 
 \begin{align*}
-Z(\beta) &= \sum_s e^{-(\beta E_s)}\\
+Z(\beta) &= \sum_{i=1}^M e^{-(\beta E_i)}\\
 &= 2 e^{-\beta \cdot (-8J)} + 8 e^{-\beta \cdot 0} + 6 e^{- \beta \cdot 8J}\\
 &= 8 + 2e^{8 \beta J} + 6 e^{-8 \beta J}\\
-&= 2(e^{8 \beta J} + e^{-8 \beta J}) + 4( 2+ e^{-8 \beta J})\\
-&= 2 \cosh (8 \beta J) + 4( 2+ e^{-8 \beta J}) 
 \end{align*}
 
 
 The energy expectation value
 
 \begin{align*}
-\braket{E} & = - \frac{\partial \ln Z}{\partial \beta}\\
-&= - \frac{\partial \ln Z}{\partial Z} \frac{\partial Z}{\partial \beta}\\
-& = - \frac{1}{Z} \frac{\partial Z}{\partial \beta}\\
+\braket{E} & = - \frac{\partial \ln Z}{\partial \beta}= - \frac{\partial \ln Z}{\partial Z} \frac{\partial Z}{\partial \beta} = - \frac{1}{Z} \frac{\partial Z}{\partial \beta}\\
 & = - \frac{1}{8 + 2e^{8 \beta J} + 6 e^{-8 \beta J}} ( 8J \cdot 2e^{8 \beta J} - 8 J \cdot 6 e^{-8 \beta J})\\
 &= 8J \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
 \end{align*}
@@ -208,6 +175,23 @@ The susceptibility
 \frac{e^{8 \beta J} + 1}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}} \\
 \end{align*}
 
+\end{flushleft}
+
+\begin{flushleft}
+The analytical values are found in table (\ref{fig: analytical}).
+
+\begin{figure}[h]
+\label{fig: analytical}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$Z$ &$\braket{E}$ & $\braket{\mathcal{M}}$ & $C_V$ & $\chi$\\
+\hline
+5969.92 & 7.99 & 0 & 0.0856 & 0.00268\\
+\hline
+\end{tabular}
+\caption{Analytical values of the expectation values. Here $J=1$, $k=1$, $T=1.0$ K.}
+\end{figure}
 \end{flushleft}
 
 

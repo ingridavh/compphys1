@@ -6,4 +6,11 @@ How the program works:
 
 2. "spinsystem" takes
     - the number of spins (LxL) n_spins
-    - the initial temperature temp
+
+    It initiates a spin_matrix object, which we can evolve using the Metropolis
+    algorithm to find expectation values for the energy and magnetization.
+
+    The class has a function "go" which takes
+        - "outfile", the name of the output file
+
+Where should E, M and temp go?
