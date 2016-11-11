@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = FYS4150_project41.0.0
-DISTDIR = /home/ingrid/build-FYS4150_project4-Desktop-Debug/.tmp/FYS4150_project41.0.0
+DISTDIR = /home/ingrid/Documents/Compphys/compphys1/Project\ 4/build-FYS4150_project4-Desktop-Debug/.tmp/FYS4150_project41.0.0
 LINK          = g++
 LFLAGS        = -m64
 LIBS          = $(SUBLIBS)  
@@ -49,10 +49,15 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../FYS4150_project4/main.cpp \
-		../FYS4150_project4/spins.cpp 
+		../FYS4150_project4/spins.cpp \
+		../FYS4150_project4/spinsystem.cpp 
 OBJECTS       = main.o \
-		spins.o
-DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+		spins.o \
+		spinsystem.o
+DIST          = ../FYS4150_project4/benchmarks \
+		../FYS4150_project4/benchmarks.txt \
+		../FYS4150_project4/log.txt \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
@@ -103,8 +108,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../FYS4150_project4/FYS4150_project4.pro  ../FYS4150_project4/main.cpp \
-		../FYS4150_project4/spins.cpp
+		../FYS4150_project4/FYS4150_project4.pro spinsystem.h ../FYS4150_project4/main.cpp \
+		../FYS4150_project4/spins.cpp \
+		../FYS4150_project4/spinsystem.cpp
 QMAKE_TARGET  = FYS4150_project4
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = FYS4150_project4
@@ -280,11 +286,14 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../FYS4150_project4/main.cpp 
+main.o: ../FYS4150_project4/main.cpp ../FYS4150_project4/spinsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../FYS4150_project4/main.cpp
 
 spins.o: ../FYS4150_project4/spins.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spins.o ../FYS4150_project4/spins.cpp
+
+spinsystem.o: ../FYS4150_project4/spinsystem.cpp ../FYS4150_project4/spinsystem.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spinsystem.o ../FYS4150_project4/spinsystem.cpp
 
 ####### Install
 

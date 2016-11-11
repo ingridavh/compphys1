@@ -10,6 +10,8 @@
 \usepackage{amsfonts}
 \usepackage{bbold}
 \usepackage{braket}
+\usepackage{textcomp}
+\usepackage{subcaption}
 
 \begin{document}
 \title{FYS4150: Project 4}
@@ -59,19 +61,35 @@ Z = \sum_{i=1}^M e^{- \beta E_i}
 
 \begin{figure}
 \centering
-\begin{tabular}{|c|l|l|}
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{spins_2by2.png}
+  \caption{Different spin configurations}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.6\textwidth}
+  \centering
+  \begin{tabular}{|c|l|l|l|}
 \hline
-Number of spins pointing up & Degeneracy & Energy\\
+\textnumero of spins & Degeneracy & E& M\\
+ pointing up  &&&\\
 \hline
-0 & 1 &  -8J\\
-1 & 4 & 0\\
-2 & 6 & 8J\\
-3 & 4 & 0\\
-4 & 1 & -8J\\
+0 & 1 &  -8J & -4\\
+1 & 4 & 0 & -2\\
+2 & 4 & 0 & 0\\
+2 & 2 & 8J & 0\\
+3 & 4 & 0 & 2\\
+4 & 1 & -8J & 4\\
 \hline
 \end{tabular}
 \caption{Possible energies for a $2 \times 2$-lattice of spin particles.}
+  \label{fig::spins 2 by 2}
+\end{subfigure}
+\caption{Spins for a $2 \times 2$-lattice with periodic boundary conditions.}
+\label{fig:BPM no steering}
 \end{figure}
+
+
 
 \end{flushleft}
 
@@ -94,8 +112,8 @@ The partition function in our case is
 
 \begin{align*}
 Z(\beta) &= \sum_{i=1}^M e^{-(\beta E_i)}\\
-&= 2 e^{-\beta \cdot (-8J)} + 8 e^{-\beta \cdot 0} + 6 e^{- \beta \cdot 8J}\\
-&= 8 + 2e^{8 \beta J} + 6 e^{-8 \beta J}\\
+&= 2 e^{8J \beta} + 2 e^{-8J \beta} + 12\\
+&= 4(3 + \cosh (8 J \beta))\\
 \end{align*}
 
 
@@ -103,37 +121,26 @@ The energy expectation value
 
 \begin{align*}
 \braket{E} & = - \frac{\partial \ln Z}{\partial \beta}= - \frac{\partial \ln Z}{\partial Z} \frac{\partial Z}{\partial \beta} = - \frac{1}{Z} \frac{\partial Z}{\partial \beta}\\
-& = - \frac{1}{8 + 2e^{8 \beta J} + 6 e^{-8 \beta J}} ( 8J \cdot 2e^{8 \beta J} - 8 J \cdot 6 e^{-8 \beta J})\\
-&= 8J \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
+& = - \frac{4 \cdot 8J \sinh(8J \beta)}{4(3 + \cosh (8 J \beta))}\\
+&= - 8J \frac{\sinh(8J \beta)}{3 + \cosh(8J \beta)}  
 \end{align*}
 
 with the corresponding variance
 
 \begin{align*}
-\sigma^2 = \braket{E^2} - \braket{E}^2 = \frac{1}{Z} \sum_{i=1}^M E_i^2 e^{- \beta E_i} - \Big(
+\sigma^2 &= \braket{E^2} - \braket{E}^2 = \frac{1}{Z} \sum_{i=1}^M E_i^2 e^{- \beta E_i} - \Big(
 \frac{1}{Z} \sum_{i=1}^M E_i e^{- \beta E_i} 
-\Big)^2
-\end{align*}
-
-\begin{align*}
-\sigma^2 &= 64J^2 \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
-- \big( 8J \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
-\big)^2\\
-&= 64J^2 \frac{e^{8 \beta J} - 3 e^{-8 \beta J}}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}}
-- 64J^2\big(
-\frac{e^{16 \beta J} - 6 \cdot e^{8 \beta J}e^{-8 \beta J} + 9 e^{-16 \beta J}}{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}
-\big)\\
-&= 
-\frac{64J^2}{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}
-\Big[
-(e^{8 \beta J} - 3 e^{-8 \beta J})(4 + e^{8 \beta J} + 3 e^{-8 \beta J})
--e^{16 \beta J} - 6  + 9 e^{-16 \beta J}
-\Big]\\
-&= \frac{64J^2}{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}
-\Big[
-4 e^{8 \beta J} 
-- 12 e^{-8 \beta J}  - 6 
-\Big] \\
+\Big)^2\\
+ &= \frac{8^2 J^2  2 e^{8J \beta} + 8^2 J^2 2 e^{-8J \beta} + 0 \cdot 12}{ 4(3 + \cosh (8 J \beta))}
+- \Big(  - 8J \frac{\sinh(8J \beta)}{3 + \cosh(8J \beta)}  \Big)^2\\
+&= 32J^2 \frac{ 2 \cosh (8J \beta)}{ (3 + \cosh (8 J \beta))}
+- 64 J^2 \frac{\sinh^2(8J \beta)}{(3 + \cosh(8J \beta))^2}\\
+&= J^264 \frac{\cosh (8J \beta)(3 + \cosh (8 J \beta)) - \sinh^2(8J \beta)}{ (3 + \cosh (8 J \beta))^2}\\
+&= J^264 \frac{
+3\cosh (8J \beta) + \cosh^2 (8 J \beta)
+ - \sinh^2(8J \beta)}{ (3 + \cosh (8 J \beta))^2}\\
+ &= J^264 \frac{
+3\cosh (8J \beta) + 1}{ (3 + \cosh (8 J \beta))^2}\\
 \end{align*}
 
 The specific heat capacity 
@@ -144,19 +151,17 @@ C_V = \frac{1}{k_B T^2} (\braket{E^2} - \braket{E}^2)
 
 \begin{align*}
 C_V &= \frac{64J^2}{k_B T^2}
-\frac{4 e^{8 \beta J} 
-- 12 e^{-8 \beta J}  - 6 }{(4 + e^{8 \beta J} + 3 e^{-8 \beta J})^2}\\
+\frac{3\cosh (8J \beta) + 1}{ (3 + \cosh (8 J \beta))^2}
 \end{align*}
 
 
 The mean absolute value of the magnetic moment (mean magnetization)
 
-\begin{equation}
-\braket{\mathcal{M}} = \frac{1}{Z} \sum_i^M \mathcal{M}_i e^{- \beta E_i}
-\end{equation}
-
 \begin{align*}
-\braket{\mathcal{M}} = \frac{1}{Z} (-4 e^{8 \beta J} - 2 \cdot 4 e^0 + 0 \cdot e^{-8 \beta J} + 2 \cdot 4 e^0 + 4 e^{8 \beta J}) = 0
+\braket{|\mathcal{M}|} 
+&= \frac{1}{Z} \sum_i^M |\mathcal{M}_i| e^{- \beta E_i}\\
+&= \frac{1}{4(3 + \cosh (8 J \beta))} (4e^{8J \beta} + 4 \cdot 2 e^0 + 2 \cdot 4 e^0 +4 e^{8 J \beta})\\
+& =2 \frac{e^{8J \beta} + 2 }{3 + \cosh (8 J \beta)} \\
 \end{align*}
 
 
@@ -168,32 +173,35 @@ The susceptibility
 \end{equation}
 
 \begin{align*}
-\chi &= \frac{1}{k_B T} \frac{1}{Z} \sum_i^M \mathcal{M}_i^2 e^{- \beta E_i}\\
+\chi &= \frac{1}{k_B T} (\frac{1}{Z} \sum_i^M \mathcal{M}_i^2 e^{- \beta E_i}- \Big(\frac{1}{Z} \sum_i^M \mathcal{M}_i e^{- \beta E_i}\Big)^2)\\
 &= \frac{1}{k_B T} 
-\frac{1}{Z} (16e^{8 \beta J} + 4 \cdot 4 e^0 + 0 \cdot e^{-8 \beta J} + 4 \cdot 4 e^0 + 16 e^{8 \beta J})\\
-&= \frac{16}{k_B T} 
-\frac{e^{8 \beta J} + 1}{4 + e^{8 \beta J} + 3 e^{-8 \beta J}} \\
+\frac{(16e^{8J \beta} + 4 \cdot 4 e^0 + 4 \cdot 4 e^0 + 16 e^{8J \beta})}{4(3 + \cosh (8 J \beta))} \\
+&= \frac{1}{k_B T} 
+\frac{8e^{8J \beta} +8}{(3 + \cosh (8 J \beta))} \\
 \end{align*}
 
 \end{flushleft}
 
 \begin{flushleft}
-The analytical values are found in table (\ref{fig: analytical}).
+The analytical values (calculated in Python) are found in table (\ref{fig:: analytical}).
 
 \begin{figure}[h]
-\label{fig: analytical}
+\label{fig:: analytical}
 \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-$Z$ &$\braket{E}$ & $\braket{\mathcal{M}}$ & $C_V$ & $\chi$\\
+$Z$ &$\braket{E}$ & $\braket{|\mathcal{M}|}$ & $C_V$ & $\chi$\\
 \hline
-5969.92 & 7.99 & 0 & 0.0856 & 0.00268\\
+$5973.917$ & $-7.9839$ & $3.9946$ & $0.1283$ & $15.9732$\\
 \hline
 \end{tabular}
 \caption{Analytical values of the expectation values. Here $J=1$, $k=1$, $T=1.0$ K.}
 \end{figure}
 \end{flushleft}
 
+\begin{flushleft}
+For $mcs = 1000000$ cycles the results are very similar to the analytic results. 
+\end{flushleft}
 
 \section{Sources}
 

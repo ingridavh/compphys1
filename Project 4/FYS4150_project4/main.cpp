@@ -1,55 +1,52 @@
 #include <iostream>
 #include "spinsystem.h"
+#include <armadillo>
 
 using namespace std;
 
-//For command line change to (int argc, char* argv[])
-
 int main()
 {
-    cout << "This is a spin system" << endl;
     //Needed parameters are;
     //char outfilename, mcs, initial_temp, final_temp, temp_step
 
-    string outfilename = "results";
-
-    //WHAT IS IDUM AND MCS?
-    long idum;
-    int mcs = 10;
+    string outfilename = "prettywoman.txt";
+    int mcs = 1e6;
     double initial_temp = 1.0;
-    double final_temp = 4.0;
-    double temp_step = 0.001;
+    double final_temp = 1.0;
+    double temp_step = 1;
+    int n_spins = 20;
 
-    int n_spins = 2;
+//    spinsystem A(n_spins);
+//    A.go(outfilename, mcs, initial_temp,final_temp, temp_step);
 
-    spinsystem A(n_spins);
-    A.go(outfilename, mcs, initial_temp,final_temp, temp_step);
+    //Function of number of Monte Carlo cycles
 
+    int n_tests = 8;
+    arma::vec cycles = arma::zeros<arma::vec>(n_tests);
+    for (int i = 0; i < n_tests; i++) cycles(i) = i;
 
-//---------------Read input parameters from command line (later)
+    for (int i = 1; i < 8; i++) cycles[i] = i;
+    //Open output file
 
-//    char *outfilename;
-//    long idum;
-//    int **spin_matrix, n_spins, mcs;
+    string filename = "exp_mcs.txt";
 
+    ofstream myfile;
+    myfile.open(filename.c_str(), ofstream::out);
+    if (!myfile.is_open()){
+        cout << "FILE " << filename.c_str() << " not opened, aborting!" << endl;
+        terminate();
+    }
 
-//    double w[17], average[5], initial_temp, final_temp, E, M, temp_step;
+    for (int i=0; i<n_tests; i++)
+    {
+        double n_cycl = pow(10, cycles[i]);
+        spinsystem mysystem(n_spins);
+        mysystem.go(outfilename, n_cycl, initial_temp, final_temp, temp_step);
+        arma::vec ex = mysystem.getExpecs();
+        cout << "The number of cycles is " << n_cycl << ", and energy is " << ex(0)  << endl;
+        myfile << n_cycl << " , " <<  ex(0) << " , " << ex(4) << endl;
 
-//    // Read in output file, abort if there are too few command-line arguments
-//    if( argc <= 1)
-//    {
-//        cout << "Bad usage" << argv[0] <<
-//                " read also output file on same line" << endl;
-//        exit(1);
-//    }
-//    else
-//    {
-//        outfilename=argv[1];
-//    }
+    }
 
-//----------------End-----------------------------------------------
-
-    cout << "This is the end" << endl;
     return 0;
 }
-

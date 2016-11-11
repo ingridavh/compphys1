@@ -14,24 +14,25 @@ spinsystem::spinsystem(int n_spins) :
 
 }
 
-
 //"Body" of the class which uses the Metropolis algorithm
 //to calculate expectation values of the energy and magnetization
 
 void spinsystem::go(string outfilename, int mcs, double initial_temp, double final_temp, double temp_step)
 {
     //Open the output file
-    if(!m_ofile.good()) {
+    //m_ofile.open(outfilename.c_str(), ofstream::out);
+    m_mcs = mcs;
+    m_finaltemp = final_temp;
+
+    if(!m_ofile.is_open()) {
             m_ofile.open(outfilename.c_str(), ofstream::out);
             if(!m_ofile.good()) {
-                cout << "Error opening file " << outfilename << ". Aborting!" << endl;
+                    cout << "Error opening file " << outfilename << ". Aborting!" << endl;
                 terminate();
             }
         }
 
-    //HVA ER DENNE EGENTLIG?
     double *w = new double[17];
-    double average[5];
 
     for (double temp = initial_temp; temp <= final_temp; temp += temp_step){
         // Initialize energy and magnetization
@@ -43,30 +44,42 @@ void spinsystem::go(string outfilename, int mcs, double initial_temp, double fin
         for( int de = -8; de <= 8; de+=4) w[de+8] = exp(-de/temp);
 
         //Initialize array for expectation values
-        for( int i = 0; i < 5; i++) average[i] = 0.;
+        for (int i= 0; i<5; i++) m_average[i] = 0;
         initialize(E, M, temp);
 
-        //Random starting point
-        long idum = -1;
-
         //Start Monte Carlo computation
-        for (int cycles = 1; cycles <= mcs; cycles++){
-            Metropolis(idum, M, E, w);
+        for (int cycles = 1; cycles <= m_mcs; cycles++){
+            Metropolis(E, M, w, temp);
 
             //update expectation values
-            average[0] += E;
-            average[1] += E*E;
-            average[2] += M;
-            average[3] += M*M;
-            average[4] += fabs(M);
+            m_average[0] += E;
+            m_average[1] += E*E;
+            m_average[2] += M;
+            m_average[3] += M*M;
+            m_average[4] += fabs(M);
         }
         // print results to file
-        output(mcs, temp, average);
+        output(mcs, temp);
     }
     m_ofile.close();
-    cout << "The average energy is " << average[0] << endl;
-    cout << "The average magnetizatoin is " << average[2] << endl;
+    for (int i = 0; i < 5; i++) m_average[i] /= mcs;
+    double Cv = (1./(final_temp*final_temp))*(m_average[1] - m_average[0]*m_average[0]);
+    double X = (1./final_temp)*(m_average[3] - m_average[2]*m_average[2]);
 
+//    cout << "The average energy is " << m_average[0] << endl;
+//    cout << "Cv " << Cv << endl;
+//    cout << "The average magnetization is " << m_average[2] << endl;
+//    cout << "X " << X << endl;
+//    cout << "abs(M) " << m_average[4] << endl;
+
+}
+
+arma::vec spinsystem::getExpecs()
+{
+    arma::vec A;
+    A.zeros(5);
+    for (int i=0; i<5; i++) A[i] = m_average[i];
+    return A;
 }
 
 
@@ -75,7 +88,7 @@ void spinsystem::initialize(double& E, double& M, double temp){
     for (int y= 0; y < m_n_spins; y++){
         for (int x=0; x < m_n_spins; x++){
             //Set the spin orientation for ground state
-            if (temp < 1.5) m_spin_matrix(y,x) = 1;
+            m_spin_matrix(y,x) = 1;
             M += (double) m_spin_matrix(y,x);
         }
     }
@@ -100,7 +113,7 @@ double spinsystem::periodic(int i, int limit, int add)
 
 //The Metropolis algorithm for calculating
 //expectation values
-void spinsystem::Metropolis(long& idum, double& E, double &M, double *w)
+void spinsystem::Metropolis(double& E, double &M, double *w, double temp)
 {
     //loop over all spins
     for (int y = 0; y < m_n_spins; y++){
@@ -108,20 +121,26 @@ void spinsystem::Metropolis(long& idum, double& E, double &M, double *w)
             //Find random position
             int ix = (int) (rand() % m_n_spins);
             int iy = (int) (rand() % m_n_spins);
-            int deltaE = 2*m_spin_matrix(iy,ix)*
+            m_spin_matrix(iy, ix) *= -1;
+//            cout << "The random numbers iy and ix are " << iy << " " << ix << endl;
+            int deltaE = - 2*m_spin_matrix(iy,ix)*
                     (m_spin_matrix(iy,periodic(ix, m_n_spins, -1))+
                     m_spin_matrix(periodic(iy, m_n_spins, -1),ix)+
                     m_spin_matrix(iy,periodic(ix, m_n_spins, 1))+
                     m_spin_matrix(periodic(iy, m_n_spins,1),ix));
             //Here we perform the Metropolis test
             //with a random number between 0 and 1
-            if (rand()/RAND_MAX <= w[deltaE+8])
+            double r = rand()/ (double)RAND_MAX;
+
+            if (r <= exp(-deltaE/temp))
             {
                 //flip one spin and accept new spin configuration
-                m_spin_matrix(iy,ix) *= -1;
+                //m_spin_matrix(iy,ix) *= -1;
                 //update energy and magnetization
                 M += (double) 2*m_spin_matrix(iy,ix);
                 E += (double) deltaE;
+            } else {
+                m_spin_matrix(iy, ix) *= -1;
             }
         }
     }
@@ -144,11 +163,11 @@ double spinsystem::CalculateEnergy()
     for (int i=0; i<m_n_spins; i++){
         for (int j=0; j<m_n_spins; j++){
             //Periodic boundary conditions
-            if (i<1) Energy +=-m_J*(m_spin_matrix(i+1,j) + m_spin_matrix(m_n_spins-1,j));
-            else Energy += -m_J*(m_spin_matrix(i-1,j) + m_spin_matrix(i+1,j));
+            if (i<1) Energy -= m_J*(m_spin_matrix(m_n_spins-1,j));
+            else Energy -= m_J*(m_spin_matrix(i-1,j));
 
-            if (j<1) Energy +=-m_J*(m_spin_matrix(i,j+1) + m_spin_matrix(i,m_n_spins-1));
-            else Energy += -m_J*(m_spin_matrix(i,j-1) + m_spin_matrix(i,j+1));
+            if (j<1) Energy -=m_J*( m_spin_matrix(i,m_n_spins-1));
+            else Energy -= m_J*(m_spin_matrix(i,j-1));
         }
     }
     return Energy;
@@ -157,25 +176,17 @@ double spinsystem::CalculateEnergy()
 
 
 //Function that writes data to output file
-void spinsystem::output(int mcs, double temperature, double *average)
+void spinsystem::output(int mcs, double temperature)
 {
-    //Function that prints results to file
-    //divided by total number of cycles
-    double norm = 1/((double) (mcs));
-    double Eaverage = average[0]*norm;
-    double E2average = average[1]*norm;
-    double Maverage = average[2]*norm;
-    double M2average = average[3]*norm;
-    double Mabsaverage = average[4]*norm;
-
-    //All expectation values are per spin, divide by 1/(m_n_spins*m_n_spins)
-    double Evariance = (E2average - Eaverage*Eaverage)/(m_n_spins*m_n_spins);
-    double Mvariance = (M2average - Maverage*Maverage)/(m_n_spins*m_n_spins);
-    double M2variance = (M2average - Mabsaverage*Mabsaverage)/(m_n_spins*m_n_spins);
-    //Why is this different?
-    double Mvariance_weird = (M2average - Mabsaverage*Mabsaverage)/(m_n_spins*m_n_spins);
+    //Per spin
+    for (int i = 0; i < 5; i++) m_average[i] /= mcs*m_n_spins*m_n_spins;
+    double Energy = m_average[0];
+    double Magnetization = m_average[2];
+    double Magnetization_abs = m_average[4];
+    double Cv = (1./(m_finaltemp*m_finaltemp))*(m_average[1] - m_average[0]*m_average[0]);
+    double X = (1./m_finaltemp)*(m_average[3] - m_average[2]*m_average[2]);
 
     //Print to an outfile
-    m_ofile << "Energy, E variance, Magnetization, M variance" << endl;
-    m_ofile << Eaverage << " , " << Eaverage << " , " << Maverage << " , " << Mvariance <<endl;
+    m_ofile << "Energy, Cv, Magnetization, abs(Magnetization), X" << endl;
+    m_ofile << Energy << " , " << Cv/m_n_spins << " , " << Magnetization << " , " << Magnetization_abs << " , " << X <<endl;
 }

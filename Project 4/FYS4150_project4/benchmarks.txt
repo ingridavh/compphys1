@@ -1,0 +1,39 @@
+//Testing the class for a 2x2-lattice
+
+-------------program-------------------------
+
+int main()
+{
+    cout << "This is a spin system" << endl;
+    //Needed parameters are;
+    //char outfilename, mcs, initial_temp, final_temp, temp_step
+
+    string outfilename = "results";
+
+    long idum;
+    int mcs = 1000000;
+    double initial_temp = 1.0;
+    double final_temp = 1.0;
+    double temp_step = 1;
+
+    int n_spins = 2;
+
+    spinsystem A(n_spins);
+    A.go(outfilename, mcs, initial_temp,final_temp, temp_step);
+
+    cout << "This is the end" << endl;
+    return 0;
+}
+
+-------------------------------------------
+
+-----------output--------------------------
+This is a spin system
+The average energy is -7.9834
+Cv 2.71985e+242
+The average magnetization is 0.124182
+X 15.9569
+abs(M) 3.99444
+Final energy is 0
+This is the end
+-------------------------------------------
