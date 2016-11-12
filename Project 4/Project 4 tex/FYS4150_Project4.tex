@@ -13,10 +13,16 @@
 \usepackage{textcomp}
 \usepackage{subcaption}
 
+\usepackage{geometry}
+\geometry{legalpaper, margin=1.2in}
+
 \begin{document}
 \title{FYS4150: Project 4}
 \author{Ingrid A V Holm}
 \maketitle
+
+
+\marginparwidth = 10pt
 
 
 \section{Introduction}
@@ -202,6 +208,126 @@ $5973.917$ & $-7.9839$ & $3.9946$ & $0.1283$ & $15.9732$\\
 \begin{flushleft}
 For $mcs = 1000000$ cycles the results are very similar to the analytic results. 
 \end{flushleft}
+
+
+\section{20x20 lattice}
+
+\begin{flushleft}
+Setting temperature to $T=1$ and running a $20 \times 20$ lattice for a different number of Monte Carlo cycles ranging from $1$ to $10^{-7}$. We see from figure (\ref{fig:cms-EM T=1}) that for $1$ cycle energy and magnetization are exactly -800 and 400. This is because when one random spin is flipped the probability of keeping this energy configuration is proportional to $e^{-8} \simeq 0.0003$. As we add more cycles, however, the probability of some spins using their new configuration becomes larger. Both expectation values seem to stabilize at around $10^5$.
+
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_E_T1_ordered_.pdf}
+  \caption{Expectation value energy.}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_M_T1_ordered_.pdf}
+  \caption{Expectation value magnetization.}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{$20 \times 20$-lattice with temperature $T=1$, ordered initial configuration.}
+\label{fig:cms-EM T=1}
+\end{figure}
+
+\end{flushleft}
+
+\begin{flushleft}
+We also look at a system that begins with a random distribution of spins. For a $20 \times 20$-lattice this will probably begin with energy $0$ and magnetization $0$. It will the 'tip' to one of the sides, and converge towards $-800$ and $400$. The results are shown in fig (\ref{fig:cms-EM T=1 random}).
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_E_T1_random_.pdf}
+  \caption{Expectation value energy.}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_M_T1_random_.pdf}
+  \caption{Expectation value magnetization.}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{$20 \times 20$-lattice with temperature $T=1$, random initial configuration. Used $10000$ points.}
+\label{fig:cms-EM T=1 random}
+\end{figure}
+\end{flushleft}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{gaussian_draw_t.png}
+\caption{Expectation configuration distribution}
+\end{figure}
+
+
+\begin{flushleft}
+We also run the program for temperature $T=2.4$. The stable energy and magnetization are now smaller in norm. 
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_E_T24_random_.pdf}
+  \caption{Expectation value energy.}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_M_T24_random_.pdf}
+  \caption{Expectation value magnetization.}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{$20 \times 20$-lattice with temperature $T=2.4$, random initial configuration. Used $10000$ points.}
+\label{fig:cms-EM T=2.4 random}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_E_T24_ordered_.pdf}
+  \caption{Expectation value energy.}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{exp_M_T24_ordered_.pdf}
+  \caption{Expectation value magnetization.}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{$20 \times 20$-lattice with temperature $T=2.4$, ordered initial configuration. Used $10000$ points.}
+\label{fig:cms-EM T=2.4 random}
+\end{figure}
+\end{flushleft}
+
+
+\section{Analyzing the probability distribution}
+
+\begin{flushleft}
+We find the probability of a state by counting the number of states in an energy $E$, and dividing by the total number of configurations
+
+\begin{equation}
+P(E) = \frac{N(E)}{cms}
+\end{equation}
+
+where $cms$ is the number of Monte Carlo cycles used. We see from the results in Fig. (\ref{fig::P(E)}) that the probability distribution is much narrower for $T=1.1$.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{P(E).pdf}
+\label{fig::P(E)}
+\end{figure}
+
+After running $10^5$ monte carlo cycles, the variance is for $1T$: $ \sigma_E = -3.58476$, for $T=2.4$: $\sigma_E = 3161.7$.
+
+\end{flushleft}
+
 
 \section{Sources}
 

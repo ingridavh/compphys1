@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  4 NOV 2016 16:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  12 NOV 2016 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -785,58 +785,118 @@ Package caption Info: hyperref package is loaded.
 \c@subfigure=\count111
 \c@subtable=\count112
 )
-(./FYS4150_Project4.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count113
+\Gm@cntv=\count114
+\c@Gm@tempcnt=\count115
+\Gm@bindingoffset=\dimen129
+\Gm@wd@mp=\dimen130
+\Gm@odd@mp=\dimen131
+\Gm@even@mp=\dimen132
+\Gm@layoutwidth=\dimen133
+\Gm@layoutheight=\dimen134
+\Gm@layouthoffset=\dimen135
+\Gm@layoutvoffset=\dimen136
+\Gm@dimlist=\toks22
+)
+(./FYS4150_Project4.aux
+
+LaTeX Warning: Label `fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `fig:cms-EM T=2.4 random' multiply defined.
+
+)
 \openout1 = `FYS4150_Project4.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 19.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    ... okay on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
-\scratchdimen=\dimen129
+\scratchcounter=\count116
+\scratchdimen=\dimen137
 \scratchbox=\box28
-\nofMPsegments=\count114
-\nofMParguments=\count115
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count116
-\MPscratchDim=\dimen130
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
-\everyMPtoPDFconversion=\toks23
+\nofMPsegments=\count117
+\nofMParguments=\count118
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count119
+\MPscratchDim=\dimen138
+\MPnumerator=\count120
+\makeMPintoPDFobject=\count121
+\everyMPtoPDFconversion=\toks24
 )
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count119
+\c@section@level=\count122
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./FYS4150_Project4.out) (./FYS4150_Project4.out)
 \@outlinefile=\write3
@@ -844,54 +904,194 @@ LaTeX Info: Redefining \nameref on input line 16.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 20.
 
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: legalpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(86.72377pt, 440.84746pt, 86.72377pt)
+* v-part:(T,H,B)=(86.72377pt, 838.33246pt, 86.72377pt)
+* \paperwidth=614.295pt
+* \paperheight=1011.78pt
+* \textwidth=440.84746pt
+* \textheight=838.33246pt
+* \oddsidemargin=14.45378pt
+* \evensidemargin=14.45378pt
+* \topmargin=-22.54622pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<spins_2by2.png, id=41, 195.73125pt x 407.5225pt>
+)
+<spins_2by2.png, id=32, 195.73125pt x 407.5225pt>
 File: spins_2by2.png Graphic file (type png)
  <use spins_2by2.png>
-Package pdftex.def Info: spins_2by2.png used on input line 66.
-(pdftex.def)             Requested size: 143.9978pt x 299.82703pt.
- [2 <./spins_2by2.png (PNG copy)>] [3]
+Package pdftex.def Info: spins_2by2.png used on input line 72.
+(pdftex.def)             Requested size: 176.33629pt x 367.1586pt.
+ [1
 
-Package caption Warning: \label without proper reference on input line 189.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./spins_2by2.png (PNG 
+copy)>]
+
+Package caption Warning: \label without proper reference on input line 195.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:: analytical' on page 4 undefined on input line 1
-86.
+LaTeX Warning: Reference `fig:: analytical' on page 3 undefined on input line 1
+92.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 208.
-[4] [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 208.
+<exp_E_T1_ordered_.pdf, id=62, 578.16pt x 397.485pt>
+File: exp_E_T1_ordered_.pdf Graphic file (type pdf)
+
+<use exp_E_T1_ordered_.pdf>
+Package pdftex.def Info: exp_E_T1_ordered_.pdf used on input line 223.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+<exp_M_T1_ordered_.pdf, id=63, 578.16pt x 397.485pt>
+File: exp_M_T1_ordered_.pdf Graphic file (type pdf)
+
+<use exp_M_T1_ordered_.pdf>
+Package pdftex.def Info: exp_M_T1_ordered_.pdf used on input line 229.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+<exp_E_T1_random_.pdf, id=65, 578.16pt x 397.485pt>
+File: exp_E_T1_random_.pdf Graphic file (type pdf)
+ <use exp_E_T1_random_.pdf>
+Package pdftex.def Info: exp_E_T1_random_.pdf used on input line 246.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+<exp_M_T1_random_.pdf, id=66, 578.16pt x 397.485pt>
+File: exp_M_T1_random_.pdf Graphic file (type pdf)
+ <use exp_M_T1_random_.pdf>
+Package pdftex.def Info: exp_M_T1_random_.pdf used on input line 252.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+<gaussian_draw_t.png, id=67, 794.97pt x 562.1pt>
+File: gaussian_draw_t.png Graphic file (type png)
+ <use gaussian_draw_t.png>
+Package pdftex.def Info: gaussian_draw_t.png used on input line 263.
+(pdftex.def)             Requested size: 397.48402pt x 281.04932pt.
+
+<exp_E_T24_random_.pdf, id=68, 578.16pt x 397.485pt>
+File: exp_E_T24_random_.pdf Graphic file (type pdf)
+
+<use exp_E_T24_random_.pdf>
+Package pdftex.def Info: exp_E_T24_random_.pdf used on input line 275.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+<exp_M_T24_random_.pdf, id=69, 578.16pt x 397.485pt>
+File: exp_M_T24_random_.pdf Graphic file (type pdf)
+
+<use exp_M_T24_random_.pdf>
+Package pdftex.def Info: exp_M_T24_random_.pdf used on input line 281.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+<exp_E_T24_ordered_.pdf, id=70, 578.16pt x 397.485pt>
+File: exp_E_T24_ordered_.pdf Graphic file (type pdf)
+
+<use exp_E_T24_ordered_.pdf>
+Package pdftex.def Info: exp_E_T24_ordered_.pdf used on input line 294.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+<exp_M_T24_ordered_.pdf, id=71, 578.16pt x 397.485pt>
+File: exp_M_T24_ordered_.pdf Graphic file (type pdf)
+
+<use exp_M_T24_ordered_.pdf>
+Package pdftex.def Info: exp_M_T24_ordered_.pdf used on input line 300.
+(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
+
+
+Package caption Warning: \label without proper reference on input line 324.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig::P(E)' on page 3 undefined on input line 319.
+
+<P(E).pdf, id=73, 578.16pt x 397.485pt>
+File: P(E).pdf Graphic file (type pdf)
+ <use P(E).pdf>
+Package pdftex.def Info: P(E).pdf used on input line 323.
+(pdftex.def)             Requested size: 404.70924pt x 278.2376pt.
+ [3] [4 <./exp_E_T1_ordered_.pdf> <./exp_M_T1_ordered_.pdf
+
+pdfTeX warning: pdflatex (file ./exp_M_T1_ordered_.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+> <./exp_E_T1_random_.pdf
+
+pdfTeX warning: pdflatex (file ./exp_E_T1_random_.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
+> <./exp_M_T1_random_.pdf
+
+pdfTeX warning: pdflatex (file ./exp_M_T1_random_.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
+> <./gaussian_draw_t.png>] [5 <./exp_E_T24_random_.pdf> <./exp_M_T24_random_.pd
+f
+
+pdfTeX warning: pdflatex (file ./exp_M_T24_random_.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+> <./exp_E_T24_ordered_.pdf
+
+pdfTeX warning: pdflatex (file ./exp_E_T24_ordered_.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+> <./exp_M_T24_ordered_.pdf
+
+pdfTeX warning: pdflatex (file ./exp_M_T24_ordered_.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+> <./P(E).pdf
+
+pdfTeX warning: pdflatex (file ./P(E).pdf): PDF inclusion: multiple pdfs with p
+age group included in a single page
+>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 334.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 334.
  (./FYS4150_Project4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 208.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 208.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 334.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 334.
 Package rerunfilecheck Info: File `FYS4150_Project4.out' has not changed.
-(rerunfilecheck)             Checksum: 4263A4B4959FE28D724963E8A0ACF141;266.
+(rerunfilecheck)             Checksum: 5260E91C8ED3D5552CE58A085DFF6326;387.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 208.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 334.
  ) 
 Here is how much of TeX's memory you used:
- 7858 strings out of 494910
- 116684 string characters out of 6179836
- 203449 words of memory out of 5000000
- 11007 multiletter control sequences out of 15000+600000
+ 8360 strings out of 494910
+ 124383 string characters out of 6179836
+ 220292 words of memory out of 5000000
+ 11486 multiletter control sequences out of 15000+600000
  13431 words of font info for 52 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 42i,12n,40p,339b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,40p,607b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/ingrid/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/
@@ -905,10 +1105,10 @@ m/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on FYS4150_Project4.pdf (5 pages, 151978 bytes).
+Output written on FYS4150_Project4.pdf (6 pages, 375894 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
- 18 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 508 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 112 words of extra memory for PDF output out of 10000 (max. 10000000)
 

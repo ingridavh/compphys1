@@ -37,3 +37,38 @@ abs(M) 3.99444
 Final energy is 0
 This is the end
 -------------------------------------------
+
+-------Using the class on a 20x20 lattice with temp 1, 2.4--------------
+int main()
+{
+    //Needed parameters are;
+    //char outfilename, mcs, initial_temp, final_temp, temp_step
+
+    string outfilename = "prettywoman_.txt";
+    double n_cycl = 1E5;
+    double initial_temp = 2.4;
+    double final_temp = 2.4;
+    double temp_step = 1;
+    int n_spins = 20;
+
+//    spinsystem A(n_spins);
+//    A.go(outfilename, n_cycl, initial_temp,final_temp, temp_step);
+    //Open output file
+
+
+    ofstream myfile;
+    myfile.open(outfilename.c_str(), ofstream::out);
+    if (!myfile.is_open()){
+        cout << "FILE " << outfilename.c_str() << " not opened, aborting!" << endl;
+        terminate();
+    }
+
+
+    spinsystem mysystem(n_spins);
+    mysystem.go(outfilename, n_cycl, initial_temp, final_temp, temp_step);
+
+    return 0;
+}
+---------------------------------------------------------------------------
+
+
