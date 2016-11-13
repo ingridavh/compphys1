@@ -1,4 +1,5 @@
 #include "spinsystem.h"
+#include "mpi.h"
 #include <iomanip>
 #include <armadillo>
 #include <fstream>
@@ -18,11 +19,13 @@ spinsystem::spinsystem(int n_spins) :
 //"Body" of the class which uses the Metropolis algorithm
 //to calculate expectation values of the energy and magnetization
 
-void spinsystem::go(string outfilename, int mcs, double initial_temp, double final_temp, double temp_step)
+void spinsystem::go(string outfilename, int mcs, double initial_temp, double final_temp, double temp_step, int rankProcess, int NProcesses)
 {
-    cout << "The temperature is " << initial_temp << endl;
+    m_ofile << "Totally awesome! The program is working! Now numbers: " << endl;
+    m_ofile << "Temp, Energy, Cv, Magnetization, abs(Magnetization), X" << endl;
+    cout << "The initial temperature is " << initial_temp << endl;
     //Open the output file
-    //m_ofile.open(outfilename.c_str(), ofstream::out);
+    m_ofile.open(outfilename.c_str(), ofstream::out);
     m_mcs = mcs;
     m_finaltemp = final_temp;
 
@@ -65,21 +68,31 @@ void spinsystem::go(string outfilename, int mcs, double initial_temp, double fin
             m_average[3] += M*M;
             m_average[4] += fabs(M);
 
-            if (cycles >= 10000)
-            {
-                if (cycles%100 ==0)
-                {
-                    for (int i = 0; i < 5; i++) m_average[i] /= cycles;
-                    m_ofile << cycles << " , " << m_average[0] << " , " << m_average[4] << " , " << m_no_accept << endl;
-                    for (int i = 0; i < 5; i++) m_average[i] *= cycles;
-                }
-            }
+//            if (cycles >= 100 && cycles%100 ==0 )
+//            {
+//                for (int i = 0; i < 5; i++) m_average[i] /= cycles;
+//                m_ofile << cycles << " , " << m_average[0] << " , " << m_average[4] << " , " << m_no_accept << endl;
+//                for (int i = 0; i < 5; i++) m_average[i] *= cycles;
+//                }
+//            }
 
 
         }
+
+        arma::vec total_exp = arma::zeros<arma::vec>(5);
+
         // print results to file
-        for (int i = 0; i < 5; i++) m_average[i] /= m_mcs;
-        //output(mcs, temp);
+        for (int i = 0; i < 5; i++)
+        {
+            MPI_Reduce(&m_average[i], &total_exp[i], 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+        }
+        if (rankProcess == 0)
+        {
+            output(mcs*NProcesses, temp, total_exp);
+        }
+
+//        m_average[i] /= m_mcs;
+//        output(mcs, temp);
     }
     m_ofile.close();
     double Cv = (1.0/(final_temp*final_temp)) *  (m_average[1] - m_average[0]*m_average[0]);
@@ -142,7 +155,6 @@ double spinsystem::periodic(int i, int limit, int add)
     return (i+limit+add) % (limit);
 }
 
-
 //The Metropolis algorithm for calculating
 //expectation values
 void spinsystem::Metropolis(double& E, double &M, double *w, double temp)
@@ -154,14 +166,15 @@ void spinsystem::Metropolis(double& E, double &M, double *w, double temp)
             int ix = (int) (rand() % m_n_spins);
             int iy = (int) (rand() % m_n_spins);
             m_spin_matrix(iy, ix) *= -1;
-//            cout << "The random numbers iy and ix are " << iy << " " << ix << endl;
+
+
             int deltaE = - 2*m_spin_matrix(iy,ix)*
                     (m_spin_matrix(iy,periodic(ix, m_n_spins, -1))+
                     m_spin_matrix(periodic(iy, m_n_spins, -1),ix)+
                     m_spin_matrix(iy,periodic(ix, m_n_spins, 1))+
                     m_spin_matrix(periodic(iy, m_n_spins,1),ix));
-            //Here we perform the Metropolis test
-            //with a random number between 0 and 1
+
+            //Perform the Metropolis test with a random number between 0 and 1
             double r = rand()/ (double)RAND_MAX;
             if (r <= exp(-deltaE/temp))
             {
@@ -178,21 +191,31 @@ void spinsystem::Metropolis(double& E, double &M, double *w, double temp)
     }
 }
 
+
+
+
+
+
 void spinsystem::read_input (int&, int&, double&, double&, double&){
     //Function to read in data from screen
 }
 
 //Function that writes data to output file
-void spinsystem::output(int mcs, double temperature)
+void spinsystem::output(int mcs, double temperature, arma::vec avg)
 {
     //Per spin
-    double Energy = m_average[0];
-    double Magnetization = m_average[2];
-    double Magnetization_abs = m_average[4];
-    double Cv = (1./(m_finaltemp*m_finaltemp))*(m_average[1] - m_average[0]*m_average[0]);
-    double X = (1./m_finaltemp)*(m_average[3] - m_average[2]*m_average[2]);
+    double temp = temperature;
+    for (int i = 0; i < 5; i++)
+    {
+        avg[i] /= mcs;
+    }
+    double Energy = avg[0];
+    double Magnetization = avg[2];
+    double Magnetization_abs = avg[4];
+    double Cv = (1./(temp*temp))*(avg[1] - avg[0]*avg[0]);
+    double X = (1./temp)*(avg[3] - avg[4]*avg[4]);
 
     //Print to an outfile
-    m_ofile << "Energy, Cv, Magnetization, abs(Magnetization), X" << endl;
-    m_ofile << Energy << " , " << Cv/m_n_spins << " , " << Magnetization << " , " << Magnetization_abs << " , " << X <<endl;
+    m_ofile << temp << " , " << Energy << " , " << Cv/m_n_spins << " , "
+            << Magnetization << " , " << Magnetization_abs << " , " << X <<endl;
 }

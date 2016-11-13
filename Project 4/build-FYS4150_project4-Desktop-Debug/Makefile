@@ -10,11 +10,11 @@ MAKEFILE      = Makefile
 
 ####### Compiler, tools and options
 
-CC            = gcc
-CXX           = g++
+CC            = mpicc
+CXX           = mpicxx
 DEFINES       = 
-CFLAGS        = -m64 -pipe -g -Wall -W -fPIC $(DEFINES)
-CXXFLAGS      = -m64 -pipe -g -std=c++0x -Wall -W -fPIC $(DEFINES)
+CFLAGS        = -m64 -pipe -I/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent -I/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent/include -I/usr/lib/openmpi/include -I/usr/lib/openmpi/include/openmpi -pthread -g -Wall -W -fPIC $(DEFINES)
+CXXFLAGS      = -m64 -pipe -I/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent -I/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent/include -I/usr/lib/openmpi/include -I/usr/lib/openmpi/include/openmpi -pthread -DMPICH_IGNORE_CXX_SEEK -g -std=c++0x -Wall -W -fPIC $(DEFINES)
 INCPATH       = -I../FYS4150_project4 -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64
 QMAKE         = /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 DEL_FILE      = rm -f
@@ -34,8 +34,8 @@ TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = FYS4150_project41.0.0
 DISTDIR = /home/ingrid/Documents/Compphys/compphys1/Project\ 4/build-FYS4150_project4-Desktop-Debug/.tmp/FYS4150_project41.0.0
-LINK          = g++
-LFLAGS        = -m64
+LINK          = mpicxx
+LFLAGS        = -m64 -pthread -Wl,-rpath -Wl,/usr/lib/openmpi/lib -Wl,--enable-new-dtags -L/usr/lib/openmpi/lib -lmpi_cxx -lmpi
 LIBS          = $(SUBLIBS)  
 AR            = ar cqs
 RANLIB        = 
@@ -49,10 +49,8 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../FYS4150_project4/main.cpp \
-		../FYS4150_project4/spins.cpp \
 		../FYS4150_project4/spinsystem.cpp 
 OBJECTS       = main.o \
-		spins.o \
 		spinsystem.o
 DIST          = ../FYS4150_project4/benchmarks \
 		../FYS4150_project4/benchmarks.txt \
@@ -109,7 +107,6 @@ DIST          = ../FYS4150_project4/benchmarks \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../FYS4150_project4/FYS4150_project4.pro spinsystem.h ../FYS4150_project4/main.cpp \
-		../FYS4150_project4/spins.cpp \
 		../FYS4150_project4/spinsystem.cpp
 QMAKE_TARGET  = FYS4150_project4
 DESTDIR       = #avoid trailing-slash linebreak
@@ -288,9 +285,6 @@ compiler_clean:
 
 main.o: ../FYS4150_project4/main.cpp ../FYS4150_project4/spinsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../FYS4150_project4/main.cpp
-
-spins.o: ../FYS4150_project4/spins.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spins.o ../FYS4150_project4/spins.cpp
 
 spinsystem.o: ../FYS4150_project4/spinsystem.cpp ../FYS4150_project4/spinsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spinsystem.o ../FYS4150_project4/spinsystem.cpp
