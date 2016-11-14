@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-myfile = open('build-FYS4150_project4-Desktop-Debug/prettywoman.txt')
-myfile2 = open('build-FYS4150_project4-Desktop-Debug/prettywoman_.txt')
+#myfile = open('build-FYS4150_project4-Desktop-Debug/prettywoman.txt')
+#myfile2 = open('build-FYS4150_project4-Desktop-Debug/prettywoman_.txt')
 numbers = []
 numbers2 = []
 

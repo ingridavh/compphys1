@@ -74,6 +74,56 @@ int main()
 
 
 ------------------------------------------------------------------
-Testing function for MPI
+//Testing function for MPI
+
+int main(int argc, char* argv[])
+{
+    int nproc;
+    int myrank;
+    string filename;
+    int N_spins;
+    int mcs;
+    double initial_temp;
+    double final_temp;
+    double temp_step;
+
+    // MPI initializations
+
+    MPI_Init (&argc, &argv);
+    MPI_Comm_size (MPI_COMM_WORLD, &nproc);
+    MPI_Comm_rank (MPI_COMM_WORLD, &myrank);
+
+    if (myrank == 0 && argc <= 5) {
+        cout << "Bad Usage: " << argv[0] <<
+                " read output file, Number of spins, mc cycles, initial temp, final temp and temp step" << endl;
+        exit(1);
+    }
+
+    //Tell all nodes about initial variables
+
+    filename=argv[1];
+    N_spins = atoi(argv[2]);
+    mcs = atoi(argv[3]);
+    initial_temp = atof(argv[4]);
+    final_temp = atof(argv[5]);
+    temp_step = atof(argv[6]);
+
+    cout << "Worker bee no " << myrank << " says the initial temperature is before 'go' " <<
+            initial_temp << endl;
+
+    //Testing MPI------------------
+    if (myrank==0)
+    {
+        cout << "HEY! We have " << nproc << " available processors" << endl;
+    }
+
+    cout << "Hello world, I have rank " << myrank << " out of " << nproc << endl;
+
+    MPI_Finalize();
+    return 0;
+
+}
+
+
 
 
