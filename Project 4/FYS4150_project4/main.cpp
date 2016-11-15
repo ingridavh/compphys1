@@ -3,6 +3,7 @@
 #include <armadillo>
 #include "mpi.h"
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -14,18 +15,6 @@ int main(int argc, char* argv[])
 
     ofstream ofile;
     string filename=argv[1];
-    ofile.open(filename.c_str(), ofstream::out);
-
-    if(!ofile.is_open()) {
-            ofile.open(filename.c_str(), ofstream::out);
-            if(!ofile.good()) {
-                cout << "Error opening file " << filename << ". Aborting!" << endl;
-                terminate();
-            }
-    }
-
-
-
 
     MPI_Init (&argc, &argv);
     MPI_Comm_size (MPI_COMM_WORLD, &nproc);
@@ -58,45 +47,38 @@ int main(int argc, char* argv[])
 
     if (myrank == nproc -1) initial_my_temp += temp_step;
 
-    spinsystem mysystem(n_spins);
 
-    arma::mat info_matrix = mysystem.go(filename, mcs, initial_my_temp, final_my_temp, temp_step, myrank, nproc);
+    //Open one file per node
+    ostringstream oss;
+        oss << filename << n_spins << "_rank" << myrank << ".txt";
+    string myfilename = oss.str();
 
+    ofile.open(myfilename.c_str(), ofstream::out);
 
-    int size = (final_my_temp - initial_my_temp)/temp_step;
-    //Write to file in the right order
-    MPI_Barrier (MPI_COMM_WORLD);
-    for (int i = 0; i < nproc; i++) {
-        if (i == myrank) {
-            cout << "Hello world, I have  rank " << myrank <<
-                    " out of " << nproc << endl;
-            for (int i=0; i < size; i++)
-            {
-                for (int j = 0; j < 5; j++){
-                    ofile << info_matrix(i,j) << " , " ;
-                }
-                ofile << endl;
+    if(!ofile.is_open()) {
+            ofile.open(myfilename.c_str(), ofstream::out);
+            if(!ofile.good()) {
+                cout << "Error opening file " << myfilename << ". Aborting!" << endl;
+                terminate();
             }
-
-
-        MPI_Finalize();
-        }
-
     }
 
-    ofile.close();
+    cout << "Bzz, rank " << myrank << " reporting filename " << myfilename << endl;
 
+
+
+    spinsystem mysystem(n_spins);
+
+    mysystem.go(myfilename, mcs, initial_my_temp, final_my_temp, temp_step, myrank, nproc);
+
+    cout << "Bzzz, rank " << myrank << " has finished writing to file " << myfilename << endl;
+
+    ofile.close();
+    MPI_Finalize();
 
     return 0;
 
 //    //Testing MPI------------------
-//    if (myrank==0)
-//    {
-//        cout << "HEY! We have " << nproc << " available processors" << endl;
-//    }
-//    cout << "Worker bee no " << myrank << " says the initial temperature is before 'go' " <<
-//            initial_temp << endl;
-
 //    spinsystem mysystem(n_spins);
 
 //    double time_start, time_end, total_time;

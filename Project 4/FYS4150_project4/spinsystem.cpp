@@ -18,25 +18,19 @@ spinsystem::spinsystem(int n_spins) :
 //"Body" of the class which uses the Metropolis algorithm
 //to calculate expectation values of the energy and magnetization
 
-arma::mat spinsystem::go(string outfilename, int mcs, double initial_temp,
+void spinsystem::go(string outfilename, int mcs, double initial_temp,
                     double final_temp, double temp_step, int myrank, int nproc)
 {
-    //Open the output file
-//    m_ofile.open(outfilename.c_str(), ofstream::out);
-//    m_mcs = mcs;
-//    m_finaltemp = final_temp;
+    m_mcs = mcs;
+    m_finaltemp = final_temp;
 
-
-//    if(!m_ofile.is_open()) {
-//            m_ofile.open(outfilename.c_str(), ofstream::out);
-//            if(!m_ofile.good()) {
-//                    cout << "Error opening file " << outfilename << ". Aborting!" << endl;
-//                terminate();
-//            }
-//        }
-
-    int internal_steps = (final_temp - initial_temp)/temp_step;
-    arma::mat values_myrank(internal_steps, 5, arma::fill::zeros);
+    if(!m_ofile.is_open()) {
+            m_ofile.open(outfilename.c_str(), ofstream::out);
+            if(!m_ofile.good()) {
+                    cout << "Error opening file " << outfilename << ". Aborting!" << endl;
+                terminate();
+            }
+        }
 
     m_ofile << "Totally awesome! The program is working! Now numbers: " << endl;
     m_ofile << "Temp \t Energy \t Cv \t abs(Magnetization) \t X" << endl;
@@ -47,8 +41,7 @@ arma::mat spinsystem::go(string outfilename, int mcs, double initial_temp,
     for (double temp = initial_temp; temp <= final_temp; temp += temp_step){
 
         //Reset average values
-        for (int i=0; i<5; i++)
-        {
+        for (int i=0; i<5; i++){
             m_average[i] = 0;
         }
 
@@ -74,6 +67,8 @@ arma::mat spinsystem::go(string outfilename, int mcs, double initial_temp,
             m_average[3] += M*M;
             m_average[4] += fabs(M);
 
+            //For monitoring values as functions of Monte Carlo cycles
+
 //            if (cycles >= 100 && cycles%100 ==0 ){
 //                for (int i = 0; i < 5; i++) m_average[i] /= cycles;
 //                m_ofile << cycles << " , " << m_average[0] << " , " << m_average[4] << " , " << m_no_accept << endl;
@@ -83,7 +78,7 @@ arma::mat spinsystem::go(string outfilename, int mcs, double initial_temp,
         }
 
 
-//        // print results to file
+//        //Eventuelt: print results to file
 //        for (int i = 0; i < 5; i++){
 //            MPI_Reduce(&m_average[i], &total_exp[i], 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 //        }
@@ -92,16 +87,15 @@ arma::mat spinsystem::go(string outfilename, int mcs, double initial_temp,
 //            output(mcs*nproc, temp, total_exp);
 //        }
 
-//        m_average[i] /= m_mcs;
-//        output(mcs, temp);
+        for (int i =0; i<5; i++) m_average[i] /= m_mcs;
+        output(mcs, temp);
+
 //    for (int i=0; i<5; i++)
 //    {
 //        values_myrank(temp - initial_temp, i);
 //    }
 
     }
-//    return values_myrank;
-    //m_ofile.close();
 }
 
 //set up spin matrix and initial magnetization
@@ -176,16 +170,15 @@ void spinsystem::Metropolis(double& E, double &M, double *w, double temp){
 }
 
 //Function that writes data to output file
-void spinsystem::output(int mcs, double temperature, arma::vec avg){
+void spinsystem::output(int mcs, double temperature){
     //Per spin
     double temp = temperature;
-    for (int i = 0; i < 5; i++) avg[i] /= m_mcs;
 
-    double Energy = avg[0];
-    double Energy2 = avg[1];
-    double Magnetization = avg[2];
-    double Magnetization2 = avg[3];
-    double Magnetization_abs = avg[4];
+    double Energy = m_average[0];
+    double Energy2 = m_average[1];
+    double Magnetization = m_average[2];
+    double Magnetization2 = m_average[3];
+    double Magnetization_abs = m_average[4];
     double E_variance = (Energy2 - Energy*Energy)/(m_n_spins*m_n_spins);
     double M_variance = (Magnetization2 - Magnetization_abs*Magnetization_abs)/(m_n_spins*m_n_spins);
     double Cv = (1./(temp*temp))*E_variance;
