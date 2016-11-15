@@ -7,6 +7,40 @@
 
 using namespace std;
 
+void calc_PE()
+    {
+
+    int myrank = 0;
+    int nproc = 1;
+
+    int n_spins = 20;
+    int mcs = 1E5;
+    double itemp1 = 1.0;
+    double ftemp1 = 1.0;
+    double itemp24 = 2.4;
+    double ftemp24 = 2.4;
+
+    double temp_step = 1.0;
+
+    ofstream ofile1;
+    ofstream ofile24;
+    string filename1= "PE1.txt";
+    string filename24 = "PE24.txt";
+
+    spinsystem mysystem(n_spins);
+
+    if(!ofile1.is_open()) {
+            ofile1.open(filename24.c_str(), ofstream::out);
+            if(!ofile1.good()) {
+                cout << "Error opening file " << filename24 << ". Aborting!" << endl;
+                terminate();
+            }
+    }
+
+    mysystem.go(filename24, mcs, itemp24, ftemp24, temp_step, myrank, nproc);
+    ofile1.close();
+}
+
 
 int main(int argc, char* argv[])
 {
@@ -44,9 +78,7 @@ int main(int argc, char* argv[])
     cout << "Worker bee number " << myrank << " of " << nproc << " will work from temp " <<
             initial_my_temp << " to " << final_my_temp << endl;
 
-
     if (myrank == nproc -1) initial_my_temp += temp_step;
-
 
     //Open one file per node
     ostringstream oss;
@@ -65,7 +97,8 @@ int main(int argc, char* argv[])
 
     cout << "Bzz, rank " << myrank << " reporting filename " << myfilename << endl;
 
-
+//    double time_start, time_end, total_time;
+//    time_start = MPI_Wtime();
 
     spinsystem mysystem(n_spins);
 
@@ -74,19 +107,6 @@ int main(int argc, char* argv[])
     cout << "Bzzz, rank " << myrank << " has finished writing to file " << myfilename << endl;
 
     ofile.close();
-    MPI_Finalize();
-
-    return 0;
-
-//    //Testing MPI------------------
-//    spinsystem mysystem(n_spins);
-
-//    double time_start, time_end, total_time;
-//    time_start = MPI_Wtime();
-
-//    //Run the simulation
-//    //char outfilename, mcs, initial_temp, final_temp, temp_step
-//    mysystem.go(filename, mcs, initial_temp, final_temp, temp_step, myrank, nproc);
 
 //    time_end = MPI_Wtime();
 //    total_time = time_end - time_start;
@@ -96,12 +116,22 @@ int main(int argc, char* argv[])
 //                nproc << endl;
 //    }
 
-//    MPI_Finalize();
+    MPI_Finalize();
 
-
-
+//    calc_PE();
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

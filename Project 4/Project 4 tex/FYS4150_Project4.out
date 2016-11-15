@@ -1,8 +1,10 @@
-\BOOKMARK [1][-]{section.1}{GJENST\305R}{}% 1
-\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
-\BOOKMARK [1][-]{section.3}{The Ising model \(ch. 13\)}{}% 3
-\BOOKMARK [1][-]{section.4}{The Metropolis algorithm \(ch. 12\)}{}% 4
-\BOOKMARK [1][-]{section.5}{2x2 lattice}{}% 5
-\BOOKMARK [1][-]{section.6}{20x20 lattice}{}% 6
-\BOOKMARK [1][-]{section.7}{Analyzing the probability distribution}{}% 7
-\BOOKMARK [1][-]{section.8}{Sources}{}% 8
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Method}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{The Ising model}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Analytical example: The 2x2 lattice}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{System evolution}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Phase transitions}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Implementation}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Metropolis algorithm}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Parallelizing the code}{}% 9
+\BOOKMARK [1][-]{section.5}{Concluding remarks}{}% 10

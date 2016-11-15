@@ -19,8 +19,7 @@ spinsystem::spinsystem(int n_spins) :
 //to calculate expectation values of the energy and magnetization
 
 void spinsystem::go(string outfilename, int mcs, double initial_temp,
-                    double final_temp, double temp_step, int myrank, int nproc)
-{
+                    double final_temp, double temp_step, int myrank, int nproc){
     m_mcs = mcs;
     m_finaltemp = final_temp;
 
@@ -56,6 +55,7 @@ void spinsystem::go(string outfilename, int mcs, double initial_temp,
         //Initialize array for expectation values
         initialize(E, M, temp);
 
+
         //Start Monte Carlo computation
         for (int cycles = 1; cycles <= m_mcs; cycles++){
             Metropolis(E, M, w, temp);
@@ -67,6 +67,8 @@ void spinsystem::go(string outfilename, int mcs, double initial_temp,
             m_average[3] += M*M;
             m_average[4] += fabs(M);
 
+//            m_ofile << E << endl;
+
             //For monitoring values as functions of Monte Carlo cycles
 
 //            if (cycles >= 100 && cycles%100 ==0 ){
@@ -77,23 +79,8 @@ void spinsystem::go(string outfilename, int mcs, double initial_temp,
 //            }
         }
 
-
-//        //Eventuelt: print results to file
-//        for (int i = 0; i < 5; i++){
-//            MPI_Reduce(&m_average[i], &total_exp[i], 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-//        }
-
-//        if (myrank == 0){
-//            output(mcs*nproc, temp, total_exp);
-//        }
-
         for (int i =0; i<5; i++) m_average[i] /= m_mcs;
         output(mcs, temp);
-
-//    for (int i=0; i<5; i++)
-//    {
-//        values_myrank(temp - initial_temp, i);
-//    }
 
     }
 }
@@ -185,6 +172,6 @@ void spinsystem::output(int mcs, double temperature){
     double X = (1./temp)*M_variance;
 
     //Print to an outfile
-    m_ofile << temp << " \t " << Energy/(m_n_spins*m_n_spins) << " \t " << Cv/(m_n_spins*m_n_spins) << " \t "
-            << Magnetization_abs/(m_n_spins*m_n_spins) << " \t " << X/(m_n_spins*m_n_spins) <<endl;
+    m_ofile << temp << " \t " << Energy/(m_n_spins*m_n_spins) << " \t " << Cv << " \t "
+            << Magnetization_abs/(m_n_spins*m_n_spins) << " \t " << X <<endl;
 }

@@ -63,7 +63,6 @@ int main()
         terminate();
     }
 
-
     spinsystem mysystem(n_spins);
     mysystem.go(outfilename, n_cycl, initial_temp, final_temp, temp_step);
 
@@ -80,14 +79,9 @@ int main(int argc, char* argv[])
 {
     int nproc;
     int myrank;
-    string filename;
-    int N_spins;
-    int mcs;
-    double initial_temp;
-    double final_temp;
-    double temp_step;
 
-    // MPI initializations
+    ofstream ofile;
+    string filename=argv[1];
 
     MPI_Init (&argc, &argv);
     MPI_Comm_size (MPI_COMM_WORLD, &nproc);
@@ -100,30 +94,49 @@ int main(int argc, char* argv[])
     }
 
     //Tell all nodes about initial variables
+    int n_spins = atoi(argv[2]);
+    int mcs = atoi(argv[3]);
+    double initial_temp = atof(argv[4]);
+    double final_temp = atof(argv[5]);
+    double temp_step = atof(argv[6]);
 
-    filename=argv[1];
-    N_spins = atoi(argv[2]);
-    mcs = atoi(argv[3]);
-    initial_temp = atof(argv[4]);
-    final_temp = atof(argv[5]);
-    temp_step = atof(argv[6]);
+    //Testing different method
 
-    cout << "Worker bee no " << myrank << " says the initial temperature is before 'go' " <<
-            initial_temp << endl;
+    double dT = (final_temp - initial_temp) / (double) nproc;
 
-    //Testing MPI------------------
-    if (myrank==0)
-    {
-        cout << "HEY! We have " << nproc << " available processors" << endl;
-    }
+    //Assign temperatures to nodes
+    double initial_my_temp = initial_temp + myrank*dT;
+    double final_my_temp = initial_my_temp + dT - temp_step;
 
-    cout << "Hello world, I have rank " << myrank << " out of " << nproc << endl;
+    cout << "Worker bee number " << myrank << " of " << nproc << " will work from temp " <<
+            initial_my_temp << " to " << final_my_temp << endl;
+
+    //Open one file per node
+
+    ostringstream oss;
+        oss << filename << n_spins << "_rank" << myrank << ".txt";
+    string myfilename = oss.str();
+
+    cout << "Bzz, rank " << myrank << " reporting filename " << myfilename << endl;
 
     MPI_Finalize();
-    return 0;
 
+    return 0;
 }
 
 
+//Output from terminal
+
+ mpirun -n 4 ./main.x prettywoman 20 100000 2.0 2.3 0.01
+Worker bee number 0 of 4 will work from temp 2 to 2.065
+Worker bee number 1 of 4 will work from temp 2.075 to 2.14
+Worker bee number 2 of 4 will work from temp 2.15 to 2.215
+Worker bee number 3 of 4 will work from temp 2.225 to 2.29
+Bzz, rank 0 reporting filename prettywoman20_rank0.txt
+Bzz, rank 2 reporting filename prettywoman20_rank2.txt
+Bzz, rank 3 reporting filename prettywoman20_rank3.txt
+Bzz, rank 1 reporting filename prettywoman20_rank1.txt
+
+---------------------End-------------------------------------------------
 
 

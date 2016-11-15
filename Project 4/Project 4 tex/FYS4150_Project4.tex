@@ -10,8 +10,10 @@
 \usepackage{amsfonts}
 \usepackage{bbold}
 \usepackage{braket}
+\usepackage{cite}
 \usepackage{textcomp}
 \usepackage{subcaption}
+\usepackage{float}
 
 \usepackage{geometry}
 \geometry{legalpaper, margin=1.2in}
@@ -24,14 +26,9 @@
 
 \marginparwidth = 10pt
 
-
-\section{GJENSTÅR}
-
-\begin{itemize}
-\item Finn histogram av ENERGI, ikke forventningsverdi!!! 4d
-\item Test verdiene med variansen; hva slags underliggende sannsynlighetsfordeling er dette?
-\item parallelliser!
-\end{itemize}
+\begin{abstract}
+This is an abstract. The source code and benchmarks can be found on GitHub: \url{https://github.com/ingridavh/compphys1/tree/master/Project%204/FYS4150_project4}
+\end{abstract}
 
 
 \section{Introduction}
@@ -40,49 +37,86 @@
 The aim of this project is to study the Ising model in two dimensions.
 \end{flushleft}
 
-\section{The Ising model (ch. 13)}
+\section{Method}
+
+\subsection{The Ising model}
 
 \begin{flushleft}
-The Ising model describes pahse transitions in two dimensions. At a given critical temperature the model exhibits a phase transition from one magnetic moment (spin) to a phase with zero magnetization. Without an externally applied field, this is described as
+The Ising model describes phase transitions in two dimensions. At a given critical temperature the model exhibits a phase transition from one magnetic moment (spin) to a phase with zero magnetization. Without an externally applied field, this is described as
 
 \begin{equation}
 E = -J \sum^N_{<kl>} s_k s_l
 \end{equation}
 
 where $s_k = \pm 1$, $N$ is the total number of spins and $J$ is a coupling constant.
-\end{flushleft}
-
-\section{The Metropolis algorithm (ch. 12)}
-
-\begin{flushleft}
-
-\end{flushleft}
 
 
-\section{2x2 lattice}
-
-\begin{flushleft}
-We consider a $2 \times 2$-lattice, meaning $L = 2$. The spins have 16 conifgurations. The probability distribution is given by
+The probability distribution for our system is given by
 
 \begin{equation}
 P_i(\beta) = \frac{e^{- \beta E_i}}{Z}
 \end{equation}
 
-where $\beta = \frac{1}{kT}$ is the inverse temperature, $k$ is te Boltzmann constant, $E_i$ is the energy of a state $i$. The partition function is 
+where $\beta = \frac{1}{kT}$ is the inverse temperature, $k$ is te Boltzmann constant, $E_i$ is the energy of a state $i$. $Z$ is the partition function given by
 
 \begin{equation}\label{Partition function}
 Z = \sum_{i=1}^M e^{- \beta E_i}
 \end{equation}
 
-\begin{figure}
+
+\end{flushleft}
+
+\begin{flushleft}
+
+When $L$ becomes very large this fuction becomes difficult to compute since it requires summing over \textit{all} states. Luckily, the Metropolis algorith, which is described in the next section, only considers \textit{ratios} between probabilities, which means that $Z$ is cancelled
+
+\begin{align*}
+\text{Metropolis } \rightarrow  &\frac{P_s}{P_t} = \frac{e^{-(\beta E_s)}}{e^{-(\beta E_k)}}
+= e^{-\beta(E_s - E_k)}
+= e^{-\beta \Delta E} 
+\end{align*}
+
+\end{flushleft}
+
+\subsection*{Expectation values}
+\begin{flushleft}
+
+The expectation values of the system can all be derived from the partition function using thermodynamic identities. The ones we will use in this project are as follows. For an observable $B$ the general expressions for the expectation value $\braket{B}$ and variance $\sigma_B^2$ are
+
+\begin{equation}
+\braket{B} = \frac{1}{Z} \sum_i^M P_i e^{- \beta E_i}
+\end{equation} 
+
+\begin{equation}
+\sigma_B^2 = \braket{B^2} - \braket{B}^2 
+\end{equation}
+
+For the Ising model it is interesting to calculate the specific heat capacity $C_V$ and susceptibility $X$
+
+\begin{equation}
+C_V = \frac{1}{k_B T^2} (\braket{E^2} - \braket{E}^2)
+\end{equation}
+
+\begin{equation}\label{X exp}
+\chi = \frac{1}{k_B T} (\braket{\mathcal{M}^2} - \braket{\mathcal{M}}^2)
+\end{equation}
+
+\end{flushleft}
+
+\subsection{Analytical example: The 2x2 lattice}
+
+\begin{flushleft}
+We consider a $2 \times 2$-lattice ($L = 2$) which consists of $4$ spins. This system has 16 configurations, which are shown alongside a table of possible energies in Fig. (\ref{fig:Show spins}). 
+
+\begin{figure}[H]
 \centering
-\begin{subfigure}{.4\textwidth}
+\begin{subfigure}{.3\textwidth}
   \centering
   \includegraphics[width=\linewidth]{spins_2by2.png}
   \caption{Different spin configurations}
   \label{fig:sub1}
 \end{subfigure}%
-\begin{subfigure}{.6\textwidth}
+\begin{subfigure}{.7\textwidth}
   \centering
   \begin{tabular}{|c|l|l|l|}
 \hline
@@ -101,107 +135,67 @@ Z = \sum_{i=1}^M e^{- \beta E_i}
   \label{fig::spins 2 by 2}
 \end{subfigure}
 \caption{Spins for a $2 \times 2$-lattice with periodic boundary conditions.}
-\label{fig:BPM no steering}
+\label{fig:Show spins}
 \end{figure}
 
-
-
 \end{flushleft}
 
 \begin{flushleft}
+For such a small $L$ the analytic expressions for the expectation values can be calculated. Using expressions (\ref{E exp})-(\ref{X exp}) and the energies from table (\ref{fig::spins 2 by 2}) we find
 
-This fuction is difficult to compute since we need all states. The Metropolis algorithm only considers \textit{ratios} between probabilities, so we don't need to calculate this (luckily!)
+\subsubsection*{The partition function}
 
 \begin{align*}
-\text{Metropolis } \rightarrow  &\frac{P_s}{P_t} = \frac{e^{-(\beta E_s)}}{e^{-(\beta E_k)}}
-= e^{-\beta(E_s - E_k)}
-= e^{-\beta \Delta E} 
+Z(\beta) &= \sum_{i=1}^M e^{-(\beta E_i)}
+= 2 e^{8J \beta} + 2 e^{-8J \beta} + 12
+= 4(3 + \cosh (8 J \beta))\\
 \end{align*}
 
 
-\end{flushleft}
-
-\begin{flushleft}
-
-The partition function in our case is
+\subsubsection*{The energy expectation value}
 
 \begin{align*}
-Z(\beta) &= \sum_{i=1}^M e^{-(\beta E_i)}\\
-&= 2 e^{8J \beta} + 2 e^{-8J \beta} + 12\\
-&= 4(3 + \cosh (8 J \beta))\\
+\braket{E} & = - \frac{\partial \ln Z}{\partial \beta}= - \frac{\partial \ln Z}{\partial Z} \frac{\partial Z}{\partial \beta} = - \frac{1}{Z} \frac{\partial Z}{\partial \beta}
+= - 8J \frac{\sinh(8J \beta)}{3 + \cosh(8J \beta)}  
 \end{align*}
 
-
-The energy expectation value
-
-\begin{align*}
-\braket{E} & = - \frac{\partial \ln Z}{\partial \beta}= - \frac{\partial \ln Z}{\partial Z} \frac{\partial Z}{\partial \beta} = - \frac{1}{Z} \frac{\partial Z}{\partial \beta}\\
-& = - \frac{4 \cdot 8J \sinh(8J \beta)}{4(3 + \cosh (8 J \beta))}\\
-&= - 8J \frac{\sinh(8J \beta)}{3 + \cosh(8J \beta)}  
-\end{align*}
-
-with the corresponding variance
+\subsubsection*{The energy variance}
 
 \begin{align*}
 \sigma^2 &= \braket{E^2} - \braket{E}^2 = \frac{1}{Z} \sum_{i=1}^M E_i^2 e^{- \beta E_i} - \Big(
 \frac{1}{Z} \sum_{i=1}^M E_i e^{- \beta E_i} 
-\Big)^2\\
- &= \frac{8^2 J^2  2 e^{8J \beta} + 8^2 J^2 2 e^{-8J \beta} + 0 \cdot 12}{ 4(3 + \cosh (8 J \beta))}
-- \Big(  - 8J \frac{\sinh(8J \beta)}{3 + \cosh(8J \beta)}  \Big)^2\\
-&= 32J^2 \frac{ 2 \cosh (8J \beta)}{ (3 + \cosh (8 J \beta))}
-- 64 J^2 \frac{\sinh^2(8J \beta)}{(3 + \cosh(8J \beta))^2}\\
-&= J^264 \frac{\cosh (8J \beta)(3 + \cosh (8 J \beta)) - \sinh^2(8J \beta)}{ (3 + \cosh (8 J \beta))^2}\\
-&= J^264 \frac{
-3\cosh (8J \beta) + \cosh^2 (8 J \beta)
- - \sinh^2(8J \beta)}{ (3 + \cosh (8 J \beta))^2}\\
- &= J^264 \frac{
+\Big)^2 = J^264 \frac{
 3\cosh (8J \beta) + 1}{ (3 + \cosh (8 J \beta))^2}\\
 \end{align*}
 
-The specific heat capacity 
-
-\begin{equation}
-C_V = \frac{1}{k_B T^2} (\braket{E^2} - \braket{E}^2)
-\end{equation}
+\subsubsection*{The specific heat capacity} 
 
 \begin{align*}
-C_V &= \frac{64J^2}{k_B T^2}
+C_V &= \frac{1}{k_B T^2} (\braket{E^2} - \braket{E}^2) = \frac{64J^2}{k_B T^2}
 \frac{3\cosh (8J \beta) + 1}{ (3 + \cosh (8 J \beta))^2}
 \end{align*}
 
 
-The mean absolute value of the magnetic moment (mean magnetization)
+\subsubsection*{The mean absolute value of the magnetic moment (mean magnetization)}
 
 \begin{align*}
 \braket{|\mathcal{M}|} 
-&= \frac{1}{Z} \sum_i^M |\mathcal{M}_i| e^{- \beta E_i}\\
-&= \frac{1}{4(3 + \cosh (8 J \beta))} (4e^{8J \beta} + 4 \cdot 2 e^0 + 2 \cdot 4 e^0 +4 e^{8 J \beta})\\
-& =2 \frac{e^{8J \beta} + 2 }{3 + \cosh (8 J \beta)} \\
+&= \frac{1}{Z} \sum_i^M |\mathcal{M}_i| e^{- \beta E_i} =2 \frac{e^{8J \beta} + 2 }{3 + \cosh (8 J \beta)} \\
 \end{align*}
 
-
-
-The susceptibility
-
-\begin{equation}
-\chi = \frac{1}{k_B T} (\braket{\mathcal{M}^2} - \braket{\mathcal{M}}^2)
-\end{equation}
+\subsubsection*{The susceptibility}
 
 \begin{align*}
-\chi &= \frac{1}{k_B T} (\frac{1}{Z} \sum_i^M \mathcal{M}_i^2 e^{- \beta E_i}- \Big(\frac{1}{Z} \sum_i^M \mathcal{M}_i e^{- \beta E_i}\Big)^2)\\
-&= \frac{1}{k_B T} 
-\frac{(16e^{8J \beta} + 4 \cdot 4 e^0 + 4 \cdot 4 e^0 + 16 e^{8J \beta})}{4(3 + \cosh (8 J \beta))} \\
-&= \frac{1}{k_B T} 
+\chi &= \frac{1}{k_B T} (\frac{1}{Z} \sum_i^M \mathcal{M}_i^2 e^{- \beta E_i}- \Big(\frac{1}{Z} \sum_i^M \mathcal{M}_i e^{- \beta E_i}\Big)^2)
+= \frac{1}{k_B T} 
 \frac{8e^{8J \beta} +8}{(3 + \cosh (8 J \beta))} \\
 \end{align*}
 
 \end{flushleft}
 
 \begin{flushleft}
-The analytical values (calculated in Python) are found in table (\ref{fig:: analytical}).
 
-\begin{figure}[h]
-\label{fig:: analytical}
+\begin{figure}[H]
 \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -211,21 +205,105 @@ $5973.917$ & $-7.9839$ & $3.9946$ & $0.1283$ & $15.9732$\\
 \hline
 \end{tabular}
 \caption{Analytical values of the expectation values. Here $J=1$, $k=1$, $T=1.0$ K.}
+\label{Fig::analytical}
 \end{figure}
+
+The analytical values (calculated in Python) are found in table (\ref{Fig::analytical}). 
+\end{flushleft}
+
+\subsection{System evolution}
+
+\begin{flushleft}
+We've intended to illustrate this evolution of the system in Fig. (\ref{fig::illustration}). The system is here a ball hiking on a hill. It begins in the most probable state, i.e. the one with the highest number of different configurations, in this case $E=0$. This is an unstable maximum, so the ball is bound to fall to one side or the other. Both sides have equal probability. At first the hill is very steep and the ball rolls down, as it approaches the ground the hills becomes less steep and eventually the ball can lie still on the ground ($E=-800$). It is very unlikely that the ball should start rolling upwards, so this is a stable minimum from which we see little deviation. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{gaussian_draw_t.png}
+\caption{Expectation configuration distribution}
+\label{fig::illustration}
+\end{figure}
+
+\end{flushleft}
+
+
+
+\subsection{Phase transitions}
+
+\begin{flushleft}
+In thermodynamics, a \textit{critical point} is a point where for example the temperature $T_C$ and pressure $P_c$ allow different phases of a system to coexist. An example is the liquid-vapor critical point where water can be in either or both states \cite{schroeder2000introduction}. The \textit{correlation length} is the length scale at which the overall properties of a material start to differ from its bulk properties. For this system the mean magnetization is the order parameter, and so at the critical temperature it approaches zero with an infinite slope.
 \end{flushleft}
 
 \begin{flushleft}
-For $mcs = 1000000$ cycles the results are very similar to the analytic results. 
+From the knowledge of the slope of $\braket{|\mathcal{M}|}$ at $T_C$ we can find an expression for the mean magnetization
+
+\begin{equation}
+\braket{\mathcal{M}(T)} \sim (T-T_C)^{\beta}
+\end{equation}
+
+where $\beta=1/8$. When $T$ is close to $T_C$ the correlation length is expected to be close to the spacing of $T$. The discontinuous behaviour around $T_C$ is characterized by
+
+\begin{equation}
+\xi(T) \sim |T_C -T|^{- \nu}
+\end{equation}
 \end{flushleft}
 
 
-\section{20x20 lattice}
+
+\section{Implementation}
+
+\subsection{Metropolis algorithm} 
 
 \begin{flushleft}
-Setting temperature to $T=1$ and running a $20 \times 20$ lattice for a different number of Monte Carlo cycles ranging from $1$ to $10^{-7}$. We see from figure (\ref{fig:cms-EM T=1}) that for $1$ cycle energy and magnetization are exactly -800 and 400. This is because when one random spin is flipped the probability of keeping this energy configuration is proportional to $e^{-8} \simeq 0.0003$. As we add more cycles, however, the probability of some spins using their new configuration becomes larger. Both expectation values seem to stabilize at around $10^5$.
+The Metropolis algorithm is Markov chain Monte Carlo method for calculating expectation values from a system where obtaining random distributions is difficult. The algorithm picks out a random candidate, in our case one spin in the spin system, and flips it. Then, based on some condition being met the new configuration (flipped spin) is either accepted or denied. Each iteration therefore depends on the previous state of the system, a so called Markov chain. The algorithm is run for $N$ Monte Carlo cycles.
+\end{flushleft}
+
+\begin{flushleft}
+In this project the acceptance condition comes from the new value of the energy. The algorithm is 
+
+\begin{itemize}
+\item Set the system in a random initial configuration.
+
+\item Flip one random spin, and calculate $\Delta E$.
+
+\item If $\Delta E \leq 0$ accept the new configuration.
+
+\item If $e^{-\Delta E/T} \leq r$, for a random $r \in [0,1]$, accept the configuration.
+
+\item If the new spin is not accepted, flip the spin back.
+
+\item Update expectation values.
+\end{itemize}
+
+And the end of the calculation the expectation values are divided by the number of Monte Carlo cycles.
+
+\end{flushleft}
+
+\section{Parallelizing the code}
+
+\begin{flushleft}
+To run larger simulations than a $20 \times 20$-lattice we parallelized the code using the $MPI$ library in c++. The temperature interval was split up into $4$ equally large blocks, and 4 processors executed the program for one blok and wrte the results to file. To investigate the efficiency we looked at the tasks in the terminal. During the simulation all processors were working $100$ \%, as can be seen in the screenshot below.
+
+\includegraphics[scale=0.5]{show_all_nodes.png}\label{efficiency}
+
+\end{flushleft}
+
+\section*{Results}
+
+\subsection*{2x2 lattice}
+
+\begin{flushleft}
+For $1000000$ Monte Carlo cycles the results from the simulations are very similar to the analytic results found in table (\ref{Fig::analytical}). 
+\end{flushleft}
 
 
-\begin{figure}
+
+\subsection*{20x20 lattice}
+
+\begin{flushleft}
+Fixing the temperature at $T=1$ we ran a $20 \times 20$ lattice for a different number of Monte Carlo cycles ranging from $1$ to $10^{-7}$. Fig. (\ref{fig:cms-EM T=1}) shows the result for a system initially in the ground state (all spins up). After $1$ cycle energy and magnetization are exactly -800 and 400. When one random spin is flipped in the ground state the probability of keeping this energy configuration is proportional to $e^{-8} \simeq 0.0003$. As we add more cycles, however, the probability of some spins using their new configuration becomes larger since the condition is measured against a random number $r \in [0,1]$. Both expectation values seem to stabilize at around $10^5$.
+
+
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -239,16 +317,15 @@ Setting temperature to $T=1$ and running a $20 \times 20$ lattice for a differen
   \caption{Expectation value magnetization.}
   \label{fig:sub2}
 \end{subfigure}
-\caption{$20 \times 20$-lattice with temperature $T=1$, ordered initial configuration.}
+\caption{$20 \times 20$-lattice with temperature $T=1$, ordered initial configuration, $10^4$ Monte Carlo simulations.}
 \label{fig:cms-EM T=1}
 \end{figure}
 
 \end{flushleft}
 
 \begin{flushleft}
-We also look at a system that begins with a random distribution of spins. For a $20 \times 20$-lattice this will probably begin with energy $0$ and magnetization $0$. It will the 'tip' to one of the sides, and converge towards $-800$ and $400$. The results are shown in fig (\ref{fig:cms-EM T=1 random}).
-
-\begin{figure}
+We consider a corresponding system whose intial state is a random distribution of spins. For a $20 \times 20$-lattice the most probable initial state has energy $0$ and magnetization $0$. The system will then 'tip' to one of the sides (all spins pointing up or all spins pointing down), and converge towards $-800$ and $400$. The results of the simulation are shown in Fig. (\ref{fig:cms-EM T=1 random}). 
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -262,22 +339,16 @@ We also look at a system that begins with a random distribution of spins. For a 
   \caption{Expectation value magnetization.}
   \label{fig:sub2}
 \end{subfigure}
-\caption{$20 \times 20$-lattice with temperature $T=1$, random initial configuration. Used $10000$ points.}
+\caption{$20 \times 20$-lattice with temperature $T=1$, random initial configuration, $10^4$ Monte Carlo simulations.}
 \label{fig:cms-EM T=1 random}
 \end{figure}
 \end{flushleft}
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{gaussian_draw_t.png}
-\caption{Expectation configuration distribution}
-\end{figure}
 
 
 \begin{flushleft}
 We also run the program for temperature $T=2.4$. The stable energy and magnetization are now smaller in norm. 
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -291,12 +362,12 @@ We also run the program for temperature $T=2.4$. The stable energy and magnetiza
   \caption{Expectation value magnetization.}
   \label{fig:sub2}
 \end{subfigure}
-\caption{$20 \times 20$-lattice with temperature $T=2.4$, random initial configuration. Used $10000$ points.}
+\caption{$20 \times 20$-lattice with temperature $T=2.4$, random initial configuration, $10^4$ Monte Carlo simulations.}
 \label{fig:cms-EM T=2.4 random}
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -310,34 +381,83 @@ We also run the program for temperature $T=2.4$. The stable energy and magnetiza
   \caption{Expectation value magnetization.}
   \label{fig:sub2}
 \end{subfigure}
-\caption{$20 \times 20$-lattice with temperature $T=2.4$, ordered initial configuration. Used $10000$ points.}
+\caption{$20 \times 20$-lattice with temperature $T=2.4$, ordered initial configuration, $10^4$ Monte Carlo simulations.}
 \label{fig:cms-EM T=2.4 random}
 \end{figure}
 \end{flushleft}
 
 
-\section{Analyzing the probability distribution}
+\subsection*{Analyzing the energy distribution}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{P(E).pdf}
+\caption{Histogram of the energy expectation values after the system is stable $mcs \simeq 10^4$, to $mcs= 10^5$ for temoperatures $T=1.0$ and $T=2.4$. Note that both $x$-axes show energy, but vary in magnitude. Both $y$-axes show frequency of the given energy.}
+\label{fig::P(E)}
+\end{figure}
 
 \begin{flushleft}
-We find the probability of a state by counting the number of states in an energy $E$, and dividing by the total number of configurations
+The probability of an energy state can be found by counting the number of states in an energy state $E$, and dividing by the total number of configurations
 
 \begin{equation}
 P(E) = \frac{N(E)}{cms}
 \end{equation}
 
-where $cms$ is the number of Monte Carlo cycles used. We see from the results in Fig. (\ref{fig::P(E)}) that the probability distribution is much narrower for $T=1.1$.
-
-\begin{figure}
-\centering
-\includegraphics[scale=0.7]{P(E).pdf}
-\label{fig::P(E)}
-\end{figure}
-
-After running $10^5$ monte carlo cycles, the variance is for $1T$: $ \sigma_E = -3.58476$, for $T=2.4$: $\sigma_E = 3161.7$.
+where $cms$ is the number of Monte Carlo cycles used. In  Fig. (\ref{fig::P(E)}) we have plottet the frequency of different energy \textit{expectation values} to analyze the system. The energy distribution is much narrower for $T=1.1$, as we can see from the figure. There is clearly a peak value around $-798$. Note that the x-axes for the histograms are very different in order of magnitude. For $T=2.4$ there is a peak around $-493-492$, as we would expect from the previous results. The energy variances coincide with these distribution, they are $ \sigma_E = 23$ for $1T$ and $\sigma_E = 3251$ for $T=2.4$.
 
 \end{flushleft}
 
+\begin{flushleft}
+The higher temperature allows the energy to vary more, as is apparent from the expression of the condition for accepting a spin-flip
 
-\section{Sources}
+\begin{equation*}
+\text{condition: } \frac{1}{e^{\Delta E/T}} 
+\end{equation*}
+
+As $T$ increases, so does the condition. Therefore the probability that $e^{-\Delta E/T}$ is larger than a random number $r$ is higher, and the system is more susceptible to change. 
+
+
+
+
+
+\end{flushleft}
+
+\subsection*{Phase transitions}
+
+As the lattice spacing increases the slope of the mean magnetization versus temperature approaches infinite towards zero around the point $T=2.7$. For $N=140$ we also get a spike in all observables around $T=2.08$. 
+
+\begin{flushleft}
+In order to study the phase transitions we ran the simulation with $10^6$ Monte Carlo cycles for $L=40,60,100,140$. The results are found in Fig. (\ref{fig::exp 40}) and Fig. (\ref{fig::exp 60}).
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{N40_MPI_mcsE6.pdf}
+\caption{Evolution of expectation values as a function of temperature for a $40 \times 40$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.}
+\label{fig::exp 40}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{N60_MPI_mcsE6.pdf}
+\caption{Evolution of expectation values as a function of temperature for a $60 \times 60$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.}
+\label{fig::exp 60}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{N140_MPI_mcsE6.pdf}
+\caption{Evolution of expectation values as a function of temperature for a $140 \times 140$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.}
+\end{figure}
+
+\end{flushleft}
+
+\section{Concluding remarks}
+
+
+\nocite{*}
+
+\bibliography{referanser}{}
+\bibliographystyle{plain}
 
 \end{document}
