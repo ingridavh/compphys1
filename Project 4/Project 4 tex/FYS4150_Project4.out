@@ -2,9 +2,11 @@
 \BOOKMARK [1][-]{section.2}{Method}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{The Ising model}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Analytical example: The 2x2 lattice}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{System evolution}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Evolution of the system}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.4}{Phase transitions}{section.2}% 6
 \BOOKMARK [1][-]{section.3}{Implementation}{}% 7
 \BOOKMARK [2][-]{subsection.3.1}{Metropolis algorithm}{section.3}% 8
 \BOOKMARK [1][-]{section.4}{Parallelizing the code}{}% 9
-\BOOKMARK [1][-]{section.5}{Concluding remarks}{}% 10
+\BOOKMARK [2][-]{subsubsection.4.0.1}{Number of accepted configurations}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Concluding remarks}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Phase transitions}{section.5}% 12

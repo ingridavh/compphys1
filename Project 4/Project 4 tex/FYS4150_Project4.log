@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  15 NOV 2016 22:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  16 NOV 2016 02:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -959,72 +959,73 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<spins_2by2.png, id=73, 195.73125pt x 407.5225pt>
+<spins_2by2.png, id=77, 195.73125pt x 407.5225pt>
 File: spins_2by2.png Graphic file (type png)
  <use spins_2by2.png>
-Package pdftex.def Info: spins_2by2.png used on input line 115.
+Package pdftex.def Info: spins_2by2.png used on input line 122.
 (pdftex.def)             Requested size: 132.25557pt x 275.37672pt.
 
-
-LaTeX Warning: Reference `E exp' on page 2 undefined on input line 144.
+Overfull \hbox (61.32764pt too wide) in paragraph at lines 178--178
+[]  
+ []
 
 [2 <./spins_2by2.png (PNG copy)>]
-<gaussian_draw_t.png, id=89, 794.97pt x 562.1pt>
+<gaussian_draw_t.png, id=94, 794.97pt x 562.1pt>
 File: gaussian_draw_t.png Graphic file (type png)
  <use gaussian_draw_t.png>
-Package pdftex.def Info: gaussian_draw_t.png used on input line 221.
+Package pdftex.def Info: gaussian_draw_t.png used on input line 207.
 (pdftex.def)             Requested size: 397.48402pt x 281.04932pt.
 
-[3 <./gaussian_draw_t.png>]
-<show_all_nodes.png, id=100, 805.0075pt x 127.47626pt>
+[3] [4 <./gaussian_draw_t.png>]
+<show_all_nodes.png, id=114, 805.0075pt x 127.47626pt>
 File: show_all_nodes.png Graphic file (type png)
 
 <use show_all_nodes.png>
-Package pdftex.def Info: show_all_nodes.png used on input line 286.
+Package pdftex.def Info: show_all_nodes.png used on input line 312.
 (pdftex.def)             Requested size: 402.50278pt x 63.73796pt.
- [4 <./show_all_nodes.png>]
-<exp_E_T1_ordered_.pdf, id=111, 578.16pt x 397.485pt>
+ [5 <./show_all_nodes.png>]
+<exp_E_T1_ordered_.pdf, id=127, 578.16pt x 397.485pt>
 File: exp_E_T1_ordered_.pdf Graphic file (type pdf)
 
 <use exp_E_T1_ordered_.pdf>
-Package pdftex.def Info: exp_E_T1_ordered_.pdf used on input line 310.
+Package pdftex.def Info: exp_E_T1_ordered_.pdf used on input line 358.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
 
-<exp_M_T1_ordered_.pdf, id=112, 578.16pt x 397.485pt>
+<exp_M_T1_ordered_.pdf, id=128, 578.16pt x 397.485pt>
 File: exp_M_T1_ordered_.pdf Graphic file (type pdf)
 
 <use exp_M_T1_ordered_.pdf>
-Package pdftex.def Info: exp_M_T1_ordered_.pdf used on input line 316.
+Package pdftex.def Info: exp_M_T1_ordered_.pdf used on input line 364.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
 
-<exp_E_T1_random_.pdf, id=114, 578.16pt x 397.485pt>
+<exp_E_T1_random_.pdf, id=130, 578.16pt x 397.485pt>
 File: exp_E_T1_random_.pdf Graphic file (type pdf)
 
 <use exp_E_T1_random_.pdf>
-Package pdftex.def Info: exp_E_T1_random_.pdf used on input line 332.
+Package pdftex.def Info: exp_E_T1_random_.pdf used on input line 381.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
 
-<exp_M_T1_random_.pdf, id=115, 578.16pt x 397.485pt>
+<exp_M_T1_random_.pdf, id=131, 578.16pt x 397.485pt>
 File: exp_M_T1_random_.pdf Graphic file (type pdf)
 
 <use exp_M_T1_random_.pdf>
-Package pdftex.def Info: exp_M_T1_random_.pdf used on input line 338.
+Package pdftex.def Info: exp_M_T1_random_.pdf used on input line 387.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
 
-<exp_E_T24_random_.pdf, id=116, 578.16pt x 397.485pt>
+<exp_E_T24_random_.pdf, id=132, 578.16pt x 397.485pt>
 File: exp_E_T24_random_.pdf Graphic file (type pdf)
 
 <use exp_E_T24_random_.pdf>
-Package pdftex.def Info: exp_E_T24_random_.pdf used on input line 355.
+Package pdftex.def Info: exp_E_T24_random_.pdf used on input line 404.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
 
-<exp_M_T24_random_.pdf, id=117, 578.16pt x 397.485pt>
+<exp_M_T24_random_.pdf, id=133, 578.16pt x 397.485pt>
 File: exp_M_T24_random_.pdf Graphic file (type pdf)
 
 <use exp_M_T24_random_.pdf>
-Package pdftex.def Info: exp_M_T24_random_.pdf used on input line 361.
+Package pdftex.def Info: exp_M_T24_random_.pdf used on input line 410.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
- [5 <./exp_E_T1_ordered_.pdf> <./exp_M_T1_ordered_.pdf
+ [6 <./exp_E_T1_ordered_.pdf> <./exp_M_T1_ordered_.pdf
 
 pdfTeX warning: pdflatex (file ./exp_M_T1_ordered_.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
@@ -1036,26 +1037,37 @@ pdfTeX warning: pdflatex (file ./exp_E_T1_random_.pdf): PDF inclusion: multiple
 
 pdfTeX warning: pdflatex (file ./exp_M_T1_random_.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->] <exp_E_T24_ordered_.pdf, id=288, 578.16pt x 397.485pt>
+>] <exp_E_T24_ordered_.pdf, id=304, 578.16pt x 397.485pt>
 File: exp_E_T24_ordered_.pdf Graphic file (type pdf)
 
 <use exp_E_T24_ordered_.pdf>
-Package pdftex.def Info: exp_E_T24_ordered_.pdf used on input line 374.
+Package pdftex.def Info: exp_E_T24_ordered_.pdf used on input line 423.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
 
-<exp_M_T24_ordered_.pdf, id=289, 578.16pt x 397.485pt>
+<exp_M_T24_ordered_.pdf, id=305, 578.16pt x 397.485pt>
 File: exp_M_T24_ordered_.pdf Graphic file (type pdf)
 
 <use exp_M_T24_ordered_.pdf>
-Package pdftex.def Info: exp_M_T24_ordered_.pdf used on input line 380.
+Package pdftex.def Info: exp_M_T24_ordered_.pdf used on input line 429.
 (pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
- <P(E).pdf, id=290, 578.16pt x 397.485pt>
-File: P(E).pdf Graphic file (type pdf)
 
-<use P(E).pdf>
-Package pdftex.def Info: P(E).pdf used on input line 394.
-(pdftex.def)             Requested size: 404.70924pt x 278.2376pt.
- [6 <./exp_E_T24_random_.pdf> <./exp_M_T24_random_.pdf
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 438.
+
+<accept_cycl_t1.pdf, id=308, 578.16pt x 397.485pt>
+File: accept_cycl_t1.pdf Graphic file (type pdf)
+ <use accept_cycl_t1.pdf>
+Package pdftex.def Info: accept_cycl_t1.pdf used on input line 446.
+(pdftex.def)             Requested size: 289.07928pt x 198.742pt.
+
+<accept_cycl_t24.pdf, id=309, 578.16pt x 397.485pt>
+File: accept_cycl_t24.pdf Graphic file (type pdf)
+ <use accept_cycl_t24.pdf>
+Package pdftex.def Info: accept_cycl_t24.pdf used on input line 453.
+(pdftex.def)             Requested size: 289.07928pt x 198.742pt.
+
+[7 <./exp_E_T24_random_.pdf> <./exp_M_T24_random_.pdf
 
 pdfTeX warning: pdflatex (file ./exp_M_T24_random_.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
@@ -1067,71 +1079,87 @@ le pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./exp_M_T24_ordered_.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
-> <./P(E).pdf
+> <./accept_cycl_t1.pdf
 
-pdfTeX warning: pdflatex (file ./P(E).pdf): PDF inclusion: multiple pdfs with p
-age group included in a single page
->] <N40_MPI_mcsE6.pdf, id=494, 578.16pt x 397.485pt>
+pdfTeX warning: pdflatex (file ./accept_cycl_t1.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>] <P(E).pdf, id=517, 578.16pt x 397.485pt>
+File: P(E).pdf Graphic file (type pdf)
+ <use P(E).pdf>
+Package pdftex.def Info: P(E).pdf used on input line 488.
+(pdftex.def)             Requested size: 404.70924pt x 278.2376pt.
+ [8 <./accept_cycl_t24.pdf>] <N40_MPI_mcsE6.pdf, id=563, 578.16pt x 397.485pt>
 File: N40_MPI_mcsE6.pdf Graphic file (type pdf)
- <use N40_MPI_mcsE6.pdf>
-Package pdftex.def Info: N40_MPI_mcsE6.pdf used on input line 435.
+
+<use N40_MPI_mcsE6.pdf>
+Package pdftex.def Info: N40_MPI_mcsE6.pdf used on input line 506.
 (pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
 
-Overfull \hbox (21.68117pt too wide) in paragraph at lines 435--436
+Overfull \hbox (21.68117pt too wide) in paragraph at lines 506--507
  [][] 
  []
 
-<N60_MPI_mcsE6.pdf, id=495, 578.16pt x 397.485pt>
+<N60_MPI_mcsE6.pdf, id=564, 578.16pt x 397.485pt>
 File: N60_MPI_mcsE6.pdf Graphic file (type pdf)
  <use N60_MPI_mcsE6.pdf>
-Package pdftex.def Info: N60_MPI_mcsE6.pdf used on input line 442.
+Package pdftex.def Info: N60_MPI_mcsE6.pdf used on input line 513.
 (pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
 
-Overfull \hbox (21.68117pt too wide) in paragraph at lines 442--443
+Overfull \hbox (21.68117pt too wide) in paragraph at lines 513--514
  [][] 
  []
 
-[7 <./N40_MPI_mcsE6.pdf>] <N140_MPI_mcsE6.pdf, id=550, 578.16pt x 397.485pt>
+[9 <./P(E).pdf> <./N40_MPI_mcsE6.pdf
+
+pdfTeX warning: pdflatex (file ./N40_MPI_mcsE6.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>] <N100_MPI_mcsE6.pdf, id=649, 578.16pt x 397.485pt>
+File: N100_MPI_mcsE6.pdf Graphic file (type pdf)
+ <use N100_MPI_mcsE6.pdf>
+Package pdftex.def Info: N100_MPI_mcsE6.pdf used on input line 520.
+(pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
+
+Overfull \hbox (21.68117pt too wide) in paragraph at lines 520--521
+ [][] 
+ []
+
+<N140_MPI_mcsE6.pdf, id=650, 578.16pt x 397.485pt>
 File: N140_MPI_mcsE6.pdf Graphic file (type pdf)
-
-<use N140_MPI_mcsE6.pdf>
-Package pdftex.def Info: N140_MPI_mcsE6.pdf used on input line 449.
+ <use N140_MPI_mcsE6.pdf>
+Package pdftex.def Info: N140_MPI_mcsE6.pdf used on input line 527.
 (pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
 
-Overfull \hbox (21.68117pt too wide) in paragraph at lines 449--450
+Overfull \hbox (21.68117pt too wide) in paragraph at lines 527--528
  [][] 
  []
 
-(./FYS4150_Project4.bbl [8 <./N60_MPI_mcsE6.pdf> <./N140_MPI_mcsE6.pdf
+[10 <./N60_MPI_mcsE6.pdf> <./N100_MPI_mcsE6.pdf
 
-pdfTeX warning: pdflatex (file ./N140_MPI_mcsE6.pdf): PDF inclusion: multiple p
+pdfTeX warning: pdflatex (file ./N100_MPI_mcsE6.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
->])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 463.
- [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 463.
+>] (./FYS4150_Project4.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 557.
+ [11 <./N140_MPI_mcsE6.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 557.
  (./FYS4150_Project4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 463.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 463.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 557.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 557.
 Package rerunfilecheck Info: File `FYS4150_Project4.out' has not changed.
-(rerunfilecheck)             Checksum: 1C8D35594733EC1C2889A92CEEC376A4;596.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: 38372400FA6CB3F8DA92584AF43E59B8;758.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 463.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 557.
  ) 
 Here is how much of TeX's memory you used:
- 8480 strings out of 494910
- 126188 string characters out of 6179836
- 217521 words of memory out of 5000000
- 11565 multiletter control sequences out of 15000+600000
- 14214 words of font info for 55 fonts, out of 8000000 for 9000
+ 8521 strings out of 494910
+ 126891 string characters out of 6179836
+ 221715 words of memory out of 5000000
+ 11593 multiletter control sequences out of 15000+600000
+ 14835 words of font info for 57 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 42i,12n,40p,738b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,40p,1098b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/ingrid/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/
@@ -1146,10 +1174,10 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on FYS4150_Project4.pdf (9 pages, 489332 bytes).
+Output written on FYS4150_Project4.pdf (11 pages, 551138 bytes).
 PDF statistics:
- 718 PDF objects out of 1000 (max. 8388607)
- 249 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 868 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

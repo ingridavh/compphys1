@@ -97,9 +97,6 @@ int main(int argc, char* argv[])
 
     cout << "Bzz, rank " << myrank << " reporting filename " << myfilename << endl;
 
-//    double time_start, time_end, total_time;
-//    time_start = MPI_Wtime();
-
     spinsystem mysystem(n_spins);
 
     mysystem.go(myfilename, mcs, initial_my_temp, final_my_temp, temp_step, myrank, nproc);
@@ -107,14 +104,6 @@ int main(int argc, char* argv[])
     cout << "Bzzz, rank " << myrank << " has finished writing to file " << myfilename << endl;
 
     ofile.close();
-
-//    time_end = MPI_Wtime();
-//    total_time = time_end - time_start;
-
-//    if (myrank == 0){
-//        cout << "Time = " << total_time << " on number of processors: " <<
-//                nproc << endl;
-//    }
 
     MPI_Finalize();
 

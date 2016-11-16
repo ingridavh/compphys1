@@ -20,6 +20,9 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}Method}{1}{section.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The Ising model}{1}{subsection.2.1}}
 \newlabel{Partition function}{{3}{1}{The Ising model}{equation.2.3}{}}
+\newlabel{expectation}{{4}{2}{Expectation values}{equation.2.4}{}}
+\newlabel{variance}{{5}{2}{Expectation values}{equation.2.5}{}}
+\newlabel{Cv exp}{{6}{2}{Expectation values}{equation.2.6}{}}
 \newlabel{X exp}{{7}{2}{Expectation values}{equation.2.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Analytical example: The 2x2 lattice}{2}{subsection.2.2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -29,52 +32,66 @@
 \newlabel{sub@fig::spins 2 by 2}{{b}{2}{Possible energies for a $2 \times 2$-lattice of spin particles.\relax }{figure.caption.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Spins for a $2 \times 2$-lattice with periodic boundary conditions.\relax }}{2}{figure.caption.2}}
 \newlabel{fig:Show spins}{{1}{2}{Spins for a $2 \times 2$-lattice with periodic boundary conditions.\relax }{figure.caption.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Analytical values of the expectation values with $J=1$, $k=1$ and $T=1.0$ K.\relax }}{3}{table.caption.3}}
+\newlabel{Fig::analytical}{{1}{3}{Analytical values of the expectation values with $J=1$, $k=1$ and $T=1.0$ K.\relax }{table.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Evolution of the system}{3}{subsection.2.3}}
 \citation{schroeder2000introduction}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Analytical values of the expectation values. Here $J=1$, $k=1$, $T=1.0$ K.\relax }}{3}{figure.caption.9}}
-\newlabel{Fig::analytical}{{2}{3}{Analytical values of the expectation values. Here $J=1$, $k=1$, $T=1.0$ K.\relax }{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}System evolution}{3}{subsection.2.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Expectation configuration distribution\relax }}{3}{figure.caption.10}}
-\newlabel{fig::illustration}{{3}{3}{Expectation configuration distribution\relax }{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Phase transitions}{3}{subsection.2.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Implementation}{4}{section.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Metropolis algorithm}{4}{subsection.3.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Parallelizing the code}{4}{section.4}}
-\newlabel{efficiency}{{4}{4}{Parallelizing the code}{section.4}{}}
-\newlabel{fig:sub1}{{4a}{5}{Expectation value energy.\relax }{figure.caption.14}{}}
-\newlabel{sub@fig:sub1}{{a}{5}{Expectation value energy.\relax }{figure.caption.14}{}}
-\newlabel{fig:sub2}{{4b}{5}{Expectation value magnetization.\relax }{figure.caption.14}{}}
-\newlabel{sub@fig:sub2}{{b}{5}{Expectation value magnetization.\relax }{figure.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces $20 \times 20$-lattice with temperature $T=1$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }}{5}{figure.caption.14}}
-\newlabel{fig:cms-EM T=1}{{4}{5}{$20 \times 20$-lattice with temperature $T=1$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.14}{}}
-\newlabel{fig:sub1}{{5a}{5}{Expectation value energy.\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:sub1}{{a}{5}{Expectation value energy.\relax }{figure.caption.15}{}}
-\newlabel{fig:sub2}{{5b}{5}{Expectation value magnetization.\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:sub2}{{b}{5}{Expectation value magnetization.\relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces $20 \times 20$-lattice with temperature $T=1$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }}{5}{figure.caption.15}}
-\newlabel{fig:cms-EM T=1 random}{{5}{5}{$20 \times 20$-lattice with temperature $T=1$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.15}{}}
-\newlabel{fig:sub1}{{6a}{6}{Expectation value energy.\relax }{figure.caption.16}{}}
-\newlabel{sub@fig:sub1}{{a}{6}{Expectation value energy.\relax }{figure.caption.16}{}}
-\newlabel{fig:sub2}{{6b}{6}{Expectation value magnetization.\relax }{figure.caption.16}{}}
-\newlabel{sub@fig:sub2}{{b}{6}{Expectation value magnetization.\relax }{figure.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces $20 \times 20$-lattice with temperature $T=2.4$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }}{6}{figure.caption.16}}
-\newlabel{fig:cms-EM T=2.4 random}{{6}{6}{$20 \times 20$-lattice with temperature $T=2.4$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.16}{}}
-\newlabel{fig:sub1}{{7a}{6}{Expectation value energy.\relax }{figure.caption.17}{}}
-\newlabel{sub@fig:sub1}{{a}{6}{Expectation value energy.\relax }{figure.caption.17}{}}
-\newlabel{fig:sub2}{{7b}{6}{Expectation value magnetization.\relax }{figure.caption.17}{}}
-\newlabel{sub@fig:sub2}{{b}{6}{Expectation value magnetization.\relax }{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces $20 \times 20$-lattice with temperature $T=2.4$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }}{6}{figure.caption.17}}
-\newlabel{fig:cms-EM T=2.4 random}{{7}{6}{$20 \times 20$-lattice with temperature $T=2.4$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Histogram of the energy expectation values after the system is stable $mcs \simeq 10^4$, to $mcs= 10^5$ for temoperatures $T=1.0$ and $T=2.4$. Note that both $x$-axes show energy, but vary in magnitude. Both $y$-axes show frequency of the given energy.\relax }}{6}{figure.caption.19}}
-\newlabel{fig::P(E)}{{8}{6}{Histogram of the energy expectation values after the system is stable $mcs \simeq 10^4$, to $mcs= 10^5$ for temoperatures $T=1.0$ and $T=2.4$. Note that both $x$-axes show energy, but vary in magnitude. Both $y$-axes show frequency of the given energy.\relax }{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Evolution of expectation values as a function of temperature for a $40 \times 40$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }}{7}{figure.caption.21}}
-\newlabel{fig::exp 40}{{9}{7}{Evolution of expectation values as a function of temperature for a $40 \times 40$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Expectation configuration distribution\relax }}{4}{figure.caption.4}}
+\newlabel{fig::illustration}{{2}{4}{Expectation configuration distribution\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Phase transitions}{4}{subsection.2.4}}
+\newlabel{eq. 3}{{2.4}{4}{Phase transitions}{equation.2.11}{}}
+\newlabel{T at critical}{{14}{5}{Phase transitions}{equation.2.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Implementation}{5}{section.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Metropolis algorithm}{5}{subsection.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Parallelizing the code}{5}{section.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Screenshot during a simulation with $N=60$ spins and $10^6$ Monte Carlo cycles. The 4 processors of the computer are working $100$ \% in parallel on separate parts of the code.\relax }}{5}{figure.caption.5}}
+\newlabel{efficiency}{{3}{5}{Screenshot during a simulation with $N=60$ spins and $10^6$ Monte Carlo cycles. The 4 processors of the computer are working $100$ \% in parallel on separate parts of the code.\relax }{figure.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Simulated values of the expectation values using $T=1.0$ and $10^6$ Monte Carlo cycles with $J=1$, $k=1$ and $T=1.0$ K.\relax }}{5}{table.caption.8}}
+\newlabel{Fig::values simulated}{{2}{5}{Simulated values of the expectation values using $T=1.0$ and $10^6$ Monte Carlo cycles with $J=1$, $k=1$ and $T=1.0$ K.\relax }{table.caption.8}{}}
+\newlabel{fig:sub1}{{4a}{6}{Expectation value energy.\relax }{figure.caption.10}{}}
+\newlabel{sub@fig:sub1}{{a}{6}{Expectation value energy.\relax }{figure.caption.10}{}}
+\newlabel{fig:sub2}{{4b}{6}{Expectation value magnetization.\relax }{figure.caption.10}{}}
+\newlabel{sub@fig:sub2}{{b}{6}{Expectation value magnetization.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces $20 \times 20$-lattice with temperature $T=1$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }}{6}{figure.caption.10}}
+\newlabel{fig:cms-EM T=1}{{4}{6}{$20 \times 20$-lattice with temperature $T=1$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.10}{}}
+\newlabel{fig:sub1}{{5a}{6}{Expectation value energy.\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:sub1}{{a}{6}{Expectation value energy.\relax }{figure.caption.11}{}}
+\newlabel{fig:sub2}{{5b}{6}{Expectation value magnetization.\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:sub2}{{b}{6}{Expectation value magnetization.\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces $20 \times 20$-lattice with temperature $T=1$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }}{6}{figure.caption.11}}
+\newlabel{fig:cms-EM T=1 random}{{5}{6}{$20 \times 20$-lattice with temperature $T=1$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.11}{}}
+\newlabel{fig:sub1}{{6a}{7}{Expectation value energy.\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:sub1}{{a}{7}{Expectation value energy.\relax }{figure.caption.12}{}}
+\newlabel{fig:sub2}{{6b}{7}{Expectation value magnetization.\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:sub2}{{b}{7}{Expectation value magnetization.\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces $20 \times 20$-lattice with temperature $T=2.4$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }}{7}{figure.caption.12}}
+\newlabel{fig:cms-EM T=2.4 random}{{6}{7}{$20 \times 20$-lattice with temperature $T=2.4$, random initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.12}{}}
+\newlabel{fig:sub1}{{7a}{7}{Expectation value energy.\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:sub1}{{a}{7}{Expectation value energy.\relax }{figure.caption.13}{}}
+\newlabel{fig:sub2}{{7b}{7}{Expectation value magnetization.\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:sub2}{{b}{7}{Expectation value magnetization.\relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces $20 \times 20$-lattice with temperature $T=2.4$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }}{7}{figure.caption.13}}
+\newlabel{fig:cms-EM T=2.4 random}{{7}{7}{$20 \times 20$-lattice with temperature $T=2.4$, ordered initial configuration, $10^4$ Monte Carlo simulations.\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.0.1}Number of accepted configurations}{7}{subsubsection.4.0.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Number of accepted spin flips as function of Monte Carlo cycles at $T=1.0$. Sampled every $100$ cycles for $10^5$ cycles in total.\relax }}{7}{figure.caption.14}}
+\newlabel{fig::no accept 1}{{8}{7}{Number of accepted spin flips as function of Monte Carlo cycles at $T=1.0$. Sampled every $100$ cycles for $10^5$ cycles in total.\relax }{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Number of accepted spin flips as function of Monte Carlo cycles at $T=2.4$. Sampled every $100$ cycles for $10^5$ cycles in total.\relax }}{8}{figure.caption.15}}
+\newlabel{fig::no accept 2.4}{{9}{8}{Number of accepted spin flips as function of Monte Carlo cycles at $T=2.4$. Sampled every $100$ cycles for $10^5$ cycles in total.\relax }{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Histogram of the energy expectation values after the system is stable $mcs \simeq 10^4$, to $mcs= 10^5$ for temoperatures $T=1.0$ and $T=2.4$. Note that both $x$-axes show energy, but vary in magnitude. Both $y$-axes show frequency of the given energy.\relax }}{9}{figure.caption.17}}
+\newlabel{fig::P(E)}{{10}{9}{Histogram of the energy expectation values after the system is stable $mcs \simeq 10^4$, to $mcs= 10^5$ for temoperatures $T=1.0$ and $T=2.4$. Note that both $x$-axes show energy, but vary in magnitude. Both $y$-axes show frequency of the given energy.\relax }{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Evolution of expectation values as a function of temperature for a $40 \times 40$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }}{9}{figure.caption.19}}
+\newlabel{fig::exp 40}{{11}{9}{Evolution of expectation values as a function of temperature for a $40 \times 40$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Evolution of expectation values as a function of temperature for a $60 \times 60$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }}{10}{figure.caption.20}}
+\newlabel{fig::exp 60}{{12}{10}{Evolution of expectation values as a function of temperature for a $60 \times 60$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Evolution of expectation values as a function of temperature for a $100 \times 100$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }}{10}{figure.caption.21}}
+\newlabel{fig::exp 100}{{13}{10}{Evolution of expectation values as a function of temperature for a $100 \times 100$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }{figure.caption.21}{}}
 \citation{*}
 \bibdata{referanser}
 \bibcite{hjorth2011computational}{1}
 \bibcite{morken2013numerical}{2}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Evolution of expectation values as a function of temperature for a $60 \times 60$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }}{8}{figure.caption.22}}
-\newlabel{fig::exp 60}{{10}{8}{Evolution of expectation values as a function of temperature for a $60 \times 60$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }{figure.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Evolution of expectation values as a function of temperature for a $140 \times 140$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }}{8}{figure.caption.23}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Concluding remarks}{8}{section.5}}
 \bibcite{schroeder2000introduction}{3}
 \bibstyle{plain}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Evolution of expectation values as a function of temperature for a $140 \times 140$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }}{11}{figure.caption.22}}
+\newlabel{fig::exp 140}{{14}{11}{Evolution of expectation values as a function of temperature for a $140 \times 140$-lattice, using $10^6$ Monte Carlo cycles and $dT=0.01$.\relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Concluding remarks}{11}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Phase transitions}{11}{subsection.5.1}}

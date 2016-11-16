@@ -29,12 +29,7 @@ int main()
 
 -----------output--------------------------
 This is a spin system
-The average energy is -7.9834
-Cv 2.71985e+242
-The average magnetization is 0.124182
-X 15.9569
-abs(M) 3.99444
-Final energy is 0
+1 	 -7.98341 	 0.132461 	 3.99444 	 15.9723 	0.0167251
 This is the end
 -------------------------------------------
 

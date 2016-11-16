@@ -174,4 +174,5 @@ void spinsystem::output(int mcs, double temperature){
     //Print to an outfile
     m_ofile << temp << " \t " << Energy/(m_n_spins*m_n_spins) << " \t " << Cv << " \t "
             << Magnetization_abs/(m_n_spins*m_n_spins) << " \t " << X <<endl;
+
 }
