@@ -11,15 +11,20 @@ QuantumMC::QuantumMC(int N) :
     m_N(N),
     m_perturbation(0),
     m_steplength(1.0),
-    m_h(0.001),
-    m_h2(1/double(m_h*m_h)),
+    m_h(0.00001),
+    m_h2(1./double(m_h*m_h)),
     m_alpha(1),
-    m_mcs(1000000)
+    m_mcs(1000000),
+    m_blomst(0)
 {        
 }
 
 void QuantumMC::add_perturbation(){
     m_perturbation = 1;
+}
+
+void QuantumMC::no_perturbation(){
+    m_perturbation = 0;
 }
 
 void QuantumMC::runMCintegration(){
@@ -66,8 +71,9 @@ void QuantumMC::runMCintegration(){
             if(double (rand())*faktor <= (wavefuncNew*wavefuncNew)/(wavefuncOld*wavefuncOld)) {
                 for (int j = 0; j < m_nDim; j++) {
                     rOld(i,j) = rNew(i,j);
-                    wavefuncOld = wavefuncNew;
                 }
+                wavefuncOld = wavefuncNew;
+                m_blomst += 1;
 
             } else {
                 for (int j= 0; j < m_nDim; j++) {
@@ -82,12 +88,13 @@ void QuantumMC::runMCintegration(){
         }
     }
 
-    double energy = ESum/double (m_mcs*m_N);
-    double energy2 = ESum2/double (m_mcs*m_N);
+    double energy = ESum / double (m_mcs*m_N);
+    double energy2 = ESum2 / double (m_mcs*m_N);
     cout << "Energy: " << energy << " Energy (squared sum): " << energy2 << endl;
+    cout << "Variance: " << energy2 - energy*energy << endl;
+    cout << "Percentage of accepted configurations " << m_blomst/double(m_mcs*m_N)*100 << "%" << endl;
 
 }
-
 
 double QuantumMC::wavefunc(const mat &r){
     double argument = 0;
@@ -97,12 +104,15 @@ double QuantumMC::wavefunc(const mat &r){
             r_oneparticle += r(i,j) * r(i, j);
         }
 
-        argument += sqrt(r_oneparticle);
+        argument += r_oneparticle;
     }
 
-    return exp(-argument * m_alpha);
+    return exp(-0.5 * argument * m_alpha * m_omega );
 }
 
+double QuantumMC::wavefunc2(const mat &r){
+
+}
 
 //Compute the energy for a certain configuration of particle positions
 double QuantumMC::localEnergy(const mat &r){
@@ -115,6 +125,7 @@ double QuantumMC::localEnergy(const mat &r){
     double wavefunccurrent = wavefunc(r);
 
     //Calculate kinetic energy using brute force
+    // -1/2 nabla^2 terms
 
     double EK = 0;
 
@@ -131,11 +142,10 @@ double QuantumMC::localEnergy(const mat &r){
     }
 
     //EK = 0.5 * m_h2 * EK / wavefunccurrent;
-    EK = 0.5 * m_h2 * EK;
-
-
+    EK *= 0.5 * m_h2 / wavefunccurrent ;
 
     //Calculate potential energy
+    // 1/2 omega^2 r^2 terms
     double EP = 0;
     double r_oneparticle = 0;
 
@@ -144,11 +154,14 @@ double QuantumMC::localEnergy(const mat &r){
         for(int j = 0; j < m_nDim; j++){
             r_oneparticle += r(i,j) * r(i,j);
         }
-        EP -= m_omega / sqrt(r_oneparticle);
+        EP += r_oneparticle;
     }
+    EP *= 0.5 * m_omega * m_omega;
 
     //Contribution from electron-electron potential
-    if (m_perturbation = 1){
+    // 1/r_12 terms
+    if (m_perturbation == 1){
+        cout << "The energy includes a perturbation" << endl;
         double r12 = 0;
         for(int i = 0; i < m_N; i++){
             r_oneparticle = 0;
@@ -160,6 +173,8 @@ double QuantumMC::localEnergy(const mat &r){
                 EP += 1/sqrt(r12);
             }
         }
+    } else {
+        EP += 0;
     }
 
     return EK+EP;

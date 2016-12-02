@@ -8,7 +8,8 @@ int main()
     cout << "Hello World!" << endl;
 
     QuantumMC dots(2);
-    dots.add_perturbation();
+    //dots.add_perturbation();
+    dots.no_perturbation();
     dots.runMCintegration();
 
     return 0;

@@ -9,10 +9,12 @@ public:
     QuantumMC(int N);
     void add_perturbation();
     void runMCintegration();
+    void no_perturbation();
     int m_perturbation;
     int m_N;
     double m_alpha;
     int m_mcs;
+    int m_blomst;
 
 private:
     double wavefunc(const mat &r);
