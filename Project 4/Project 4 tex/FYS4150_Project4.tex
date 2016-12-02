@@ -27,7 +27,7 @@
 \marginparwidth = 10pt
 
 \begin{abstract}
-The aim of this project is apply the Metropolis algorithm on the Ising model. Lattice size and number of Monte Carlo cycles is varied, and an example with $2 \times 2$-lattice is solved analytically as a reference. The system is evolved by increasing the temperature, and phase transition properties are investigated and compared to thermodynamics. Parallellization of the program is used to enhance efficiency and computation speed. The source code and benchmarks can be found on GitHub: \url{https://github.com/ingridavh/compphys1/tree/master/Project%204/FYS4150_project4}
+The aim of this project is apply the Metropolis algorithm on the Ising model. Lattice size and number of Monte Carlo cycles is varied, and an example with $2 \times 2$-lattice is solved analytically as a reference. The system is evolved by increasing the temperature, and phase transition properties are investigated and compared to thermodynamics. Parallelization of the program is used to enhance efficiency and computation speed. The source code and benchmarks can be found on GitHub: \url{https://github.com/ingridavh/compphys1/tree/master/Project%204/FYS4150_project4}
 \end{abstract}
 
 
@@ -35,8 +35,9 @@ The aim of this project is apply the Metropolis algorithm on the Ising model. La
 
 \begin{flushleft}
 This project will study the Ising model in two dimensions. The Ising model was initially developed to describe \textit{ferromagnetism}. Ferromagnetism occurs when the magnetic moments of the atoms in certain materials all align, and the net magnetic moment becomes macroscopic. In two dimensions, the model consists of a lattice of spins with two possible orientations. The Hamiltonian is 
+
 \begin{equation*}
-\mathcal{H} = -J \sum^N_{<kl>} s_k s_l - \mathcal{B} \sum_{i=1}^N \sigma_i
+\mathcal{H} = -J \sum^N_{<kl>} s_k s_l - \mathcal{B} \sum_{i=1}^N \sigma_i.
 \end{equation*}
 
 In this project we only consider the field-free case $\mathcal{B}=0$. The model is implemented using the Metropolis algorithm, a Markov chain Monte Carlo method. The Metropolis algorithm is useful for large systems, as it picks random samples and computing the entire system is not necessary for every iteration.
@@ -51,13 +52,13 @@ In this project we only consider the field-free case $\mathcal{B}=0$. The model 
 The Ising model describes phase transitions in two dimensions. At a given critical temperature the model exhibits a phase transition from one magnetic moment (spin) to a phase with zero magnetization. Without an externally applied field, this is described as
 
 \begin{equation}
-E = -J \sum^N_{<kl>} s_k s_l
+E = -J \sum^N_{<kl>} s_k s_l,
 \end{equation}
 
 where $s_k = \pm 1$, $N$ is the total number of spins and $J$ is a coupling constant. In this project we set $J=1$ so that the energy is unitless. The probability distribution for our system is given by
 
 \begin{equation}
-P_i(\beta) = \frac{e^{- \beta E_i}}{Z}
+P_i(\beta) = \frac{e^{- \beta E_i}}{Z},
 \end{equation}
 
 where $\beta = 1/kT$ is the inverse temperature, $k$ is the Boltzmann constant, $E_i$ is the energy of a state $i$. 
@@ -66,7 +67,7 @@ where $\beta = 1/kT$ is the inverse temperature, $k$ is the Boltzmann constant, 
 The partition function is given by
 
 \begin{equation}\label{Partition function}
-Z = \sum_{i=1}^M e^{- \beta E_i}
+Z = \sum_{i=1}^M e^{- \beta E_i}.
 \end{equation}
 
 
@@ -79,7 +80,7 @@ When $L$ becomes very large this fuction becomes difficult to compute since it r
 \begin{align*}
 \text{Metropolis } \rightarrow  &\frac{P_s}{P_t} = \frac{e^{-(\beta E_s)}}{e^{-(\beta E_k)}}
 = e^{-\beta(E_s - E_k)}
-= e^{-\beta \Delta E} 
+= e^{-\beta \Delta E}. 
 \end{align*}
 
 \end{flushleft}
@@ -90,20 +91,20 @@ When $L$ becomes very large this fuction becomes difficult to compute since it r
 The expectation values of the system can all be derived from the partition function using thermodynamic identities. For an observable $B$ the general expressions for the expectation value $\braket{B}$ and variance $\sigma_B^2$ are
 
 \begin{equation}\label{expectation}
-\braket{B} = \frac{1}{Z} \sum_i^M P_i e^{- \beta E_i}
+\braket{B} = \frac{1}{Z} \sum_i^M P_i e^{- \beta E_i},
 \end{equation} 
 
 \begin{equation}\label{variance}
-\sigma_B^2 = \braket{B^2} - \braket{B}^2 
+\sigma_B^2 = \braket{B^2} - \braket{B}^2.
 \end{equation}
 
 For the Ising model it is useful to calculate the specific heat capacity $C_V$ and susceptibility $\chi$
 
 \begin{equation}\label{Cv exp}
-C_V = \frac{1}{k_B T^2} \sigma_E^2
+C_V = \frac{1}{k_B T^2} \sigma_E^2,
 \end{equation}
 \begin{equation}\label{X exp}
-\chi = \frac{1}{k_B T} \sigma_{\mathcal{M}}^2
+\chi = \frac{1}{k_B T} \sigma_{\mathcal{M}}^2.
 \end{equation}
 
 
@@ -148,7 +149,7 @@ We consider a $2 \times 2$-lattice ($L = 2$), which consists of $4$ spins. This 
 \end{flushleft}
 
 \begin{flushleft}
-For such a small $L$ the analytic expressions for the expectation values can be calculated. Using expressions (\ref{expectation})-(\ref{variance}) and the energies from table (\ref{fig::spins 2 by 2}) we find
+For such a small $L$ the analytic expressions for the expectation values can be calculated. Using expressions (\ref{expectation})-(\ref{variance}) and the energies from Table (\ref{fig::spins 2 by 2}) we find
 
 
 
@@ -181,7 +182,7 @@ C_V = \frac{1}{k_B T^2} (\braket{E^2} - \braket{E}^2) = \frac{64J^2}{k_B T^2}
 
 \begin{flushleft}
 
-The values of these expressions were calculated using Python and can be found in table (\ref{Fig::analytical}). Note that both the energy and the mean magnetization are somewhat smaller in magnitude than their expected values for the ground state, $E=-8$ and $|\mathcal{M}| = 4$.
+The values of these expressions were calculated using Python and can be found in Table (\ref{Fig::analytical}). Note that both the energy and the mean magnetization are somewhat smaller in magnitude than their expected values for the ground state, $E=-8$ and $|\mathcal{M}| = 4$.
 
 \begin{table}[H]
 \centering
@@ -223,49 +224,49 @@ We may ask ourselves --- what are the characteristics of the Ising model as we c
 From the knowledge of the slope of $\braket{|\mathcal{M}|}$ at $T_C$ we can find an expression for the mean magnetization
 
 \begin{equation}
-\braket{\mathcal{M}(T)} \sim (T-T_C)^{\beta}
+\braket{\mathcal{M}(T)} \sim (T-T_C)^{\beta},
 \end{equation}
 
 where $\beta=1/8$. For the heat capacity and susceptibility we get similar relations
 
 \begin{equation}
-C_V(T) \sim |T_C - T|^{\alpha}
+C_V(T) \sim |T_C - T|^{\alpha},
 \end{equation}
 
 \begin{equation}
-\chi (T) \sim |T_C-T|^{\gamma}
+\chi (T) \sim |T_C-T|^{\gamma},
 \end{equation}
 
 where $\alpha=0$ and $\gamma = 7/4$. When $T >>  T_C$ the correlation length is expected to be close to the spacing of $T$. The discontinuous behaviour around $T_C$ is characterized by
 
 \begin{equation}
-\xi(T) \sim |T_C -T|^{- \nu}
+\xi(T) \sim |T_C -T|^{- \nu}.
 \end{equation}
 
 We use finite size scaling relations to relate the behaviour at finite lattices with those at infinitely large lattices. By setting $T=T_C$ and using the expression
 
 \begin{equation*}\label{eq. 3}
-T_C(L) - T_C(L= \infty) = aL^{-1/\nu}
+T_C(L) - T_C(L= \infty) = aL^{-1/\nu},
 \end{equation*}
 
 we obtain the following expressions
 
 \begin{equation}
-\braket{\mathcal{M}(T)} \sim (T-T_C)^{\beta} \rightarrow L^{-\beta/\nu}
+\braket{\mathcal{M}(T)} \sim (T-T_C)^{\beta} \rightarrow L^{-\beta/\nu},
 \end{equation}
 
 \begin{equation}
-C_V(T) \sim |T_C-T|^{-\gamma} \rightarrow L^{\alpha/\mu}
+C_V(T) \sim |T_C-T|^{-\gamma} \rightarrow L^{\alpha/\mu},
 \end{equation}
 
 \begin{equation*}
-\chi (T) \sim |T_C - T|^{- \alpha} \rightarrow L^{\gamma/\nu}
+\chi (T) \sim |T_C - T|^{- \alpha} \rightarrow L^{\gamma/\nu}.
 \end{equation*}
 
 To find an expression for $T_C$ in the limit $L \rightarrow \infty$, set $\mu=1$
 
 \begin{equation}\label{T at critical}
-T_C(L = \infty ) = T_C(L) - \frac{a}{L}
+T_C(L = \infty ) = T_C(L) - \frac{a}{L}.
 \end{equation}
 
 
@@ -324,7 +325,7 @@ $100$ \% in parallel on separate parts of the code.}
 \subsection*{2x2 lattice}
 
 \begin{flushleft}
-For $10^6$ Monte Carlo cycles the results from the simulations are found in table (\ref{Fig::values simulated}). For a sufficiently high number of cycles, the values very similar to the analytic results found in table (\ref{Fig::analytical}). Note that the susceptibility here has been calculated using $\braket{\mathcal{M}}$, while $\braket{|\mathcal{M}|}$ was used in all other simulations.
+For $10^6$ Monte Carlo cycles the results from the simulations are found in Table (\ref{Fig::values simulated}). For a sufficiently high number of cycles, the values very similar to the analytic results found in Table (\ref{Fig::analytical}). Note that the susceptibility here has been calculated using $\braket{\mathcal{M}}$, while $\braket{|\mathcal{M}|}$ was used in all other simulations.
 
 
 
@@ -466,10 +467,10 @@ The number of accepted new configurations as a function of Monte Carlo cycles wa
 The probability of an energy state can be found by counting the number of states in an energy state $E$, and dividing by the total number of configurations
 
 \begin{equation}
-P(E) = \frac{N(E)}{cms}
+P(E) = \frac{N(E)}{\mathrm{cms}},
 \end{equation}
 
-where $cms$ is the number of Monte Carlo cycles used. The frequency of different energy \textit{expectation values} is plotted in  Fig. (\ref{fig::P(E)}). The energy distribution is much narrower for $T=1.1$, as we can see from the figure. There is clearly a peak value around $-798$. Note that the x-axes for the histograms have a different order of magnitude. For $T=2.4$ there is a peak around $-493,-492$, as we would expect from the previous results. The energy variances coincide with these distribution, they are $ \sigma_E = 23$ for $1T$ and $\sigma_E = 3251$ for $T=2.4$.
+where cms is the number of Monte Carlo cycles used. The frequency of different energy \textit{expectation values} is plotted in  Fig. (\ref{fig::P(E)}). The energy distribution is much narrower for $T=1.1$, as we can see from the figure. There is clearly a peak value around $-798$. Note that the $x$-axes for the histograms have a different order of magnitude. For $T=2.4$ there is a peak around $-493,-492$, as we would expect from the previous results. The energy variances coincide with these distribution, they are $ \sigma_E = 23$ for $1T$ and $\sigma_E = 3251$ for $T=2.4$.
 
 \end{flushleft}
 
@@ -477,7 +478,7 @@ where $cms$ is the number of Monte Carlo cycles used. The frequency of different
 The higher temperature allows the energy to vary more, as is apparent from the expression of the condition for accepting a spin-flip
 
 \begin{equation*}
-\text{condition: } \frac{1}{e^{\Delta E/T}} 
+\text{condition: } \frac{1}{e^{\Delta E/T}} .
 \end{equation*}
 
 As $T$ increases, so does the condition. Therefore the probability that $e^{-\Delta E/T}$ is larger than a random number $r$ is higher, and the system is more susceptible to change. This is also consistent with the results from (\ref{fig::no accept 1})-(\ref{fig::no accept 2.4}).
@@ -536,13 +537,13 @@ In order to study the phase transitions we ran the simulation with $10^6$ Monte 
 \subsection{Phase transitions}
 
 \begin{flushleft}
-We can now evaluate eq. (\ref{T at critical}) by reading off approximate values from figures (\ref{fig::exp 40})-(\ref{fig::exp 140})
+We can now evaluate eq. (\ref{T at critical}) by reading off approximate values from Figures (\ref{fig::exp 40})-(\ref{fig::exp 140})
 
 \begin{align*}
-L=40 & \text{: }T_C(L = \infty ) = 2.28 - \frac{a}{40}\\
-L=60 & \text{: }T_C(L = \infty ) = 2.28 - \frac{a}{60}\\
-L=100 & \text{: }T_C(L = \infty ) = 2.27 - \frac{a}{100}\\
-L=140 & \text{: }T_C(L = \infty ) = 2.27 - \frac{a}{140}\\
+L=40 & \text{: }T_C(L = \infty ) = 2.28 - \frac{a}{40},\\
+L=60 & \text{: }T_C(L = \infty ) = 2.28 - \frac{a}{60},\\
+L=100 & \text{: }T_C(L = \infty ) = 2.27 - \frac{a}{100},\\
+L=140 & \text{: }T_C(L = \infty ) = 2.27 - \frac{a}{140}.\\
 \end{align*}
 
 So long as the constant $a$ is not very large, this is very similar to the exact result $kT_C/J \simeq 2.269$ for $\nu =1$. For temperatures $T \neq T_C$ the energy and magnetization seem to stabilize at values depending on the temperature. At the critical temperature, however, the magnetization goes abruptly to zero.

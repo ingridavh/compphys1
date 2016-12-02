@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} 
+\usepackage{epstopdf}
+\usepackage[makeroom]{cancel}
+\usepackage{framed}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage{braket}
+\usepackage{cite}
+\usepackage{textcomp}
+\usepackage{subcaption}
+\usepackage{float}
+
+\usepackage{geometry}
+\geometry{legalpaper, margin=1.2in}
+
+\begin{document}
+\title{FYS4150: Project 5}
+\author{Ingrid A V Holm}
+\maketitle
+
+\section{Physical background}
+
+\subsection{Quantum dots}
+
+\begin{flushleft}
+Consider a system of electrons confined in a pure three-dimensional isotropic harmonic oscillator potential, with an idealized Hamiltonian given by
+\begin{equation}
+\hat{H} = \sum_{i=1}^N \big(-\frac{1}{2} \nabla_i^2 + \frac{1}{2} \omega^2 r^2_i  \big) + \sum_{i<j} \frac{1}{r_{ij}},
+\end{equation}
+
+where we have used natural units $\hbar = c = e=m_e=1$, and all energies are in atomic units a.u. Our system consists of $N=2$ particles, and the hamiltonian describes a harmonic oscillator and the repulsive interaction between two electrons
+\begin{equation}
+\hat{H}_1=\sum_{i<j}\frac{1}{r_{ij}},
+\end{equation}
+where the distance between electrons is given by $r_{ij}= \sqrt{\textbf{r}_1-\textbf{r}_2}$. The modulus for the position of a single electron is given as $r_i = \sqrt{x_i^2+y_i^2+z_i^2}$.
+\end{flushleft}
+
+\subsection{The non-interacting case}
+\begin{flushleft}
+For the unperturbed system the Hamiltonian is
+\begin{equation}
+\hat{H}_0 = \sum_{i=1}^N \big( -\frac{1}{2} \nabla_i^2 + \frac{1}{2} \omega^2 r_i^2 \big).
+\end{equation}
+If we set $\hbar \omega=1$ the exact energy for 2 electrons is 3 a.u. The \textit{wavefunction} for an electron in an oscillator potential in 3D is
+\begin{equation}
+\phi_{n_x,n_y,n_z}(x,y,z) = AH_{n_x} (\sqrt{\omega}x)H_{n_y}(\sqrt{\omega}y)H_{n_z}(\sqrt{\omega}z) \exp(- \omega(x^2+y^2+z^2)/2)),
+\end{equation}
+where the functions $H_{n_x}(\sqrt{\omega}x)$ are the hermite polynomials, and $A$ is a normalization constant. For the ground state $n_i=0$ and the energy of a single electron is $\epsilon_{n_x, n_y, n_z}= \omega(n_x+n_y+n_z + 3/2)=3/2 \omega$. In this case the electrons don't interact, so the total energy is just the sum of energies
+\begin{equation*}
+E_0 = \frac{3\omega}{2} + \frac{3 \omega}{2} = 3 \omega
+\end{equation*}
+\end{flushleft}
+
+\begin{flushleft}
+The total spin should be $0$. Electrons are fermions, so they must have antisymmetric wavefunctions. If their quantum numbers are all the same $n_i=0$, they must have different spin, so $S_{total} = \frac{1}{2}-\frac{1}{2}=0$.
+\end{flushleft}
+
+\pagebreak
+
+\subsection{Trial wave functions}
+
+\begin{flushleft}
+The trial wavefunctions we want to use are
+\begin{equation}
+\Psi_{T1} (\textbf{r}_1, \textbf{r}_2) = C \exp (- \alpha \omega (r_1^2 + r_2^2)/2),
+\end{equation}
+\begin{equation}
+\Psi_{T2}(\textbf{r}_1, \textbf{r}_2) = C \exp (- \alpha \omega (r_1^2+r_2^2)/2) \exp \big( \frac{r_{12}}{2(1+\beta r_{12})} \big),
+\end{equation}
+where $\alpha, \beta$ are variational parameters. To find the energy of the first trial state, we use the hamiltonian operator on the state
+\begin{align*}
+\hat{H}_0 \Psi_{T1} &=\frac{1}{2} \big(-(\nabla_1^2 + \nabla_2^2) + \omega^2 r_1^2 + \omega r_2^2 \big) 
+C \exp (- \alpha \omega (r_1^2 + r_2^2)/2)\\
+&= \frac{1}{2} (\alpha \omega(\nabla_1 + \nabla_2)(x_1 + y_1 + z_1 + x_2 + y_2 + z_2) + \omega^2(r_1^2 + r_2^2))C \exp (- \alpha \omega (r_1^2 + r_2^2)/2)\\
+&= \frac{1}{2} (6 \alpha \omega + -\alpha^2 \omega^2 (r_1^2 + r_2^2) ) + \omega^2(r_1^2 + r_2^2))C \exp (- \alpha \omega (r_1^2 + r_2^2)/2)\\
+&= 3 \alpha \omega - \frac{\omega^2}{2}(1-\alpha^2) C \exp (- \alpha \omega (r_1^2 + r_2^2)/2)\\
+&= E_{T1} \Psi_{T1}\\
+\end{align*}
+where we have used that $\nabla x_1 e^{- \alpha \omega (r_1^2+r_2^2)/2}= (1 - \alpha \omega x_1^2)e^{- \alpha \omega (r_1^2+r_2^2)/2}$. So the energy of the first test function is 
+\begin{equation}
+E_{T1} = 3 \alpha \omega + \frac{\omega^2}{2}(1 - \alpha^2)(r_1^2 + r_2^2) + 3 \alpha \omega.
+\end{equation}
+\end{flushleft}
+
+\subsection{Hydrogen atom}
+\begin{flushleft}
+We can view the hydrogen atom as a harmonic oscillator.
+
+\end{flushleft}
+
+\section{Implementation}
+\subsection{Variational Monte Carlo}
+
+
+
+
+
+\end{document}

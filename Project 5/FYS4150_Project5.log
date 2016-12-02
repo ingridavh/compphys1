@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  16 NOV 2016 02:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.16)  2 DEC 2016 11:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**FYS4150_Project4.tex
-(./FYS4150_Project4.tex
+**FYS4150_Project5.tex
+(./FYS4150_Project5.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -808,54 +808,8 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@layoutvoffset=\dimen136
 \Gm@dimlist=\toks24
 )
-(./FYS4150_Project4.aux
-
-LaTeX Warning: Label `fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `fig:sub2' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:sub2' multiply defined.
-
-
-LaTeX Warning: Label `fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `fig:sub2' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:sub2' multiply defined.
-
-
-LaTeX Warning: Label `fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:sub1' multiply defined.
-
-
-LaTeX Warning: Label `fig:sub2' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:sub2' multiply defined.
-
-
-LaTeX Warning: Label `fig:cms-EM T=2.4 random' multiply defined.
-
-)
-\openout1 = `FYS4150_Project4.aux'.
+(./FYS4150_Project5.aux)
+\openout1 = `FYS4150_Project5.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
@@ -873,7 +827,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 21.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 21.
@@ -906,9 +861,9 @@ LaTeX Info: Redefining \ref on input line 21.
 LaTeX Info: Redefining \pageref on input line 21.
 LaTeX Info: Redefining \nameref on input line 21.
 
-(./FYS4150_Project4.out) (./FYS4150_Project4.out)
+(./FYS4150_Project5.out) (./FYS4150_Project5.out)
 \@outlinefile=\write3
-\openout3 = `FYS4150_Project4.out'.
+\openout3 = `FYS4150_Project5.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
@@ -959,225 +914,46 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<spins_2by2.png, id=77, 195.73125pt x 407.5225pt>
-File: spins_2by2.png Graphic file (type png)
- <use spins_2by2.png>
-Package pdftex.def Info: spins_2by2.png used on input line 123.
-(pdftex.def)             Requested size: 132.25557pt x 275.37672pt.
-
-Overfull \hbox (61.32764pt too wide) in paragraph at lines 179--179
+Overfull \hbox (3.18874pt too wide) in paragraph at lines 83--83
 []  
  []
 
-[2 <./spins_2by2.png (PNG copy)>]
-<gaussian_draw_t.png, id=94, 794.97pt x 562.1pt>
-File: gaussian_draw_t.png Graphic file (type png)
- <use gaussian_draw_t.png>
-Package pdftex.def Info: gaussian_draw_t.png used on input line 208.
-(pdftex.def)             Requested size: 397.48402pt x 281.04932pt.
-
-[3] [4 <./gaussian_draw_t.png>]
-<show_all_nodes.png, id=114, 805.0075pt x 127.47626pt>
-File: show_all_nodes.png Graphic file (type png)
-
-<use show_all_nodes.png>
-Package pdftex.def Info: show_all_nodes.png used on input line 313.
-(pdftex.def)             Requested size: 402.50278pt x 63.73796pt.
- [5 <./show_all_nodes.png>]
-<exp_E_T1_ordered_.pdf, id=127, 578.16pt x 397.485pt>
-File: exp_E_T1_ordered_.pdf Graphic file (type pdf)
-
-<use exp_E_T1_ordered_.pdf>
-Package pdftex.def Info: exp_E_T1_ordered_.pdf used on input line 359.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
-
-<exp_M_T1_ordered_.pdf, id=128, 578.16pt x 397.485pt>
-File: exp_M_T1_ordered_.pdf Graphic file (type pdf)
-
-<use exp_M_T1_ordered_.pdf>
-Package pdftex.def Info: exp_M_T1_ordered_.pdf used on input line 365.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
-
-<exp_E_T1_random_.pdf, id=130, 578.16pt x 397.485pt>
-File: exp_E_T1_random_.pdf Graphic file (type pdf)
-
-<use exp_E_T1_random_.pdf>
-Package pdftex.def Info: exp_E_T1_random_.pdf used on input line 382.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
-
-<exp_M_T1_random_.pdf, id=131, 578.16pt x 397.485pt>
-File: exp_M_T1_random_.pdf Graphic file (type pdf)
-
-<use exp_M_T1_random_.pdf>
-Package pdftex.def Info: exp_M_T1_random_.pdf used on input line 388.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
-
-<exp_E_T24_random_.pdf, id=132, 578.16pt x 397.485pt>
-File: exp_E_T24_random_.pdf Graphic file (type pdf)
-
-<use exp_E_T24_random_.pdf>
-Package pdftex.def Info: exp_E_T24_random_.pdf used on input line 405.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
-
-<exp_M_T24_random_.pdf, id=133, 578.16pt x 397.485pt>
-File: exp_M_T24_random_.pdf Graphic file (type pdf)
-
-<use exp_M_T24_random_.pdf>
-Package pdftex.def Info: exp_M_T24_random_.pdf used on input line 411.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
- [6 <./exp_E_T1_ordered_.pdf> <./exp_M_T1_ordered_.pdf
-
-pdfTeX warning: pdflatex (file ./exp_M_T1_ordered_.pdf): PDF inclusion: multipl
-e pdfs with page group included in a single page
-> <./exp_E_T1_random_.pdf
-
-pdfTeX warning: pdflatex (file ./exp_E_T1_random_.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <./exp_M_T1_random_.pdf
-
-pdfTeX warning: pdflatex (file ./exp_M_T1_random_.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
->] <exp_E_T24_ordered_.pdf, id=304, 578.16pt x 397.485pt>
-File: exp_E_T24_ordered_.pdf Graphic file (type pdf)
-
-<use exp_E_T24_ordered_.pdf>
-Package pdftex.def Info: exp_E_T24_ordered_.pdf used on input line 424.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
-
-<exp_M_T24_ordered_.pdf, id=305, 578.16pt x 397.485pt>
-File: exp_M_T24_ordered_.pdf Graphic file (type pdf)
-
-<use exp_M_T24_ordered_.pdf>
-Package pdftex.def Info: exp_M_T24_ordered_.pdf used on input line 430.
-(pdftex.def)             Requested size: 220.42372pt x 151.53714pt.
-
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 439.
-
-<accept_cycl_t1.pdf, id=308, 578.16pt x 397.485pt>
-File: accept_cycl_t1.pdf Graphic file (type pdf)
- <use accept_cycl_t1.pdf>
-Package pdftex.def Info: accept_cycl_t1.pdf used on input line 447.
-(pdftex.def)             Requested size: 289.07928pt x 198.742pt.
-
-<accept_cycl_t24.pdf, id=309, 578.16pt x 397.485pt>
-File: accept_cycl_t24.pdf Graphic file (type pdf)
- <use accept_cycl_t24.pdf>
-Package pdftex.def Info: accept_cycl_t24.pdf used on input line 454.
-(pdftex.def)             Requested size: 289.07928pt x 198.742pt.
-
-[7 <./exp_E_T24_random_.pdf> <./exp_M_T24_random_.pdf
-
-pdfTeX warning: pdflatex (file ./exp_M_T24_random_.pdf): PDF inclusion: multipl
-e pdfs with page group included in a single page
-> <./exp_E_T24_ordered_.pdf
-
-pdfTeX warning: pdflatex (file ./exp_E_T24_ordered_.pdf): PDF inclusion: multip
-le pdfs with page group included in a single page
-> <./exp_M_T24_ordered_.pdf
-
-pdfTeX warning: pdflatex (file ./exp_M_T24_ordered_.pdf): PDF inclusion: multip
-le pdfs with page group included in a single page
-> <./accept_cycl_t1.pdf
-
-pdfTeX warning: pdflatex (file ./accept_cycl_t1.pdf): PDF inclusion: multiple p
-dfs with page group included in a single page
->] <P(E).pdf, id=517, 578.16pt x 397.485pt>
-File: P(E).pdf Graphic file (type pdf)
- <use P(E).pdf>
-Package pdftex.def Info: P(E).pdf used on input line 489.
-(pdftex.def)             Requested size: 404.70924pt x 278.2376pt.
- [8 <./accept_cycl_t24.pdf>] <N40_MPI_mcsE6.pdf, id=563, 578.16pt x 397.485pt>
-File: N40_MPI_mcsE6.pdf Graphic file (type pdf)
-
-<use N40_MPI_mcsE6.pdf>
-Package pdftex.def Info: N40_MPI_mcsE6.pdf used on input line 507.
-(pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
-
-Overfull \hbox (21.68117pt too wide) in paragraph at lines 507--508
- [][] 
- []
-
-<N60_MPI_mcsE6.pdf, id=564, 578.16pt x 397.485pt>
-File: N60_MPI_mcsE6.pdf Graphic file (type pdf)
- <use N60_MPI_mcsE6.pdf>
-Package pdftex.def Info: N60_MPI_mcsE6.pdf used on input line 514.
-(pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
-
-Overfull \hbox (21.68117pt too wide) in paragraph at lines 514--515
- [][] 
- []
-
-[9 <./P(E).pdf> <./N40_MPI_mcsE6.pdf
-
-pdfTeX warning: pdflatex (file ./N40_MPI_mcsE6.pdf): PDF inclusion: multiple pd
-fs with page group included in a single page
->] <N100_MPI_mcsE6.pdf, id=649, 578.16pt x 397.485pt>
-File: N100_MPI_mcsE6.pdf Graphic file (type pdf)
- <use N100_MPI_mcsE6.pdf>
-Package pdftex.def Info: N100_MPI_mcsE6.pdf used on input line 521.
-(pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
-
-Overfull \hbox (21.68117pt too wide) in paragraph at lines 521--522
- [][] 
- []
-
-<N140_MPI_mcsE6.pdf, id=650, 578.16pt x 397.485pt>
-File: N140_MPI_mcsE6.pdf Graphic file (type pdf)
- <use N140_MPI_mcsE6.pdf>
-Package pdftex.def Info: N140_MPI_mcsE6.pdf used on input line 528.
-(pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
-
-Overfull \hbox (21.68117pt too wide) in paragraph at lines 528--529
- [][] 
- []
-
-[10 <./N60_MPI_mcsE6.pdf> <./N100_MPI_mcsE6.pdf
-
-pdfTeX warning: pdflatex (file ./N100_MPI_mcsE6.pdf): PDF inclusion: multiple p
-dfs with page group included in a single page
->] (./FYS4150_Project4.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 558.
- [11 <./N140_MPI_mcsE6.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 558.
- (./FYS4150_Project4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 558.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 558.
-Package rerunfilecheck Info: File `FYS4150_Project4.out' has not changed.
-(rerunfilecheck)             Checksum: 38372400FA6CB3F8DA92584AF43E59B8;758.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 558.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
+[2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
+ (./FYS4150_Project5.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
+Package rerunfilecheck Info: File `FYS4150_Project5.out' has not changed.
+(rerunfilecheck)             Checksum: CB89318CF9AB28CA7D9CB417D661E93D;440.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 8521 strings out of 494910
- 126891 string characters out of 6179836
- 221715 words of memory out of 5000000
- 11593 multiletter control sequences out of 15000+600000
- 14835 words of font info for 57 fonts, out of 8000000 for 9000
+ 8310 strings out of 494910
+ 123190 string characters out of 6179836
+ 212520 words of memory out of 5000000
+ 11456 multiletter control sequences out of 15000+600000
+ 12319 words of font info for 46 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 42i,12n,40p,1098b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/ingrid/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on FYS4150_Project4.pdf (11 pages, 551354 bytes).
+ 42i,12n,40p,359b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on FYS4150_Project5.pdf (2 pages, 150171 bytes).
 PDF statistics:
- 868 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 116 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
