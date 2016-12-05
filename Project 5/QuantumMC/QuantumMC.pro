@@ -9,3 +9,6 @@ SOURCES += main.cpp \
 HEADERS += \
     quantummc.h
 
+DISTFILES += \
+    benchmarks.txt
+

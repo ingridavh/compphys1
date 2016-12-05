@@ -1,0 +1,49 @@
+//Energy expectation value with and without perturbation
+//for testfunction T1.
+
+#include <iostream>
+#include "quantummc.h"
+#include <armadillo>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    QuantumMC dots(2);
+    dots.no_perturbation();
+    dots.runMCintegration();
+    return 0;
+}
+
+//-----------output--------------
+Energy: 3 Energy (squared sum): 9
+Variance: 4.24265e-11
+Percentage of accepted configurations 73.5085%
+//-------------------------------
+
+
+// Add perturbation
+
+#include <iostream>
+#include "quantummc.h"
+#include <armadillo>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    QuantumMC dots(2);
+    dots.add_perturbation();
+    dots.runMCintegration();
+    return 0;
+}
+
+//------------output------------
+Energy: 3.80459 Energy (squared sum): 14.8479
+Variance: 0.373047
+Percentage of accepted configurations 73.5147%
+//------------------------------
+
+
