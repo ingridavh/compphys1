@@ -19,7 +19,7 @@ int main()
         }
     }
 
-    outfile << "Alpha " << ", omega " << ", Ek " << ", Ep" << endl;
+    ofile << "Alpha " << ", omega " << ", Ek " << ", Ep" << endl;
 
     //Set alpha values
     int T1 = 1; int T2 = 2;
@@ -47,39 +47,38 @@ int main()
     //dots.get_low(a_list, b_list, num_steps);
 
     double omegas [3] = {0.01, 0.5, 1.0};
+    double alphas [3] = {0.5, 0.9, 0.95};
 
-//    for (int i = 0; i < 3; i++){
-//        dots.m_omega = omegas[i];
-//        cout << "omega " << omegas[i] << endl;
-//        dots.get_low(a_list, b_list, num_steps);
-//    }
-
-    //Omegas to find kinetic energy as a function of omega
-    double omegas_long [10] = {0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 0.55, 0.65, 0.8, 1};
-    for(int i = 0; i < 10; i++){
-        dots.m_T = T1;
-        dots.m_omega = omegas_long[i];
-        double a_min = dots.minimize_alpha(a_list, num_steps);
-        dots.m_alpha = a_min;
+    for (int i = 0; i < 3; i++){
+        dots.m_omega = omegas[i];
+        cout << "omega " << omegas[i] << endl;
+        dots.m_alpha = alphas[i];
         dots.runMCintegration(T1);
-        outfile << a_min << " , " <<
     }
 
-
-
+    //Omegas to find kinetic energy as a function of omega
+//    double omegas_long [10] = {0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 0.55, 0.65, 0.8, 1};
+//    for(int i = 0; i < 10; i++){
+//        dots.m_T = T1;
+//        dots.m_omega = omegas_long[i];
+//        double a_min = dots.minimize_alpha(a_list, num_steps);
+//        dots.m_alpha = a_min;
+//        dots.runMCintegration(T1);
+//        ofile << a_min << " , " << omegas_long[i] << " , " << Ek << " , " << Ep << endl;
+//    }
+//    ofile.close();
 
 //    ofile << "alpha " << " energy " << " variance" <<endl;
 
-    for(double a=alpha_min; a < alpha_max; a += alpha_step){
-        dots.m_alpha = a;
-        dots.runMCintegration(T1);
-        double energy = dots.m_energy;
-        double variance = dots.m_var;
-        ofile << a << " "<<energy << " " << variance << endl;
-    }
+//    for(double a=alpha_min; a < alpha_max; a += alpha_step){
+//        dots.m_alpha = a;
+//        dots.runMCintegration(T1);
+//        double energy = dots.m_energy;
+//        double variance = dots.m_var;
+//        ofile << a << " "<<energy << " " << variance << endl;
+//    }
 
 
-    ofile.close();
 
     return 0;
 }

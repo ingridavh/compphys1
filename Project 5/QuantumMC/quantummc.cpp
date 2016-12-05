@@ -14,7 +14,7 @@ QuantumMC::QuantumMC(int N) :
     m_h(0.00001),
     m_h2(1./double(m_h*m_h)),
     m_alpha(1),
-    m_mcs(1000000),
+    m_mcs(2500000),
     m_blomst(0),
     m_beta(1.0),
     m_r12(0)
@@ -37,6 +37,7 @@ void QuantumMC::runMCintegration(int T){
     m_steplength = 1.0;
     m_energy = 0;
     m_blomst = 0;
+    m_r12 = 0;
 
     //Initialiser med forskjellige tall hver gang
     srand(time(NULL));
@@ -72,7 +73,6 @@ void QuantumMC::runMCintegration(int T){
             } else if (m_blomst/double(cycle*m_N) > 0.6 ) {
                 m_steplength += 1;
             }
-            r12_avg += m_r12;
         }
 
         //Store the current value of the wave function
@@ -114,11 +114,11 @@ void QuantumMC::runMCintegration(int T){
     double energy2 = ESum2 / double (m_mcs*m_N);
     m_energy = energy;
     m_var = energy2 - energy*energy;
-    r12_avg /= (double (m_mcs)/1000.0);
+    m_r12 /= (double (m_mcs*m_N));
 //    cout << "Energy: " << energy << " Energy (squared sum): " << energy2 << endl;
 //    cout << "Variance: " << energy2 - energy*energy << endl;
 //    cout << "Percentage of accepted configurations " << m_blomst/double(m_mcs*m_N)*100 << "%" << endl;
-    cout << "For omega: " << m_omega << ", the average distance r12 is " << r12_avg << endl;
+    cout << "For omega: " << m_omega << ", the average distance r12 is " << m_r12 << endl;
 }
 
 double QuantumMC::wavefunc(const mat &r){
@@ -222,7 +222,7 @@ double QuantumMC::localEnergy(const mat &r){
                     r12 += (r(i,k) - r(j,k)) * (r(i,k) - r(j,k));
                 }
                 EP += 1/sqrt(r12);
-                m_r12 = 1/sqrt(r12);
+                m_r12 += sqrt(r12);
             }
         }
     } else {
@@ -250,7 +250,7 @@ double QuantumMC::minimize_alpha(double *a_list, int num_steps)
     }
     cout << endl;
     m_energy = E_min;
-//    cout << "The alpha value " << a_min << " minimizes the energy. Energy: " << m_energy << endl;
+    cout << "The alpha value " << a_min << " minimizes the energy. Energy: " << m_energy << endl;
     return a_min;
 }
 
