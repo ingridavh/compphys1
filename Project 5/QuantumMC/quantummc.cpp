@@ -14,7 +14,7 @@ QuantumMC::QuantumMC(int N) :
     m_h(0.00001),
     m_h2(1./double(m_h*m_h)),
     m_alpha(1),
-    m_mcs(2500000),
+    m_mcs(25000),
     m_blomst(0),
     m_beta(1.0),
     m_r12(0)
@@ -115,10 +115,10 @@ void QuantumMC::runMCintegration(int T){
     m_energy = energy;
     m_var = energy2 - energy*energy;
     m_r12 /= (double (m_mcs*m_N));
-//    cout << "Energy: " << energy << " Energy (squared sum): " << energy2 << endl;
-//    cout << "Variance: " << energy2 - energy*energy << endl;
-//    cout << "Percentage of accepted configurations " << m_blomst/double(m_mcs*m_N)*100 << "%" << endl;
-    cout << "For omega: " << m_omega << ", the average distance r12 is " << m_r12 << endl;
+    cout << "Energy: " << energy << " Energy (squared sum): " << energy2 << endl;
+    cout << "Variance: " << energy2 - energy*energy << endl;
+    cout << "Percentage of accepted configurations " << m_blomst/double(m_mcs*m_N)*100 << "%" << endl;
+    //cout << "For omega: " << m_omega << ", the average distance r12 is " << m_r12 << endl;
 }
 
 double QuantumMC::wavefunc(const mat &r){

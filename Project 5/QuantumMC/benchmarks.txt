@@ -13,14 +13,14 @@ int main()
     QuantumMC dots(2);
     dots.no_perturbation();
     dots.m_mcs = 1000000;
-    dots.runMCintegration();
+    dots.runMCintegration(1);
     return 0;
 }
 
 //-----------output--------------
 Energy: 3 Energy (squared sum): 9
-Variance: 4.24265e-11
-Percentage of accepted configurations 73.5085%
+Variance: 4.15543e-11
+Percentage of accepted configurations 50.377%
 //-------------------------------
 
 
@@ -38,14 +38,14 @@ int main()
     QuantumMC dots(2);
     dots.add_perturbation();
     dots.m_mcs = 1000000;
-    dots.runMCintegration();
+    dots.runMCintegration(2);
     return 0;
 }
 
 //------------output------------
-Energy: 3.80459 Energy (squared sum): 14.8479
-Variance: 0.373047
-Percentage of accepted configurations 73.5147%
+Energy: 3.74059 Energy (squared sum): 14.0573
+Variance: 0.065253
+Percentage of accepted configurations 51.5274%
 //------------------------------
 
 
