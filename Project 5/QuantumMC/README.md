@@ -6,4 +6,5 @@ All the code necessary for running the program is given here. All the public var
 # Benchmarks
 The benchmarks can be found in benchmarks.txt. To run them, you will have to copy the benchmark code into main.cpp, and run it from there. 
 
-
+# Report
+The project report can be found in the report folder.
