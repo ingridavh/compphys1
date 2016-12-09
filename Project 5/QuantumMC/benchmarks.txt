@@ -1,5 +1,5 @@
 //Energy expectation value with and without perturbation
-//for testfunction T1.
+//with alpha = 1 and omega = 1 for testfunction T1.
 
 #include <iostream>
 #include "quantummc.h"
