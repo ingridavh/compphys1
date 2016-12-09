@@ -12,6 +12,7 @@ int main()
 {
     QuantumMC dots(2);
     dots.no_perturbation();
+    dots.m_mcs = 1000000;
     dots.runMCintegration();
     return 0;
 }
@@ -36,6 +37,7 @@ int main()
 {
     QuantumMC dots(2);
     dots.add_perturbation();
+    dots.m_mcs = 1000000;
     dots.runMCintegration();
     return 0;
 }
